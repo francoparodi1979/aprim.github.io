@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  /* APRIM brand palette — deep pulmonary teal, warm bone, clay accent */
+  --color-teal-50: #eaf2f4;
+  --color-teal-100: #c9dde1;
+  --color-teal-200: #9bbfc7;
+  --color-teal-300: #6ba1ad;
+  --color-teal-400: #3f8190;
+  --color-teal-500: #1f5d6c;
+  --color-teal-600: #0f3d4a;
+  --color-teal-700: #0b2f39;
+  --color-teal-800: #07222a;
+  --color-teal-900: #04161b;
+
+  --color-bone-50: #faf8f4;
+  --color-bone-100: #f5f1ea;
+  --color-bone-200: #ece5d8;
+  --color-bone-300: #ddd2bc;
+
+  --color-clay-50: #f8eee5;
+  --color-clay-100: #ecd1bb;
+  --color-clay-200: #dbac86;
+  --color-clay-300: #c67c4e;
+  --color-clay-400: #a8623a;
+  --color-clay-500: #864c2c;
+
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: var(--color-bone-100);
+  color: var(--color-teal-700);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
