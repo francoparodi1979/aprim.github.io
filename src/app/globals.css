@@ -87,17 +87,22 @@ a {
   50% { transform: scale(1.12); opacity: 0.9; }
 }
 
-/* Realistic breath cycle: inhale ~1.5s, peak hold, exhale ~2.5s, rest. ~5s loop. */
+/* Realistic breath cycle: inhale ~1.7s, peak hold, exhale ~2.5s, rest. ~5.2s loop.
+   Anatomically the chest widens MORE than it lengthens — the diaphragm only
+   descends ~1-2 cm while the ribcage flares 2-4 cm. Anchored at the top of
+   the image so the trachea entry barely moves; vertical scale is small so
+   the trachea length is nearly fixed. */
 @keyframes lung-expand {
-  0%   { transform: scale(1); filter: brightness(1) saturate(1) contrast(1); }
-  32%  { transform: scale(1.052); filter: brightness(1.08) saturate(1.05) contrast(1.02); }
-  42%  { transform: scale(1.045); filter: brightness(1.06) saturate(1.04) contrast(1.01); }
-  100% { transform: scale(1); filter: brightness(1) saturate(1) contrast(1); }
+  0%   { transform: scaleX(1)     scaleY(1);     filter: brightness(1) saturate(1) contrast(1); }
+  32%  { transform: scaleX(1.060) scaleY(1.020); filter: brightness(1.06) saturate(1.05) contrast(1.02); }
+  42%  { transform: scaleX(1.054) scaleY(1.018); filter: brightness(1.05) saturate(1.04) contrast(1.01); }
+  100% { transform: scaleX(1)     scaleY(1);     filter: brightness(1) saturate(1) contrast(1); }
 }
+/* Subtle chest rise on inhale (the shoulders/clavicles lift slightly). */
 @keyframes lung-rise {
   0%   { transform: translateY(0); }
-  32%  { transform: translateY(8px); }
-  42%  { transform: translateY(7px); }
+  32%  { transform: translateY(-3px); }
+  42%  { transform: translateY(-2px); }
   100% { transform: translateY(0); }
 }
 @keyframes lung-aura {

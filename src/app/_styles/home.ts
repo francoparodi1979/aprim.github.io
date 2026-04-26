@@ -163,7 +163,8 @@ export const homePageStyles = `
   align-items: center;
   justify-content: center;
   animation: lung-expand 5.2s cubic-bezier(0.42,0,0.58,1) infinite;
-  transform-origin: center 55%;
+  /* Anchor at top-center: trachea entry stays fixed, chest expands outward and downward. */
+  transform-origin: 50% 6%;
 }
 .lung-img {
   width: 96%;
