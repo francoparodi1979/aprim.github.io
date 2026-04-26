@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
 
 import { CountUp } from "@/components/CountUp";
 import { HeroParticles } from "@/components/HeroParticles";
+import { LungAnatomy } from "@/components/LungAnatomy";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { homePageStyles } from "./_styles/home";
@@ -65,14 +65,7 @@ export default function HomePage() {
 
               <div className="lung-rise">
                 <div className="lung-expand">
-                  <Image
-                    src="/lungs-3d.png"
-                    alt="Anatomically rendered human lungs, breathing"
-                    width={500}
-                    height={281}
-                    className="lung-img"
-                    priority
-                  />
+                  <LungAnatomy />
                 </div>
               </div>
 
@@ -94,14 +87,6 @@ export default function HomePage() {
                   strokeLinejoin="round"
                 />
               </svg>
-
-              <div className="breath-meta" aria-hidden>
-                <span className="breath-meta-k">Respiration</span>
-                <span className="breath-meta-v">
-                  <b className="breath-bpm">14</b>
-                  <em>breaths · min</em>
-                </span>
-              </div>
             </div>
           </div>
         </div>
