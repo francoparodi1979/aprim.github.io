@@ -13,7 +13,7 @@ import {
 /**
  * Physician referral. Note: we deliberately do NOT collect patient contact
  * info or PHI here — the referring clinician's office reaches the patient,
- * then APRIM coordinates with the office. This avoids HIPAA exposure.
+ * then VERITAS coordinates with the office. This avoids HIPAA exposure.
  */
 export const referralSchema = z.object({
   referringName: shortText("Your name", 160),

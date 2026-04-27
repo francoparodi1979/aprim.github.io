@@ -8,7 +8,7 @@ import { subpageStyles } from "../_styles/subpages";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About APRIM — the Advanced Pulmonary Research Institute of Michigan, a small, physician-led pulmonary research institute led by Dr. Franco Parodi.",
+    "About VERITAS — the Advanced Pulmonary Research Institute of Michigan, a small, physician-led pulmonary research institute led by Dr. Franco Parodi.",
 };
 
 const TEAM = [
@@ -74,7 +74,7 @@ const HISTORY = [
   {
     year: "20",
     em: "19",
-    note: "APRIM founded in a single exam room. First COPD trial begins in November.",
+    note: "VERITAS founded in a single exam room. First COPD trial begins in November.",
   },
   {
     year: "20",
@@ -148,7 +148,7 @@ export default function AboutPage() {
           </div>
           <div className="right">
             <p>
-              APRIM is a small, specialty-focused clinical research institute
+              VERITAS is a small, specialty-focused clinical research institute
               in Bloomfield Hills, Michigan. We run Phase 2–4 trials for
               pharmaceutical and biotech sponsors with industry-grade
               operational rigor and neighborhood-level patient care.
@@ -180,7 +180,7 @@ export default function AboutPage() {
             </div>
             <div>
               <p className="first">
-                APRIM exists because too many of the people who live with COPD,
+                VERITAS exists because too many of the people who live with COPD,
                 asthma, or pulmonary fibrosis in southeast Michigan were being
                 asked to drive an hour each way to participate in the research
                 that might help them. We built an institute to meet them where
@@ -271,7 +271,7 @@ export default function AboutPage() {
           </h2>
           <p>
             Whether you&apos;re a volunteer, a sponsor, or a referring
-            physician, the same number reaches a real person at APRIM. No call
+            physician, the same number reaches a real person at VERITAS. No call
             tree, no triage queue.
           </p>
           <div className="cta-row">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
 
@@ -42,7 +43,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="lede">
-              APRIM is a clinical research institute dedicated to COPD, asthma,
+              VERITAS is a clinical research institute dedicated to COPD, asthma,
               and pulmonary fibrosis — where Dr. Franco Parodi and a
               multidisciplinary team turn patient partnership into peer-reviewed
               science.
@@ -157,7 +158,7 @@ export default function HomePage() {
           </h2>
           <div className="meta">
             <div className="live">Last updated · live</div>
-            Figures are pulled from APRIM&apos;s operations ledger and CITI-audited trial roster.
+            Figures are pulled from VERITAS&apos;s operations ledger and CITI-audited trial roster.
           </div>
         </div>
         <div className="metrics-grid">
@@ -210,7 +211,7 @@ export default function HomePage() {
               Every protocol we run anchors on the same three disciplines: deep
               phenotyping at baseline, standardized spirometry on every visit,
               and longitudinal follow-up that lasts years after the last dose.
-              The chart shows mean FEV₁ across an APRIM cohort vs. standard-of-care comparators.
+              The chart shows mean FEV₁ across an VERITAS cohort vs. standard-of-care comparators.
             </p>
             <Link className="link" href="/about">
               See our published methodology →
@@ -385,6 +386,14 @@ export default function HomePage() {
       <section className="doctor">
         <div className="doctor-grid">
           <div className="doc-portrait">
+            <Image
+              src="/dr-parodi.jpg"
+              alt="Dr. Franco Parodi, Principal Investigator at VERITAS"
+              fill
+              sizes="(max-width: 1440px) 40vw, 580px"
+              className="doc-portrait-img"
+              priority={false}
+            />
             <div className="ring" />
             <div className="ring b" />
           </div>
@@ -403,7 +412,7 @@ export default function HomePage() {
                 <b>Memberships</b>American Thoracic Society · CHEST · ACCP
               </div>
               <div>
-                <b>Chair</b>APRIM clinical research · PMA pulmonary partner
+                <b>Chair</b>VERITAS clinical research · PMA pulmonary partner
               </div>
             </div>
             <q>
@@ -412,7 +421,7 @@ export default function HomePage() {
             <div className="sig">
               <div>
                 <div className="name">Franco Parodi</div>
-                <div className="role">Founder &amp; PI · APRIM</div>
+                <div className="role">Founder &amp; PI · VERITAS</div>
               </div>
             </div>
           </div>
@@ -439,7 +448,7 @@ export default function HomePage() {
             <div className="dot">i</div>
             <h4>Conversation, not commitment</h4>
             <p>
-              A 20-minute call with an APRIM coordinator. We describe the trial,
+              A 20-minute call with an VERITAS coordinator. We describe the trial,
               you describe your story, and we check whether there&apos;s a
               mutual fit.
             </p>

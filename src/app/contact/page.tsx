@@ -7,7 +7,7 @@ import { subpageStyles } from "../_styles/subpages";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Reach the APRIM research team in Bloomfield Hills, Michigan.",
+  description: "Reach the VERITAS research team in Bloomfield Hills, Michigan.",
 };
 
 export default function ContactPage() {
@@ -69,7 +69,7 @@ export default function ContactPage() {
             <div className="step-card">
               <div className="big">ii</div>
               <div className="t">By email</div>
-              <h4>hello@aprim.org</h4>
+              <h4>hello@veritasclinical.org</h4>
               <p>
                 Reach the whole coordinator team at once. Best for non-urgent
                 questions, study inquiries, or sponsor introductions.

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* APRIM brand palette — Motion direction: deep teal, warm bone, clay accent + sage */
+  /* VERITAS brand palette — Motion direction: deep teal, warm bone, clay accent + sage */
   --color-ink: #0a2e38;
   --color-ink-2: #144653;
   --color-bone: #f2ede3;
@@ -262,6 +262,15 @@ a {
 .site-nav .breath-ring {
   transform-origin: center;
   animation: breathe 4s ease-in-out infinite;
+}
+/* Veritas full wordmark logo in the nav. Width is auto so the natural
+   aspect ratio of the PNG (~1.23:1) is preserved at 56px tall. */
+.site-nav .brand-logo {
+  height: 56px;
+  width: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 .brand-text {
   font-family: var(--font-display);

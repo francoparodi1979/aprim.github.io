@@ -19,8 +19,8 @@ const serverSchema = z.object({
   DATABASE_URL: emptyToUndefined(z.string().url().optional()),
 
   RESEND_API_KEY: emptyToUndefined(z.string().min(1).optional()),
-  EMAIL_FROM: z.string().default("APRIM <no-reply@aprim.org>"),
-  EMAIL_TO_INTERNAL: z.string().email().default("research@aprim.org"),
+  EMAIL_FROM: z.string().default("VERITAS <no-reply@veritasclinical.org>"),
+  EMAIL_TO_INTERNAL: z.string().email().default("research@veritasclinical.org"),
 
   TURNSTILE_SECRET_KEY: emptyToUndefined(z.string().min(1).optional()),
 

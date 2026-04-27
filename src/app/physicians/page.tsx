@@ -8,7 +8,7 @@ import { subpageStyles } from "../_styles/subpages";
 export const metadata: Metadata = {
   title: "For physicians",
   description:
-    "Refer a patient or partner with APRIM on pulmonary clinical research.",
+    "Refer a patient or partner with VERITAS on pulmonary clinical research.",
 };
 
 export default function PhysiciansPage() {
@@ -27,7 +27,7 @@ export default function PhysiciansPage() {
           </div>
           <div className="right">
             <p>
-              APRIM works alongside referring pulmonologists and primary care
+              VERITAS works alongside referring pulmonologists and primary care
               physicians, not around them. Every visit summary goes back to
               your office. Every protocol decision loops you in. Your patient
               stays your patient — we just open another door.
@@ -114,10 +114,10 @@ export default function PhysiciansPage() {
           </h2>
           <p>
             <a
-              href="mailto:referrals@aprim.org"
+              href="mailto:referrals@veritasclinical.org"
               style={{ color: "var(--color-clay)" }}
             >
-              referrals@aprim.org
+              referrals@veritasclinical.org
             </a>{" "}
             — name, phone, indication. We take it from there.
           </p>

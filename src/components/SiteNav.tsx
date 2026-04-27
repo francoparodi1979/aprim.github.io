@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -13,33 +14,15 @@ type NavKey = (typeof NAV_LINKS)[number]["key"] | "home";
 export function SiteNav({ active }: { active?: NavKey }) {
   return (
     <nav className="site-nav">
-      <Link href="/" className="brand" aria-label="APRIM home">
-        <div className="logo-mark">
-          <svg viewBox="0 0 40 40" fill="none">
-            <circle
-              className="breath-ring"
-              cx="20"
-              cy="20"
-              r="18"
-              stroke="#0a2e38"
-              strokeWidth="1"
-            />
-            <circle
-              className="breath-ring"
-              cx="20"
-              cy="20"
-              r="10"
-              stroke="#d07a45"
-              strokeWidth="1.2"
-              style={{ animationDelay: "0.8s" }}
-            />
-            <circle cx="20" cy="20" r="3" fill="#d07a45" />
-          </svg>
-        </div>
-        <div className="brand-text">
-          APRIM
-          <span>Pulmonary Research · Michigan</span>
-        </div>
+      <Link href="/" className="brand" aria-label="VERITAS Clinical Research Institute — home">
+        <Image
+          src="/veritas-logo.png"
+          alt="Veritas Clinical Research Institute"
+          width={598}
+          height={485}
+          className="brand-logo"
+          priority
+        />
       </Link>
 
       <ul>

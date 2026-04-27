@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aprim.org";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://veritasclinical.org";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,8 +29,8 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "APRIM — Advanced Pulmonary Research Institute of Michigan",
-    template: "%s · APRIM",
+    default: "VERITAS — Advanced Pulmonary Research Institute of Michigan",
+    template: "%s · VERITAS",
   },
   description:
     "Patient-centered pulmonary clinical research in Michigan. COPD, asthma, and idiopathic pulmonary fibrosis trials led by Dr. Franco Parodi.",
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
     "IPF research",
     "Michigan clinical research",
     "Dr. Franco Parodi",
-    "APRIM",
+    "VERITAS",
   ],
   authors: [{ name: "Advanced Pulmonary Research Institute of Michigan" }],
   openGraph: {
     type: "website",
-    siteName: "APRIM",
+    siteName: "VERITAS",
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },

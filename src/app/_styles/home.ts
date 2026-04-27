@@ -638,13 +638,24 @@ export const homePageStyles = `
   border-radius: 240px 240px 14px 14px;
   overflow: hidden;
   background: linear-gradient(160deg, var(--color-ink) 0%, var(--color-ink-2) 100%);
+  isolation: isolate;
 }
+/* Headshot fills the framed box, sits behind the caption + rings. */
+.doc-portrait-img {
+  object-fit: cover;
+  object-position: center 18%;
+  z-index: 0;
+}
+/* Subtle warm vignette over the photo so the inked frame still feels unified. */
 .doc-portrait::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(45deg, transparent 0 18px, rgba(208,122,69,0.08) 18px 19px);
-  animation: wave-move 14s linear infinite;
+  background:
+    linear-gradient(180deg, rgba(10,46,56,0) 55%, rgba(10,46,56,0.45) 100%),
+    linear-gradient(160deg, rgba(208,122,69,0.08) 0%, rgba(10,46,56,0) 60%);
+  z-index: 1;
+  pointer-events: none;
 }
 .doc-portrait::after {
   content: "DR. FRANCO PARODI";
@@ -659,6 +670,7 @@ export const homePageStyles = `
   padding: 8px 14px;
   border-radius: 4px;
   backdrop-filter: blur(6px);
+  z-index: 2;
 }
 .doc-portrait .ring {
   position: absolute;
@@ -667,6 +679,8 @@ export const homePageStyles = `
   border-radius: 260px 260px 40px 40px;
   opacity: 0.35;
   animation: breathe-slow 6s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
 }
 .doc-portrait .ring.b { inset: -80px; animation-delay: 1s; opacity: 0.18; }
 

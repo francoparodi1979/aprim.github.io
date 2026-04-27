@@ -9,7 +9,7 @@ import { subpageStyles } from "../_styles/subpages";
 export const metadata: Metadata = {
   title: "Active studies",
   description:
-    "Active and recruiting clinical trials at APRIM — COPD, asthma, and idiopathic pulmonary fibrosis.",
+    "Active and recruiting clinical trials at VERITAS — COPD, asthma, and idiopathic pulmonary fibrosis.",
 };
 
 export const revalidate = 600;
@@ -101,7 +101,7 @@ export default async function StudiesPage() {
                   href={`/studies/${s.slug}` as Route}
                   className="tt-row"
                 >
-                  <div className="id">APR-{id}</div>
+                  <div className="id">VRT-{id}</div>
                   <div>
                     <h4>
                       {lead}
@@ -186,7 +186,7 @@ export default async function StudiesPage() {
               <span>Get on the list →</span>
             </Link>
             <Link className="cta-ghost" href="/about">
-              About APRIM
+              About VERITAS
             </Link>
           </div>
         </section>

@@ -8,7 +8,7 @@ import { subpageStyles } from "../_styles/subpages";
 export const metadata: Metadata = {
   title: "For patients",
   description:
-    "What it actually feels like to volunteer for a clinical trial at APRIM — every step from first call to closeout, plus the questions we hear every week.",
+    "What it actually feels like to volunteer for a clinical trial at VERITAS — every step from first call to closeout, plus the questions we hear every week.",
 };
 
 const STEPS = [
@@ -42,7 +42,7 @@ const SAFETY = [
   {
     n: "01 · Independence",
     title: "An independent review board watches over every study.",
-    body: "No trial at APRIM runs without ongoing oversight from an IRB that has no financial stake in the outcome. If they pause a study, we pause it the same day.",
+    body: "No trial at VERITAS runs without ongoing oversight from an IRB that has no financial stake in the outcome. If they pause a study, we pause it the same day.",
   },
   {
     n: "02 · Transparency",
@@ -60,7 +60,7 @@ const FAQ = [
   {
     q: "Is it",
     qEm: "safe?",
-    a: "Every study is reviewed by an independent IRB and continuously monitored. No first-in-human dosing happens at APRIM — only Phase 2+ programs with established safety data. You can withdraw at any time, for any reason.",
+    a: "Every study is reviewed by an independent IRB and continuously monitored. No first-in-human dosing happens at VERITAS — only Phase 2+ programs with established safety data. You can withdraw at any time, for any reason.",
   },
   {
     q: "What's the",
@@ -70,7 +70,7 @@ const FAQ = [
   {
     q: "Do I keep my",
     qEm: "own doctor?",
-    a: "Yes. APRIM works alongside your primary care physician and pulmonologist. We send visit summaries to whoever you designate and coordinate directly on anything that changes.",
+    a: "Yes. VERITAS works alongside your primary care physician and pulmonologist. We send visit summaries to whoever you designate and coordinate directly on anything that changes.",
   },
   {
     q: "What if I",

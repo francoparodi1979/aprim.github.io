@@ -18,9 +18,9 @@ export function SiteFooter() {
               color: "rgba(242,237,227,0.55)",
             }}
           >
-            APRIM · Bloomfield Hills, Michigan
+            VERITAS · Bloomfield Hills, Michigan
             <br />
-            (586) 980-1296 · hello@aprim.org
+            (586) 980-1296 · hello@veritasclinical.org
           </div>
         </div>
         <div>
@@ -64,7 +64,7 @@ export function SiteFooter() {
               <a href="tel:+15869801296">(586) 980-1296</a>
             </li>
             <li>
-              <a href="mailto:hello@aprim.org">hello@aprim.org</a>
+              <a href="mailto:hello@veritasclinical.org">hello@veritasclinical.org</a>
             </li>
             <li>
               <Link href="/contact">Visit us</Link>
@@ -76,7 +76,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="f-bottom">
-        <div>© 2026 APRIM PLLC · GCP · FDA-inspected</div>
+        <div>© 2026 VERITAS PLLC · GCP · FDA-inspected</div>
         <div>Privacy · Terms · Accessibility</div>
       </div>
     </footer>
