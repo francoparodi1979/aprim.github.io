@@ -28,7 +28,7 @@ export default function ContactPage() {
           <div className="right">
             <p>
               The phone number below goes to a real person on our coordinator
-              team — no triage, no call tree. We answer weekdays 8 a.m. to 6
+              team — no triage, no call tree. We answer weekdays 9 a.m. to 5
               p.m. Eastern, and reply to email within one business day.
             </p>
             <div className="ks">
@@ -38,7 +38,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <b>Mon–Fri</b>
-                <span>8 a.m. – 6 p.m. ET</span>
+                <span>9 a.m. – 5 p.m. EST</span>
               </div>
               <div>
                 <b>&lt; 24h</b>
@@ -69,7 +69,7 @@ export default function ContactPage() {
             <div className="step-card">
               <div className="big">ii</div>
               <div className="t">By email</div>
-              <h4>hello@veritasclinical.org</h4>
+              <h4>info@aprimresearch.com</h4>
               <p>
                 Reach the whole coordinator team at once. Best for non-urgent
                 questions, study inquiries, or sponsor introductions.
@@ -78,9 +78,10 @@ export default function ContactPage() {
             <div className="step-card">
               <div className="big">iii</div>
               <div className="t">In person</div>
-              <h4>Bloomfield Hills, MI</h4>
+              <h4>27483 Dequindre Rd. Suite 304</h4>
               <p>
-                Our research suite is open by appointment. Park free in the
+                Our research suite is open by appointment at 27483 Dequindre
+                Rd. Suite 304, Madison Heights, MI 48071. Park free in the
                 lot; the front desk hands you off to a coordinator on arrival.
               </p>
             </div>

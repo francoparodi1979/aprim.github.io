@@ -18,9 +18,11 @@ export function SiteFooter() {
               color: "rgba(242,237,227,0.55)",
             }}
           >
-            VERITAS · Bloomfield Hills, Michigan
+            VERITAS · Madison Heights, Michigan
             <br />
-            (586) 980-1296 · hello@veritasclinical.org
+            27483 Dequindre Rd. Suite 304, Madison Heights, MI 48071
+            <br />
+            (586) 980-1296 · info@aprimresearch.com
           </div>
         </div>
         <div>
@@ -64,7 +66,7 @@ export function SiteFooter() {
               <a href="tel:+15869801296">(586) 980-1296</a>
             </li>
             <li>
-              <a href="mailto:hello@veritasclinical.org">hello@veritasclinical.org</a>
+              <a href="mailto:info@aprimresearch.com">info@aprimresearch.com</a>
             </li>
             <li>
               <Link href="/contact">Visit us</Link>
