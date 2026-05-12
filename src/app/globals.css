@@ -240,7 +240,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 64px;
+  padding: 14px 64px;
   position: sticky;
   top: 0;
   background: rgba(247, 242, 232, 0.88);
@@ -264,9 +264,9 @@ a {
   animation: breathe 4s ease-in-out infinite;
 }
 /* Veritas full wordmark logo in the nav. Width is auto so the natural
-   aspect ratio of the PNG (~1.23:1) is preserved at 56px tall. */
+   aspect ratio of the PNG (~1.23:1) is preserved at the set height. */
 .site-nav .brand-logo {
-  height: 56px;
+  height: 80px;
   width: auto;
   display: block;
   user-select: none;
@@ -288,12 +288,13 @@ a {
   color: var(--muted);
   margin-top: 4px;
 }
-.site-nav ul {
+.site-nav > ul {
   display: flex;
-  gap: 36px;
+  align-items: center;
+  gap: 52px;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0 0 0 auto;
+  padding: 0 40px 0 0;
 }
 .site-nav ul a {
   font-size: 14px;
@@ -347,45 +348,117 @@ a {
 
 /* Dropdown nav item */
 .nav-dropdown { position: relative; }
+
+/* Invisible bridge: extends hover area downward from the li to cover
+   the gap before the panel. Lives on the li so overflow:hidden on
+   the panel doesn't clip it. Wide enough to cover the full panel. */
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 28px;
+  background: transparent;
+}
+
 .nav-dropdown-trigger {
   font-size: 14px;
   font-weight: 500;
-  cursor: default;
+  cursor: pointer;
   padding: 4px 0;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
+  user-select: none;
+  transition: color 0.2s ease;
 }
-.nav-dropdown-trigger[data-on="true"] { color: var(--color-clay); }
+
+/* Animated CSS chevron — replaces the static ▾ character */
+.nav-dropdown-trigger::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4.5px solid currentColor;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.nav-dropdown:hover .nav-dropdown-trigger::after {
+  transform: rotate(-180deg);
+}
+
+.nav-dropdown:hover .nav-dropdown-trigger,
+.nav-dropdown-trigger[data-on="true"] {
+  color: var(--color-clay);
+}
+
+/* The panel */
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 12px);
-  left: -16px;
-  background: var(--color-paper);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  padding: 8px 0;
-  min-width: 180px;
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  width: 230px;
+  background: var(--color-cream);
+  border: 1px solid rgba(10, 46, 56, 0.12);
+  border-top: 2px solid var(--color-clay);
+  border-radius: 0 0 12px 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-6px);
-  transition: opacity 0.18s, transform 0.18s;
+  transition:
+    opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 200;
-  list-style: none;
-  margin: 0;
+  box-shadow:
+    0 2px 4px rgba(10, 46, 56, 0.04),
+    0 8px 20px rgba(10, 46, 56, 0.09),
+    0 20px 44px rgba(10, 46, 56, 0.07);
 }
+
 .nav-dropdown:hover .nav-dropdown-menu {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
+
+/* Clip hover background to the panel's bottom border-radius */
+.nav-dropdown-menu li:last-child a {
+  border-radius: 0 0 11px 11px;
+}
+
+/* Dividers */
+.nav-dropdown-menu li {
+  border-bottom: 1px solid rgba(10, 46, 56, 0.08);
+}
+.nav-dropdown-menu li:last-child { border-bottom: none; }
+
+/* Links inside the panel */
 .nav-dropdown-menu a {
   display: block;
-  padding: 8px 20px;
-  font-size: 14px;
+  padding: 14px 24px;
+  font-size: 13.5px;
   font-weight: 500;
+  color: var(--color-ink);
+  letter-spacing: 0.01em;
+  text-align: center;
+  transition: background 0.14s ease, color 0.14s ease;
 }
-.nav-dropdown-menu a:hover { color: var(--color-clay); }
+
+/* Suppress the top-level nav underline animation inside the panel */
+.nav-dropdown-menu a::after { display: none; }
+
+.nav-dropdown-menu a:hover {
+  background: var(--color-bone);
+  color: var(--color-clay);
+}
 
 /* Page header (used on subpages) */
 .page-header {

@@ -26,7 +26,7 @@ export function SiteNav({ active }: { active?: NavKey }) {
         </li>
         <li className="nav-dropdown">
           <span className="nav-dropdown-trigger" data-on={dropdownActive ? "true" : undefined}>
-            Get Involved ▾
+            Get Involved
           </span>
           <ul className="nav-dropdown-menu">
             <li>
