@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
 
-import { CountUp } from "@/components/CountUp";
 import { HeroParticles } from "@/components/HeroParticles";
 import { LungAnatomy } from "@/components/LungAnatomy";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -27,26 +26,28 @@ export default function HomePage() {
         <div className="hero-grid">
           <div>
             <div className="eyebrow" style={{ marginBottom: 32 }}>
-              ◈ Bloomfield Hills, Michigan
+              ◈ Madison Heights, MI · 2023
             </div>
             <h1 className="kinetic">
               <span className="line">
-                <span className="word">Every</span>
+                <span className="word">Where</span>
               </span>
               <span className="line">
                 <span className="word">
-                  <em>breath</em>
+                  <em>Science</em>
                 </span>
               </span>
               <span className="line">
-                <span className="word">is evidence.</span>
+                <span className="word">Meets <em>Hope.</em></span>
               </span>
             </h1>
             <p className="lede">
-              VERITAS is a clinical research institute dedicated to COPD, asthma,
-              and pulmonary fibrosis — where Dr. Franco Parodi and a
-              multidisciplinary team turn patient partnership into peer-reviewed
-              science.
+              Veritas Clinical Research Institute exists for one reason: to get it
+              right. We conduct clinical trials with an uncompromising dedication to
+              honest science and ethical principles — because the future of medicine
+              depends on research the world can trust. No shortcuts. No spin. Just
+              rigorous, transparent, patient-centered research that moves medicine
+              forward.
             </p>
             <div className="hero-actions">
               <Link className="cta-pill" href="/studies">
@@ -94,29 +95,9 @@ export default function HomePage() {
 
         <div className="hero-readout">
           <div className="readout-item">
-            <span className="k">Active trials</span>
-            <span className="v">
-              <CountUp to={3} />
-            </span>
-          </div>
-          <div className="readout-item">
-            <span className="k">Volunteers partnered</span>
-            <span className="v">
-              <em>
-                <CountUp to={1240} />
-              </em>
-            </span>
-          </div>
-          <div className="readout-item">
-            <span className="k">Publications</span>
-            <span className="v">
-              <CountUp to={42} />
-            </span>
-          </div>
-          <div className="readout-item">
             <span className="k">Years of service</span>
             <span className="v">
-              <em>7</em>
+              <em>since 2002</em>
             </span>
           </div>
         </div>
@@ -128,22 +109,31 @@ export default function HomePage() {
           {[...Array(2)].map((_, n) => (
             <span key={n} style={{ display: "contents" }}>
               <span className="ticker-item">
-                <span className="mono">COPD</span>AURORA-1 enrolling
+                <span className="mono">◈</span>Internal Medicine
               </span>
               <span className="ticker-item">
-                <span className="mono">IPF</span>HELIX-3 Phase 2
+                <span className="mono">◈</span>Pulmonary Diseases
               </span>
               <span className="ticker-item">
-                <span className="mono">Asthma</span>MERIDIAN-2 biologic response
+                <span className="mono">◈</span>Sleep Medicine
               </span>
               <span className="ticker-item">
-                <span className="mono">Severe Asthma</span>Open label extension
+                <span className="mono">◈</span>Cardiology
               </span>
               <span className="ticker-item">
-                <span className="mono">New</span>Post-viral lung registry
+                <span className="mono">◈</span>Neurology
               </span>
               <span className="ticker-item">
-                <span className="mono">GCP</span>FDA-inspected 2024
+                <span className="mono">◈</span>Oncology
+              </span>
+              <span className="ticker-item">
+                <span className="mono">◈</span>ENT
+              </span>
+              <span className="ticker-item">
+                <span className="mono">◈</span>Endocrinology
+              </span>
+              <span className="ticker-item">
+                <span className="mono">◈</span>Nephrology
               </span>
             </span>
           ))}
@@ -154,46 +144,8 @@ export default function HomePage() {
       <section className="metrics">
         <div className="metrics-head">
           <h2>
-            Seven years, <em>measured</em> in breaths and published evidence.
+            More than <em>20 years</em> in breaths and evidence.
           </h2>
-          <div className="meta">
-            <div className="live">Last updated · live</div>
-            Figures are pulled from VERITAS&apos;s operations ledger and CITI-audited trial roster.
-          </div>
-        </div>
-        <div className="metrics-grid">
-          <Metric
-            value={<CountUp to={1240} />}
-            label="Volunteers partnered with"
-            sub="Across asthma, COPD, IPF, post-viral cohorts."
-            sparkPath="M0,22 L12,18 L24,20 L36,12 L48,14 L60,6 L72,9 L80,4"
-          />
-          <Metric
-            value={
-              <em>
-                <CountUp to={40} />+
-              </em>
-            }
-            label="Phase II–IV studies"
-            sub="Sponsored by 14 multinational partners."
-            sparkPath="M0,18 L12,20 L24,14 L36,16 L48,8 L60,10 L72,4 L80,7"
-          />
-          <Metric
-            value={<CountUp to={42} />}
-            label="Peer-reviewed papers"
-            sub="AJRCCM · ERJ · Chest · Thorax."
-            sparkPath="M0,24 L12,22 L24,16 L36,18 L48,12 L60,14 L72,8 L80,5"
-          />
-          <Metric
-            value={
-              <em>
-                <CountUp to={96} isPct />
-              </em>
-            }
-            label="Volunteer retention"
-            sub="Protocol completion, 2019–2024."
-            sparkPath="M0,10 L12,12 L24,8 L36,11 L48,6 L60,9 L72,4 L80,6"
-          />
         </div>
       </section>
 
@@ -406,22 +358,22 @@ export default function HomePage() {
             </h2>
             <div className="credentials">
               <div>
-                <b>Education</b>Wayne State School of Medicine · Henry Ford pulmonology fellowship
+                <b>Education</b>Universidad de San Martin de Porres, Lima, Peru · Henry Ford Hospital, Detroit — Internal Medicine Residency &amp; Fellowship in Pulmonary Diseases and Critical Care Medicine
               </div>
               <div>
-                <b>Memberships</b>American Thoracic Society · CHEST · ACCP
+                <b>Memberships</b>Fellow of the American Academy of Chest Physicians · Member of the Association of Clinical Research Professionals
               </div>
               <div>
-                <b>Chair</b>VERITAS clinical research · PMA pulmonary partner
+                <b>Appointments</b>Associate Professor of Medicine, Michigan State University College of Osteopathic Medicine · Associate Program Director, Fellowship in Pulmonary &amp; Critical Care Medicine, Henry Ford Warren Hospital, MI
               </div>
             </div>
             <q>
-              A clinical trial isn&apos;t a questionnaire — it&apos;s a five-year conversation with someone who trusts us with their lungs. We never forget the weight of that.
+              At Veritas Clinical Research Institute, our work begins and ends with people. We are a clinical research site dedicated to advancing the future of medicine through carefully conducted clinical trials — driven not by shortcuts, but by a genuine commitment to truth and ethical responsibility. We believe every participant in our studies deserves transparency, respect, and care, and that every sponsor deserves research they can trust. By holding ourselves to the highest standards of scientific and moral integrity, we help bring tomorrow&apos;s most promising therapies safely and confidently into the world.
             </q>
             <div className="sig">
               <div>
-                <div className="name">Franco Parodi</div>
-                <div className="role">Founder &amp; PI · VERITAS</div>
+                <div className="name">Franco Parodi MD</div>
+                <div className="role">Founder and PI</div>
               </div>
             </div>
           </div>
@@ -525,31 +477,6 @@ export default function HomePage() {
 
       <SiteFooter />
     </>
-  );
-}
-
-function Metric({
-  value,
-  label,
-  sub,
-  sparkPath,
-}: {
-  value: React.ReactNode;
-  label: string;
-  sub: string;
-  sparkPath: string;
-}) {
-  return (
-    <div className="metric">
-      <div className="num">{value}</div>
-      <div className="lbl">
-        <strong>{label}</strong>
-        {sub}
-      </div>
-      <svg className="sparkline" viewBox="0 0 80 28">
-        <path d={sparkPath} />
-      </svg>
-    </div>
   );
 }
 

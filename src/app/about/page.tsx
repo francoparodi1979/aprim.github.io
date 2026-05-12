@@ -142,16 +142,22 @@ export default function AboutPage() {
           <div>
             <div className="crumb">Home / About</div>
             <h1>
-              A pulmonary
-              <br /> research <em>institute.</em>
+              Pioneering the Future of Medicine, One <em>Trial</em> at a Time
             </h1>
           </div>
           <div className="right">
             <p>
-              VERITAS is a small, specialty-focused clinical research institute
-              in Bloomfield Hills, Michigan. We run Phase 2–4 trials for
-              pharmaceutical and biotech sponsors with industry-grade
-              operational rigor and neighborhood-level patient care.
+              At Veritas Clinical Research Institute, we believe that the future
+              of medicine is built on a foundation of truth. Our name — veritas,
+              the Latin word for truth — reflects our unwavering commitment to
+              honest, rigorous, and ethically grounded clinical research. We
+              conduct Phase I–IV clinical trials across a broad spectrum of
+              therapeutic areas, partnering with sponsors, physicians, and
+              patients to advance treatments that genuinely improve human health.
+              Every study we undertake is guided by scientific integrity,
+              transparency, and the highest standards of patient safety. At
+              Veritas, good science and good ethics are never in conflict — they
+              are one and the same.
             </p>
             <div className="ks">
               <div>
@@ -175,25 +181,32 @@ export default function AboutPage() {
             <div className="left">
               <div className="eyebrow">§ Mission</div>
               <h2>
-                Research in <em>service</em> of breathing.
+                Veritas Clinical Research Institute exists because somewhere along
+                the way, medicine stopped asking the hard questions{" "}
+                <em>honestly</em> — and we intend to change that.
               </h2>
             </div>
             <div>
               <p className="first">
-                VERITAS exists because too many of the people who live with COPD,
-                asthma, or pulmonary fibrosis in southeast Michigan were being
-                asked to drive an hour each way to participate in the research
-                that might help them. We built an institute to meet them where
-                they already are.
+                We exist because the future of medicine is only as strong as the
+                research behind it. Clinical trials are the bridge between
+                scientific discovery and real patient care — and that bridge must
+                be built on truth. Veritas Clinical Research Institute was founded
+                to ensure that bridge never crumbles. We conduct rigorous, ethical,
+                and transparent clinical trials so that the treatments reaching
+                patients tomorrow are ones the world can genuinely trust today.
               </p>
               <p>
-                We focus exclusively on pulmonary medicine. Every study we
-                take on is one our principal investigator has treated patients
-                for in clinical practice. Every protocol is executed by
-                coordinators trained in respiratory care, not generalists.
-                Every participant gets the same face on every visit.
+                Clinical trial participants are the heartbeat of every study we
+                run. We honor their contribution with radical transparency,
+                genuine informed consent, and a level of care that goes well
+                beyond protocol requirements.
               </p>
-              <p>It is a narrow mandate. It is the only one we want.</p>
+              <p>
+                Veritas is different because we actually mean it — the honesty,
+                the ethics, the commitment to truth. It&apos;s not a tagline.
+                It&apos;s how we operate, every single day.
+              </p>
             </div>
           </div>
         </section>
