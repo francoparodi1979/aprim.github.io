@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* VERITAS brand palette — Motion direction: deep teal, warm bone, clay accent + sage */
+  /* Veritas Clinical Research brand palette — Motion direction: deep teal, warm bone, clay accent + sage */
   --color-ink: #0a2e38;
   --color-ink-2: #144653;
   --color-bone: #f2ede3;

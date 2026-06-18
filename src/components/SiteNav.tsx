@@ -7,10 +7,10 @@ export function SiteNav({ active }: { active?: NavKey }) {
   const dropdownActive = active === "patients" || active === "physicians";
   return (
     <nav className="site-nav">
-      <Link href="/" className="brand" aria-label="VERITAS Clinical Research Institute — home">
+      <Link href="/" className="brand" aria-label="Veritas Clinical Research — home">
         <Image
           src="/veritas-logo.png"
-          alt="Veritas Clinical Research Institute"
+          alt="Veritas Clinical Research"
           width={598}
           height={485}
           className="brand-logo"

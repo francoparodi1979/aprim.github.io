@@ -8,7 +8,7 @@ import { subpageStyles } from "../_styles/subpages";
 export const metadata: Metadata = {
   title: "For physicians",
   description:
-    "Refer a patient or partner with VERITAS on pulmonary clinical research.",
+    "Refer a patient or partner with Veritas Clinical Research on pulmonary clinical research.",
 };
 
 export default function PhysiciansPage() {
@@ -27,7 +27,7 @@ export default function PhysiciansPage() {
           </div>
           <div className="right">
             <p>
-              VERITAS works alongside referring pulmonologists and primary care
+              Veritas Clinical Research works alongside referring pulmonologists and primary care
               physicians, not around them. Every visit summary goes back to
               your office. Every protocol decision loops you in. Your patient
               stays your patient — we just open another door.

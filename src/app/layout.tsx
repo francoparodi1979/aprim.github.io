@@ -29,8 +29,8 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "VERITAS — Advanced Pulmonary Research Institute of Michigan",
-    template: "%s · VERITAS",
+    default: "Veritas Clinical Research",
+    template: "%s · Veritas Clinical Research",
   },
   description:
     "Patient-centered pulmonary clinical research in Michigan. COPD, asthma, and idiopathic pulmonary fibrosis trials led by Dr. Franco Parodi.",
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
     "IPF research",
     "Michigan clinical research",
     "Dr. Franco Parodi",
-    "VERITAS",
+    "Veritas Clinical Research",
   ],
-  authors: [{ name: "Advanced Pulmonary Research Institute of Michigan" }],
+  authors: [{ name: "Veritas Clinical Research" }],
   openGraph: {
     type: "website",
-    siteName: "VERITAS",
+    siteName: "Veritas Clinical Research",
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },

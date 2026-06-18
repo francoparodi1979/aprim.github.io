@@ -15,14 +15,14 @@ const wrap = (title: string, body: string) => `<!doctype html>
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e6dfd0;">
         <tr><td style="padding:24px 32px;border-bottom:1px solid #efe9da;">
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;color:${PRIMARY};letter-spacing:-0.01em;">VERITAS</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;color:${PRIMARY};letter-spacing:-0.01em;">Veritas Clinical Research</div>
           <div style="font-size:11px;color:${ACCENT};letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;">${escapeHtml(
   title
 )}</div>
         </td></tr>
         <tr><td style="padding:24px 32px;font-size:14px;line-height:1.6;">${body}</td></tr>
         <tr><td style="padding:16px 32px;border-top:1px solid #efe9da;font-size:11px;color:#6b7a7e;">
-          Advanced Pulmonary Research Institute of Michigan · This message contains confidential research correspondence.
+          Veritas Clinical Research · This message contains confidential research correspondence.
         </td></tr>
       </table>
     </td></tr>
@@ -204,35 +204,35 @@ export function renderReferralNotification(data: ReferralEmailData) {
 /* ----------------------------- confirmations ------------------------------ */
 
 export function renderInquiryConfirmation(data: { firstName: string }) {
-  const subject = "We received your message — VERITAS";
+  const subject = "We received your message — Veritas Clinical Research";
   const body = `
     <p style="margin:0 0 16px 0;">Hi ${escapeHtml(data.firstName)},</p>
-    <p style="margin:0 0 16px 0;">Thank you for reaching out to the Advanced Pulmonary Research Institute of Michigan. A member of our research team will be in touch within one to two business days.</p>
+    <p style="margin:0 0 16px 0;">Thank you for reaching out to Veritas Clinical Research. A member of our research team will be in touch within one to two business days.</p>
     <p style="margin:0 0 16px 0;">If your matter is urgent, or you have questions about an active study, please call our office at (XXX) XXX-XXXX.</p>
-    <p style="margin:24px 0 0 0;">— The VERITAS team</p>
+    <p style="margin:24px 0 0 0;">— The Veritas Clinical Research team</p>
   `;
   return { subject, html: wrap("Thank you", body) };
 }
 
 export function renderPrescreenConfirmation(data: { firstName: string; studySlug: string }) {
-  const subject = "Your pre-screening was received — VERITAS";
+  const subject = "Your pre-screening was received — Veritas Clinical Research";
   const body = `
     <p style="margin:0 0 16px 0;">Hi ${escapeHtml(data.firstName)},</p>
     <p style="margin:0 0 16px 0;">We received your pre-screening for the study <strong>${escapeHtml(
       data.studySlug
     )}</strong>. A research coordinator will review your responses and reach out within two business days to discuss next steps and, if you appear to be a good fit, schedule an in-person screening visit.</p>
     <p style="margin:0 0 16px 0;">Please note that this pre-screening alone does not enroll you in the study — final eligibility is determined at the screening visit.</p>
-    <p style="margin:24px 0 0 0;">— The VERITAS team</p>
+    <p style="margin:24px 0 0 0;">— The Veritas Clinical Research team</p>
   `;
   return { subject, html: wrap("Pre-screening received", body) };
 }
 
 export function renderContactConfirmation(data: { name: string }) {
-  const subject = "We received your message — VERITAS";
+  const subject = "We received your message — Veritas Clinical Research";
   const body = `
     <p style="margin:0 0 16px 0;">Hi ${escapeHtml(data.name.split(" ")[0] || data.name)},</p>
     <p style="margin:0 0 16px 0;">Thanks for getting in touch. We'll route your message to the right person and respond within one to two business days.</p>
-    <p style="margin:24px 0 0 0;">— The VERITAS team</p>
+    <p style="margin:24px 0 0 0;">— The Veritas Clinical Research team</p>
   `;
   return { subject, html: wrap("Thanks for reaching out", body) };
 }

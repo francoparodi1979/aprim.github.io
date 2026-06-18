@@ -1,6 +1,6 @@
-# APRIM
+# Veritas Clinical Research
 
-Marketing & patient-facing site for the **Advanced Pulmonary Research Institute of Michigan**, led by Dr. Franco Parodi. Focused on COPD, asthma, and IPF clinical trials.
+Marketing & patient-facing site for **Veritas Clinical Research**, led by Dr. Franco Parodi. Focused on COPD, asthma, and IPF clinical trials.
 
 ## Stack
 

@@ -42,7 +42,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="lede">
-              Veritas Clinical Research Institute exists for one reason: to get it
+              Veritas Clinical Research exists for one reason: to get it
               right. We conduct clinical trials with an uncompromising dedication to
               honest science and ethical principles — because the future of medicine
               depends on research the world can trust. No shortcuts. No spin. Just
@@ -163,7 +163,7 @@ export default function HomePage() {
               Every protocol we run anchors on the same three disciplines: deep
               phenotyping at baseline, standardized spirometry on every visit,
               and longitudinal follow-up that lasts years after the last dose.
-              The chart shows mean FEV₁ across an VERITAS cohort vs. standard-of-care comparators.
+              The chart shows mean FEV₁ across a Veritas Clinical Research cohort vs. standard-of-care comparators.
             </p>
             <Link className="link" href="/about">
               See our published methodology →
@@ -340,7 +340,7 @@ export default function HomePage() {
           <div className="doc-portrait">
             <Image
               src="/dr-parodi.jpg"
-              alt="Dr. Franco Parodi, Principal Investigator at VERITAS"
+              alt="Dr. Franco Parodi, Principal Investigator at Veritas Clinical Research"
               fill
               sizes="(max-width: 1440px) 40vw, 580px"
               className="doc-portrait-img"
@@ -368,7 +368,7 @@ export default function HomePage() {
               </div>
             </div>
             <q>
-              At Veritas Clinical Research Institute, our work begins and ends with people. We are a clinical research site dedicated to advancing the future of medicine through carefully conducted clinical trials — driven not by shortcuts, but by a genuine commitment to truth and ethical responsibility. We believe every participant in our studies deserves transparency, respect, and care, and that every sponsor deserves research they can trust. By holding ourselves to the highest standards of scientific and moral integrity, we help bring tomorrow&apos;s most promising therapies safely and confidently into the world.
+              At Veritas Clinical Research, our work begins and ends with people. We are a clinical research site dedicated to advancing the future of medicine through carefully conducted clinical trials — driven not by shortcuts, but by a genuine commitment to truth and ethical responsibility. We believe every participant in our studies deserves transparency, respect, and care, and that every sponsor deserves research they can trust. By holding ourselves to the highest standards of scientific and moral integrity, we help bring tomorrow&apos;s most promising therapies safely and confidently into the world.
             </q>
             <div className="sig">
               <div>
@@ -400,7 +400,7 @@ export default function HomePage() {
             <div className="dot">i</div>
             <h4>Conversation, not commitment</h4>
             <p>
-              A 20-minute call with an VERITAS coordinator. We describe the trial,
+              A 20-minute call with a Veritas Clinical Research coordinator. We describe the trial,
               you describe your story, and we check whether there&apos;s a
               mutual fit.
             </p>

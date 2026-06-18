@@ -9,7 +9,7 @@ import { subpageStyles } from "../_styles/subpages";
 export const metadata: Metadata = {
   title: "Active studies",
   description:
-    "Active and recruiting clinical trials at VERITAS — COPD, asthma, and idiopathic pulmonary fibrosis.",
+    "Active and recruiting clinical trials at Veritas Clinical Research — COPD, asthma, and idiopathic pulmonary fibrosis.",
 };
 
 export const revalidate = 600;
@@ -186,7 +186,7 @@ export default async function StudiesPage() {
               <span>Get on the list →</span>
             </Link>
             <Link className="cta-ghost" href="/about">
-              About VERITAS
+              About Veritas Clinical Research
             </Link>
           </div>
         </section>

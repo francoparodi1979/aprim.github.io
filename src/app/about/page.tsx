@@ -8,7 +8,7 @@ import { subpageStyles } from "../_styles/subpages";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About VERITAS — the Advanced Pulmonary Research Institute of Michigan, a small, physician-led pulmonary research institute led by Dr. Franco Parodi.",
+    "About Veritas Clinical Research, a small, physician-led pulmonary research site led by Dr. Franco Parodi.",
 };
 
 const TEAM = [
@@ -74,7 +74,7 @@ const HISTORY = [
   {
     year: "20",
     em: "19",
-    note: "VERITAS founded in a single exam room. First COPD trial begins in November.",
+    note: "Veritas Clinical Research founded in a single exam room. First COPD trial begins in November.",
   },
   {
     year: "20",
@@ -147,7 +147,7 @@ export default function AboutPage() {
           </div>
           <div className="right">
             <p>
-              At Veritas Clinical Research Institute, we believe that the future
+              At Veritas Clinical Research, we believe that the future
               of medicine is built on a foundation of truth. Our name — veritas,
               the Latin word for truth — reflects our unwavering commitment to
               honest, rigorous, and ethically grounded clinical research. We
@@ -181,7 +181,7 @@ export default function AboutPage() {
             <div className="left">
               <div className="eyebrow">§ Mission</div>
               <h2>
-                Veritas Clinical Research Institute exists because somewhere along
+                Veritas Clinical Research exists because somewhere along
                 the way, medicine stopped asking the hard questions{" "}
                 <em>honestly</em> — and we intend to change that.
               </h2>
@@ -191,7 +191,7 @@ export default function AboutPage() {
                 We exist because the future of medicine is only as strong as the
                 research behind it. Clinical trials are the bridge between
                 scientific discovery and real patient care — and that bridge must
-                be built on truth. Veritas Clinical Research Institute was founded
+                be built on truth. Veritas Clinical Research was founded
                 to ensure that bridge never crumbles. We conduct rigorous, ethical,
                 and transparent clinical trials so that the treatments reaching
                 patients tomorrow are ones the world can genuinely trust today.
@@ -284,7 +284,7 @@ export default function AboutPage() {
           </h2>
           <p>
             Whether you&apos;re a volunteer, a sponsor, or a referring
-            physician, the same number reaches a real person at VERITAS. No call
+            physician, the same number reaches a real person at Veritas Clinical Research. No call
             tree, no triage queue.
           </p>
           <div className="cta-row">

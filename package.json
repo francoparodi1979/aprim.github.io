@@ -2,7 +2,7 @@
   "name": "aprim",
   "version": "0.1.0",
   "private": true,
-  "description": "APRIM — Advanced Pulmonary Research Institute of Michigan. Clinical research site for Dr. Franco Parodi.",
+  "description": "Veritas Clinical Research. Clinical research site for Dr. Franco Parodi.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
