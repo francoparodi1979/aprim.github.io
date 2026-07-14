@@ -7,6 +7,7 @@ import { LungAnatomy } from "@/components/LungAnatomy";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { homePageStyles } from "./_styles/home";
+import { PORTFOLIO, STATUS_LABEL, type Trial } from "@/lib/content/portfolio";
 
 export default function HomePage() {
   return (
@@ -26,7 +27,7 @@ export default function HomePage() {
         <div className="hero-grid">
           <div>
             <div className="eyebrow" style={{ marginBottom: 32 }}>
-              ◈ Madison Heights, MI · 2023
+              ◈ Madison Heights, MI · 2022
             </div>
             <h1 className="kinetic">
               <span className="line">
@@ -50,7 +51,7 @@ export default function HomePage() {
               forward.
             </p>
             <div className="hero-actions">
-              <Link className="cta-pill" href="/studies">
+              <Link className="cta-pill" href="#studies">
                 <span>Find a study →</span>
               </Link>
               <Link className="cta-ghost" href="/about">
@@ -97,7 +98,7 @@ export default function HomePage() {
           <div className="readout-item">
             <span className="k">Years of service</span>
             <span className="v">
-              <em>since 2002</em>
+              <em>since 2022</em>
             </span>
           </div>
         </div>
@@ -144,7 +145,8 @@ export default function HomePage() {
       <section className="metrics">
         <div className="metrics-head">
           <h2>
-            More than <em>20 years</em> in breaths and evidence.
+            More than <em>20 years</em> of pulmonary medicine behind every
+            protocol.
           </h2>
         </div>
       </section>
@@ -275,47 +277,23 @@ export default function HomePage() {
       </section>
 
       {/* ========== STUDIES ========== */}
-      <section className="home-studies">
+      {/* id anchor: every former /studies link now points to /#studies */}
+      <section className="home-studies" id="studies">
         <div className="studies-head">
           <h2>
-            Two studies are <em>enrolling now</em>.
+            Thirteen trials. <em>One enrolling now.</em>
           </h2>
           <div className="meta">
-            Every study below accepts direct volunteer referrals. Screening is
-            free; travel is reimbursed; your own pulmonologist stays in the loop.
+            Our full portfolio as a Principal Investigator site — asthma, COPD,
+            IPF, and bronchiectasis, from Phase II to Phase IV. The recruiting
+            study accepts direct volunteer referrals; screening is free and
+            travel is reimbursed.
           </div>
         </div>
-        <div className="studies-grid">
-          <StudyCard
-            chipText="Phase 3 · Recruiting"
-            title="Lunsekimig"
-            titleEm="eosinophilic COPD"
-            body="Efficacy, safety, and tolerability of lunsekimig vs. placebo in adults with inadequately controlled COPD characterized by an eosinophilic phenotype."
-            sparkPath="M0,40 C40,35 60,20 100,22 C140,24 170,12 200,10"
-            sparkArea="M0,60 L0,40 C40,35 60,20 100,22 C140,24 170,12 200,10 L200,60 Z"
-            sparkX={100}
-            sparkY={22}
-            duration="52 weeks"
-            visits="10 total"
-            comp="Up to $1,500"
-            ages="40–80 yrs"
-            href="/studies/copd-lunsekimig-301"
-          />
-          <StudyCard
-            chipText="Phase 2 · Active, not recruiting"
-            title="GSK5784283"
-            titleEm="uncontrolled asthma"
-            body="Dose finding study of an investigational anti-TSLP antibody in adults aged 18–75 with uncontrolled asthma despite standard inhaled therapy."
-            sparkPath="M0,45 Q40,15 80,25 T 160,10 T 200,18"
-            sparkArea="M0,60 L0,45 Q40,15 80,25 T 160,10 T 200,18 L200,60 Z"
-            sparkX={80}
-            sparkY={25}
-            duration="26 weeks"
-            visits="8 total"
-            comp="Up to $1,600"
-            ages="18–75 yrs"
-            href="/studies/asthma-gsk5784283-201"
-          />
+        <div className="trial-grid">
+          {PORTFOLIO.map((t) => (
+            <TrialCard key={t.nct} {...t} />
+          ))}
         </div>
       </section>
 
@@ -465,68 +443,42 @@ export default function HomePage() {
   );
 }
 
-function StudyCard({
-  chipText,
-  title,
-  titleEm,
-  body,
-  sparkPath,
-  sparkArea,
-  sparkX,
-  sparkY,
-  duration,
-  visits,
-  comp,
-  ages,
-  href,
-}: {
-  chipText: string;
-  title: string;
-  titleEm: string;
-  body: string;
-  sparkPath: string;
-  sparkArea: string;
-  sparkX: number;
-  sparkY: number;
-  duration: string;
-  visits: string;
-  comp: string;
-  ages: string;
-  href: string;
-}) {
-  return (
-    <Link href={href as Route} className="study">
-      <div className="chip">
-        <span className="live" />
-        {chipText}
+function TrialCard({ nct, title, phase, condition, status, href }: Trial) {
+  const inner = (
+    <>
+      <div className="trial-top">
+        <span className="trial-status">
+          <span className="dot" />
+          {STATUS_LABEL[status]}
+        </span>
+        <span className="trial-nct">{nct}</span>
       </div>
-      <h3>
-        {title} — <em>{titleEm}</em>
-      </h3>
-      <div className="viz">
-        <svg viewBox="0 0 200 60">
-          <path fill="none" stroke="#d07a45" strokeWidth="1.2" strokeDasharray="4 3" d={sparkPath} />
-          <path fill="rgba(208,122,69,0.1)" d={sparkArea} />
-          <circle cx={sparkX} cy={sparkY} r="3" fill="#d07a45">
-            <animate attributeName="r" values="2;5;2" dur="1.8s" repeatCount="indefinite" />
-          </circle>
-        </svg>
+      <h3>{title}</h3>
+      <div className="trial-foot">
+        <div className="trial-tags">
+          <span>{phase}</span>
+          <span>{condition}</span>
+        </div>
+        <span className="trial-go">{href ? "Details →" : "NCT ↗"}</span>
       </div>
-      <p>{body}</p>
-      <div className="meta">
-        <span>
-          Duration<b>{duration}</b>
-        </span>
-        <span>
-          Visits<b>{visits}</b>
-        </span>
-        <span>
-          Compensation<b>{comp}</b>
-        </span>
-        <span>
-          Eligibility<b>{ages}</b>
-        </span>
-      </div>
+    </>
+  );
+
+  // Internal detail pages use Next's typed Link; portfolio-only trials deep-link
+  // to their public ClinicalTrials.gov record in a new tab.
+  return href ? (
+    <Link href={href as Route} className="trial" data-status={status}>
+      {inner}
     </Link>
+  ) : (
+    <a
+      href={`https://clinicaltrials.gov/study/${nct}`}
+      className="trial"
+      data-status={status}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {inner}
+    </a>
   );
 }

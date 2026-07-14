@@ -49,7 +49,9 @@ export const subpageStyles = `
   color: var(--color-ink);
 }
 .ph h1 em { font-style: italic; color: var(--color-clay); }
-.ph .right p {
+/* Direct child only — the contact page nests a form card (with its own
+   typography) inside .right, which must not inherit this intro size. */
+.ph .right > p {
   font-size: 18px;
   line-height: 1.65;
   color: var(--color-ink-2);
@@ -357,6 +359,75 @@ export const subpageStyles = `
   font-weight: 500;
 }
 
+/* Sponsors — portfolio table */
+.sp-table {
+  border: 1px solid var(--rule);
+  background: rgba(255,255,255,0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.sp-head {
+  display: grid;
+  grid-template-columns: 150px 1fr 190px 190px;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--color-bone);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sp-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 190px 190px;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+  color: inherit;
+  transition: background 0.3s;
+}
+.sp-row:last-child { border-bottom: none; }
+.sp-row:hover { background: rgba(208,122,69,0.05); }
+.sp-row .id {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.sp-row h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.sp-row .mid {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-2);
+}
+.sp-row .st {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sp-row .st .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(10,46,56,0.3); flex-shrink: 0; }
+.sp-row .st[data-status="recruiting"] { color: var(--color-clay); }
+.sp-row .st[data-status="recruiting"] .dot { background: var(--color-clay); animation: breathe 1.5s ease-in-out infinite; }
+.sp-row .st[data-status="active"] { color: var(--color-sage); }
+.sp-row .st[data-status="active"] .dot { background: var(--color-sage); }
+.sp-row .st[data-status="terminated"] { opacity: 0.7; }
+
 /* Patient steps */
 .steps-grid {
   display: grid;
@@ -470,6 +541,160 @@ export const subpageStyles = `
   color: var(--color-ink-2);
   margin: 0;
 }
+
+/* Study detail article (MDX body) */
+.study-article { max-width: 720px; }
+.study-article h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 34px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 48px 0 18px;
+}
+.study-article h2:first-child { margin-top: 0; }
+.study-article p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-ink-2);
+  margin: 0 0 18px;
+}
+.study-article ul {
+  margin: 0 0 18px;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.study-article li {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-ink-2);
+}
+.study-article li::marker { color: var(--color-clay); }
+
+/* Contact page header variant — form lives above the fold in the right column */
+.ph.ph-form {
+  align-items: start;
+  padding: 56px 64px 72px;
+}
+.ph-form h1 { font-size: 92px; }
+.ph-form .ph-lede {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-ink-2);
+  max-width: 440px;
+  margin-top: 28px;
+}
+.ph-form .ks { margin-top: 36px; }
+.ph-form-card {
+  background: var(--color-bone);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 18px 44px rgba(10,46,56,0.08);
+}
+.ph-form-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.ph-form-card .cform { gap: 16px; max-width: none; }
+.ph-form-card .cform-field textarea { min-height: 92px; }
+
+/* Contact form (Formspree) */
+.cform {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.cform-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.cform-field { display: flex; flex-direction: column; gap: 8px; }
+.cform-field span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  /* Darker than --muted: 10px type needs >= 4.5:1 contrast (WCAG AA). */
+  color: rgba(10,46,56,0.75);
+}
+.cform-field input,
+.cform-field textarea {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-ink);
+  background: rgba(255,255,255,0.55);
+  /* Stronger than --rule: field boundaries need >= 3:1 (WCAG 1.4.11). */
+  border: 1px solid rgba(10,46,56,0.55);
+  border-radius: 10px;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+  resize: vertical;
+}
+.cform-field input::placeholder,
+.cform-field textarea::placeholder { color: rgba(10,46,56,0.35); }
+.cform-field input:focus,
+.cform-field textarea:focus {
+  border-color: var(--color-clay);
+  box-shadow: 0 0 0 3px rgba(208,122,69,0.15);
+  background: #fff;
+}
+.cform-note {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(10,46,56,0.75);
+  margin: 0;
+  max-width: 560px;
+}
+.cform-error {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #a13a2a;
+  background: rgba(161,58,42,0.08);
+  border: 1px solid rgba(161,58,42,0.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 0;
+}
+.cform-error a { text-decoration: underline; }
+.cform-submit {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+}
+.cform-submit:disabled { opacity: 0.6; cursor: wait; }
+.cform-done {
+  max-width: 560px;
+  /* Same fill as the inputs — distinct from the bone card/section behind it. */
+  background: rgba(255,255,255,0.55);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 40px;
+}
+.cform-done h4:focus { outline: none; }
+.cform-done .big {
+  font-size: 22px;
+  color: var(--color-clay);
+  margin-bottom: 14px;
+}
+.cform-done h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  margin: 0 0 10px;
+}
+.cform-done p { font-size: 15px; line-height: 1.65; color: var(--color-ink-2); margin: 0; }
+.cform-done a { color: var(--color-clay); font-weight: 500; }
 
 /* page divider strip */
 .page-divider {

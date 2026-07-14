@@ -263,8 +263,8 @@ a {
   transform-origin: center;
   animation: breathe 4s ease-in-out infinite;
 }
-/* Veritas full wordmark logo in the nav. Width is auto so the natural
-   aspect ratio of the PNG (~1.23:1) is preserved at the set height. */
+/* Veritas full lockup logo in the nav (official asset, trimmed to content;
+   ~1.23:1). Width is auto so the aspect ratio holds at the set height. */
 .site-nav .brand-logo {
   height: 80px;
   width: auto;
@@ -397,20 +397,22 @@ a {
   color: var(--color-clay);
 }
 
-/* The panel */
+/* The panel — an "index card" in the site's editorial language: serif titles
+   with mono micro-descriptors, the study-card gradient hairline on top, and
+   the sliding → hover used across the rest of the site. */
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 20px);
+  top: calc(100% + 18px);
   left: 50%;
   transform: translateX(-50%) translateY(-6px);
-  width: 230px;
+  width: 264px;
   background: var(--color-cream);
-  border: 1px solid rgba(10, 46, 56, 0.12);
-  border-top: 2px solid var(--color-clay);
-  border-radius: 0 0 12px 12px;
-  padding: 0;
+  border: 1px solid rgba(10, 46, 56, 0.1);
+  border-radius: 16px;
+  padding: 8px;
   margin: 0;
   list-style: none;
+  overflow: hidden;
   opacity: 0;
   pointer-events: none;
   transition:
@@ -419,8 +421,19 @@ a {
   z-index: 200;
   box-shadow:
     0 2px 4px rgba(10, 46, 56, 0.04),
-    0 8px 20px rgba(10, 46, 56, 0.09),
-    0 20px 44px rgba(10, 46, 56, 0.07);
+    0 12px 28px rgba(10, 46, 56, 0.1),
+    0 28px 60px rgba(10, 46, 56, 0.08);
+}
+
+/* Gradient hairline, same signature as the study cards */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-clay), var(--color-clay-soft), var(--color-sage));
 }
 
 .nav-dropdown:hover .nav-dropdown-menu {
@@ -429,35 +442,62 @@ a {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Clip hover background to the panel's bottom border-radius */
-.nav-dropdown-menu li:last-child a {
-  border-radius: 0 0 11px 11px;
-}
-
-/* Dividers */
-.nav-dropdown-menu li {
-  border-bottom: 1px solid rgba(10, 46, 56, 0.08);
-}
-.nav-dropdown-menu li:last-child { border-bottom: none; }
-
-/* Links inside the panel */
+/* Links inside the panel: serif title over mono descriptor */
 .nav-dropdown-menu a {
-  display: block;
-  padding: 14px 24px;
-  font-size: 13.5px;
-  font-weight: 500;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 13px 44px 13px 16px;
+  border-radius: 10px;
+  text-align: left;
+  transition: background 0.16s ease;
+}
+.nav-dropdown-menu a b {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--color-ink);
-  letter-spacing: 0.01em;
-  text-align: center;
-  transition: background 0.14s ease, color 0.14s ease;
+  transition: color 0.16s ease;
+}
+.nav-dropdown-menu a span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-/* Suppress the top-level nav underline animation inside the panel */
-.nav-dropdown-menu a::after { display: none; }
+/* Sliding arrow on hover — mirrors the portfolio cards' "Details →".
+   Prefixed with .site-nav to outrank the global nav-underline ::after rule,
+   whose left/bottom/height/background must also be explicitly reset here. */
+.site-nav .nav-dropdown-menu a::after {
+  content: "→";
+  position: absolute;
+  left: auto;
+  right: 16px;
+  bottom: auto;
+  top: 50%;
+  height: auto;
+  background: none;
+  transform: translateY(-50%) translateX(-4px);
+  color: var(--color-clay);
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
 
 .nav-dropdown-menu a:hover {
   background: var(--color-bone);
+}
+.nav-dropdown-menu a:hover b {
   color: var(--color-clay);
+}
+.site-nav .nav-dropdown-menu a:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 
 /* Page header (used on subpages) */

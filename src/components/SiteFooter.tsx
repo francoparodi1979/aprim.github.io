@@ -29,7 +29,7 @@ export function SiteFooter() {
           <h5>Research</h5>
           <ul>
             <li>
-              <Link href="/studies">Active studies</Link>
+              <Link href="/#studies">Active studies</Link>
             </li>
             <li>
               <Link href="/about">Methodology</Link>
@@ -52,7 +52,7 @@ export function SiteFooter() {
               <Link href="/physicians">For pulmonologists</Link>
             </li>
             <li>
-              <Link href="/contact">For sponsors</Link>
+              <Link href="/sponsors">For sponsors</Link>
             </li>
             <li>
               <Link href="/patients#faq">FAQ</Link>

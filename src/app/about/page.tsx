@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
+import { CAPABILITIES } from "@/lib/content/capabilities";
 import { subpageStyles } from "../_styles/subpages";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ const TEAM = [
     role: "Founder · PI",
     name: "Franco Parodi, MD",
     blurb:
-      "Triple board-certified in Pulmonary, Critical Care, and Internal Medicine. 40+ trials as PI.",
+      "Triple board-certified in Pulmonary, Critical Care, and Internal Medicine. PI across asthma, COPD, IPF, and bronchiectasis programs.",
   },
   {
     cap: "DR. HART",
@@ -73,61 +74,28 @@ const TEAM = [
 const HISTORY = [
   {
     year: "20",
-    em: "19",
-    note: "Veritas Clinical Research founded in a single exam room. First COPD trial begins in November.",
-  },
-  {
-    year: "20",
-    em: "20",
-    note: "Seven new trials activated. We learn to do home monitoring when visits become impossible.",
-  },
-  {
-    year: "20",
-    em: "21",
-    note: "Dedicated 4,200 sq ft research suite opens in Bloomfield Hills. Dr. Hart joins as sub-I.",
+    em: "22",
+    note: "Veritas Clinical Research founded in Madison Heights. First trials as a Principal Investigator site begin.",
   },
   {
     year: "20",
     em: "23",
-    note: "500th participant enrolled. First IPF anti-fibrotic program completes Phase 2 readout.",
+    note: "The portfolio grows across severe asthma and COPD — biologic and inhaled-therapy programs from Phase II to IV.",
+  },
+  {
+    year: "20",
+    em: "24",
+    note: "IPF and bronchiectasis programs join the portfolio as the first Phase 3 programs complete.",
+  },
+  {
+    year: "20",
+    em: "25",
+    note: "Long-term safety and extension studies continue across asthma and COPD cohorts.",
   },
   {
     year: "20",
     em: "26",
-    note: "Three studies actively enrolling. Vaccine program expands. PMA partnership formalized.",
-  },
-] as const;
-
-const CAPABILITIES = [
-  {
-    label: "Pulmonary testing",
-    title: "Full PFT laboratory",
-    desc: "Spirometry · lung volumes · DLCO · 6-minute walk · FeNO",
-    have: "Calibrated daily, NBRC-certified technologist",
-  },
-  {
-    label: "Imaging",
-    title: "HRCT + chest radiography",
-    desc: "Via partner imaging center · 1.2 mi from site",
-    have: "Same-day scheduling, secure sponsor transfer",
-  },
-  {
-    label: "Specimen",
-    title: "IATA-certified specimen handling",
-    desc: "Central lab processing · on-site -80°C freezer · courier chain",
-    have: "Sponsor-qualified for oncology-grade chain of custody",
-  },
-  {
-    label: "Systems",
-    title: "EDC · CTMS · eSource-ready",
-    desc: "Veeva · Medidata Rave · Oracle Siebel — compatible",
-    have: "Part 11 compliant, typical activation 28 days",
-  },
-  {
-    label: "Regulatory",
-    title: "Full IRB submission infrastructure",
-    desc: "Central + local IRB workflows · 1572/FDF on file",
-    have: "Zero critical findings last 3 audits",
+    note: "Thirteen trials conducted as a PI site. The lunsekimig Phase 3 COPD study is enrolling now.",
   },
 ] as const;
 
@@ -161,16 +129,16 @@ export default function AboutPage() {
             </p>
             <div className="ks">
               <div>
-                <b>2019</b>
+                <b>2022</b>
                 <span>Founded</span>
               </div>
               <div>
-                <b>40+</b>
-                <span>Trials as PI</span>
+                <b>13</b>
+                <span>Trials as PI site</span>
               </div>
               <div>
-                <b>98%</b>
-                <span>Phase 3 retention</span>
+                <b>4</b>
+                <span>Therapeutic areas</span>
               </div>
             </div>
           </div>
@@ -217,7 +185,7 @@ export default function AboutPage() {
             <h2>
               The <em>people</em> who answer the phone.
             </h2>
-            <div className="tag">8 FTE · Bloomfield Hills, MI</div>
+            <div className="tag">8 FTE · Madison Heights, MI</div>
           </div>
           <div className="team-grid">
             {TEAM.map((m) => (
@@ -258,7 +226,7 @@ export default function AboutPage() {
             <h2>
               What we have <em>on-site.</em>
             </h2>
-            <div className="tag">4,200 sq ft · Bloomfield Hills</div>
+            <div className="tag">4,200 sq ft · Madison Heights</div>
           </div>
           <div className="cap-table">
             {CAPABILITIES.map((c) => (

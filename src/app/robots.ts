@@ -1,15 +1,17 @@
 import type { MetadataRoute } from "next";
 
-import { env } from "@/lib/env";
+// Required for `output: "export"` — metadata routes must opt into static.
+export const dynamic = "force-static";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://veritasclinical.org";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+  const base = SITE_URL.replace(/\/$/, "");
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
       },
     ],
     sitemap: `${base}/sitemap.xml`,

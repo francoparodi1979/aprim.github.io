@@ -208,7 +208,7 @@ export default function PatientsPage() {
             <Link className="cta-pill" href="/contact">
               <span>Call a coordinator →</span>
             </Link>
-            <Link className="cta-ghost" href="/studies">
+            <Link className="cta-ghost" href="/#studies">
               See the studies
             </Link>
           </div>

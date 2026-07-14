@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ContactForm } from "@/components/ContactForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { subpageStyles } from "../_styles/subpages";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Reach the Veritas Clinical Research team in Bloomfield Hills, Michigan.",
+  description: "Reach the Veritas Clinical Research team in Madison Heights, Michigan.",
 };
 
 export default function ContactPage() {
@@ -17,19 +18,17 @@ export default function ContactPage() {
       <div className="sub-shell">
         <SiteNav active="contact" />
 
-        <header className="ph">
+        <header className="ph ph-form">
           <div>
             <div className="crumb">Home / Contact</div>
             <h1>
               One <em>conversation</em>
               <br /> starts it all.
             </h1>
-          </div>
-          <div className="right">
-            <p>
-              The phone number below goes to a real person on our coordinator
-              team — no triage, no call tree. We answer weekdays 9 a.m. to 5
-              p.m. Eastern, and reply to email within one business day.
+            <p className="ph-lede">
+              Send us your details and a coordinator gets back to you within
+              one business day — or skip the form entirely and call. A real
+              person answers, no triage, no call tree.
             </p>
             <div className="ks">
               <div>
@@ -46,6 +45,12 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+          <div className="right">
+            <div className="ph-form-card">
+              <div className="ph-form-label">◈ Write to us</div>
+              <ContactForm />
+            </div>
+          </div>
         </header>
 
         <section className="sub-section">
@@ -54,7 +59,7 @@ export default function ContactPage() {
             <h2>
               Three direct <em>lines.</em>
             </h2>
-            <div className="tag">Bloomfield Hills, Michigan</div>
+            <div className="tag">Madison Heights, Michigan</div>
           </div>
           <div className="steps-grid">
             <div className="step-card">
@@ -109,12 +114,12 @@ export default function ContactPage() {
             See what&apos;s <em>open</em> right now.
           </h2>
           <p>
-            Each study page lists eligibility, visit cadence, and compensation.
-            A two-minute pre-screen tells you if you&apos;re a fit before any
+            Each study page lists eligibility, visit cadence, and compensation
+            — and a coordinator can tell you if you&apos;re a fit in one short
             phone call.
           </p>
           <div className="cta-row">
-            <Link className="cta-pill" href="/studies">
+            <Link className="cta-pill" href="/#studies">
               <span>See active studies →</span>
             </Link>
             <Link className="cta-ghost" href="/patients">

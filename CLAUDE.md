@@ -6,81 +6,48 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm run dev          # Start dev server (localhost:3000)
-npm run build        # Production build
-npm run lint         # ESLint
+npm run build        # Static export → out/ (this IS the production build)
 npm run typecheck    # TypeScript check (no emit)
-npm run db:generate  # Generate Drizzle migrations from schema changes
-npm run db:migrate   # Apply pending migrations
-npm run db:push      # Direct schema push (dev only — skips migration files)
-npm run db:studio    # Open Drizzle Studio to browse DB
 ```
 
-Start a local Postgres instance with `docker compose up -d` before running `npm run dev`.
+No database, no Docker, no required env vars. `NEXT_PUBLIC_SITE_URL` (optional) sets the canonical origin used by `sitemap.ts`, `robots.ts`, and `metadataBase`.
 
 ## Architecture
 
-**Stack**: Next.js 15 App Router, React 19, TypeScript (strict), Tailwind CSS v4, Drizzle ORM + PostgreSQL, Resend (email), Cloudflare Turnstile (bot protection), Upstash Redis (rate limiting).
+**Stack**: Next.js 15 App Router with `output: "export"` (fully static site), React 19, TypeScript (strict), Tailwind CSS v4, MDX study content, Formspree for the contact form.
 
-### Page & Route Structure
+**There is no backend.** The site is exported to plain HTML/CSS/JS in `out/` and served by GitHub Pages. Anything requiring a server (API routes, ISR/`revalidate`, response headers, image optimization) will break the build or silently not work — don't add them.
 
-All pages live under `src/app/`. Static marketing pages (`about`, `patients`, `physicians`, `contact`) are React Server Components. The studies section is content-driven:
+### Page structure
 
-- `studies/page.tsx` — lists all studies loaded from MDX
-- `studies/[slug]/page.tsx` — renders a single study with its pre-screen form
+All pages live under `src/app/` and are React Server Components rendered at build time:
 
-API routes under `src/app/api/` handle four form submissions (`inquiry`, `prescreen`, `contact`, `referral`) plus a `health` probe. Every POST route follows the same pipeline: Zod validation → IP rate limit → Turnstile verification → Drizzle insert → fire-and-forget Resend email → JSON response.
+- Static marketing pages: `/`, `about`, `patients`, `physicians`, `sponsors`, `contact`
+- `studies/[slug]/page.tsx` — renders one study (uses `generateStaticParams` + `dynamicParams = false`; both required for static export). There is intentionally **no** `/studies` listing page — the home page's `#studies` portfolio grid is the catalog, and all "see studies" links point to `/#studies`. `public/studies/index.html` is a meta-refresh stub that redirects bare `/studies/` hits there (static hosts can't do server redirects).
+- The 13-trial `PORTFOLIO` array lives in `src/lib/content/portfolio.ts` (shared by the home grid and the sponsors table; `CAPABILITIES` in `src/lib/content/capabilities.ts` is shared by about + sponsors). It is intentionally separate from the MDX catalog — MDX studies get detail pages; portfolio-only entries deep-link to ClinicalTrials.gov.
 
-### Content System
+Page-scoped CSS lives as template strings in `src/app/_styles/{home,subpages}.ts`, inlined via `<style>`; global tokens and animations in `src/app/globals.css`.
 
-Studies are defined as MDX files in `src/content/studies/`. The YAML frontmatter is validated with a Zod schema in `src/lib/content/` and includes:
-- Study metadata (`slug`, `title`, `condition`, `status`)
-- `prescreenQuestions` — array of typed questions (`yes_no`, `single_choice`, `number`, `short_text`) that drive the dynamic pre-screen form on each study page
+### Contact form (the only interactive feature)
 
-The MDX loader compiles frontmatter + body at request time via `next-mdx-remote`.
+`src/components/ContactForm.tsx` (`"use client"`) posts name/email/phone/message to Formspree (`https://formspree.io/f/mrengwkd`) via fetch with an inline success state; the native `action` attribute is kept as a no-JS fallback. Includes a `_gotcha` honeypot. There is deliberately **no** health questionnaire — the form copy asks visitors not to send medical details (keeps the site out of PHI/HIPAA scope).
 
-### Library Layout (`src/lib/`)
+### Content system
 
-| Directory | Purpose |
-|-----------|---------|
-| `db/` | Drizzle schema, client singleton, migration helpers |
-| `validations/` | Zod schemas for all four form types — imported by both API routes and client components |
-| `security/` | IP hashing, Turnstile verification, Upstash rate-limit wrapper |
-| `email/` | Resend client + HTML email templates |
-| `content/` | MDX loader + frontmatter Zod schema |
-| `api/` | `ok()`/`fail()` response helpers used by every API route |
-| `env.ts` | Strict env var loader — add required vars here when introducing new services |
+Studies are MDX files in `src/content/studies/`. Frontmatter is validated by the Zod schema in `src/lib/content/studies.ts` at load time (build fails loudly on schema errors). Loader compiles frontmatter + body via `next-mdx-remote/rsc`.
 
-### Database Schema
+When a study's status changes, update **both** the MDX frontmatter and the `PORTFOLIO` array in `src/lib/content/portfolio.ts`.
 
-Five tables, all in PostgreSQL via Drizzle:
-
-- **`studies`** — mirrors MDX catalog, used for runtime state
-- **`inquiries`**, **`prescreens`**, **`contacts`**, **`referrals`** — form submissions
-
-All submission tables share: `ipHash` (SHA-256), `userAgent`, `status` enum (`new/contacted/qualified/declined/archived`), and UTC timestamps. Prescreen answers are stored as JSONB.
-
-### Path Alias
+### Path alias
 
 `@/*` maps to `src/*` (configured in `tsconfig.json`).
 
-## Environment Variables
+## Deployment
 
-Copy `.env.example` to `.env.local`. Production requires:
+Push to `main` → `.github/workflows/deploy.yml` builds and deploys to GitHub Pages. The workflow sets `NEXT_PUBLIC_SITE_URL=https://veritasclinical.org`; update it there if the domain changes. `public/.nojekyll` must remain (Pages would otherwise ignore `_next/` directories).
 
-```
-DATABASE_URL
-RESEND_API_KEY, EMAIL_FROM, EMAIL_TO_INTERNAL
-TURNSTILE_SECRET_KEY, NEXT_PUBLIC_TURNSTILE_SITE_KEY
-UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN
-NEXT_PUBLIC_SITE_URL
-```
+## Key design decisions
 
-The rate limiter falls back to in-memory when Upstash vars are absent, so local dev works without Redis.
-
-## Key Design Decisions
-
-- **RSC-first**: prefer Server Components; only use `"use client"` for interactivity (animations, forms, Turnstile widget).
-- **Schema-driven forms**: Zod validation schemas in `src/lib/validations/` are the single source of truth — consumed by both API routes (server-side) and form components (client-side for instant feedback).
-- **Fire-and-forget emails**: Resend calls are `void`-awaited so email failure doesn't block the API response.
-- **Lazy DB connection**: The Drizzle client is a proxy that defers connection until first use, avoiding cold-start issues in serverless.
-- **No HIPAA scope by design**: only name, email, phone, year-of-birth, and structured Q&A are collected — full DOB, medications, diagnoses, and imaging are explicitly excluded.
+- **Static-first**: every page is pre-rendered at build time. `trailingSlash: true` and `images.unoptimized: true` are required for GitHub Pages.
+- **No backend by design**: form handling is delegated to Formspree. The former Drizzle/Postgres/Resend/Turnstile backend was removed in July 2026 — see git history if it ever needs to be resurrected.
+- **No PHI by design**: only name, email, phone, and a free-text message are collected, with explicit copy discouraging medical details.

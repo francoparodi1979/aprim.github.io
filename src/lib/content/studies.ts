@@ -24,20 +24,6 @@ const studyFrontmatterSchema = z.object({
   durationWeeks: z.number().int().positive().optional(),
   compensation: z.string().optional(),
   location: z.string().optional(),
-  // Pre-screening question definition. The form renderer in the UI walks this
-  // list. Keep IDs stable — they become JSON keys in the prescreens table.
-  prescreenQuestions: z
-    .array(
-      z.object({
-        id: z.string().regex(/^[a-z0-9_]+$/),
-        label: z.string().min(1),
-        type: z.enum(["yes_no", "single_choice", "number", "short_text"]),
-        choices: z.array(z.string()).optional(),
-        required: z.boolean().default(true),
-        helpText: z.string().optional(),
-      })
-    )
-    .default([]),
   publishedAt: z.string().optional(),
   featured: z.boolean().default(false),
 });

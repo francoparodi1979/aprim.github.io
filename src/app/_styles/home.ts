@@ -521,30 +521,32 @@ export const homePageStyles = `
   max-width: 300px;
   line-height: 1.6;
 }
-.studies-grid {
+/* Portfolio grid — all 13 trials Veritas has run as a PI site. Compact,
+   information-dense cards keyed by recruitment status via [data-status]. */
+.trial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
-.study {
+.trial {
   background: var(--color-bone);
-  border-radius: 18px;
-  padding: 32px;
+  border-radius: 16px;
+  padding: 26px 26px 22px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  min-height: 460px;
+  gap: 16px;
+  min-height: 208px;
   position: relative;
   overflow: hidden;
   transition: transform 0.5s cubic-bezier(0.16,0.84,0.44,1), box-shadow 0.5s;
   cursor: pointer;
   color: inherit;
 }
-.study:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 60px rgba(10,46,56,0.14);
+.trial:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(10,46,56,0.12);
 }
-.study::before {
+.trial::before {
   content: "";
   position: absolute;
   top: 0;
@@ -556,66 +558,87 @@ export const homePageStyles = `
   transform-origin: left;
   transition: transform 0.6s cubic-bezier(0.77,0,0.18,1);
 }
-.study:hover::before { transform: scaleX(1); }
-.study .chip {
+.trial:hover::before { transform: scaleX(1); }
+/* The one recruiting trial keeps its accent bar lit at rest to draw the eye. */
+.trial[data-status="recruiting"]::before { transform: scaleX(1); }
+.trial[data-status="terminated"] { opacity: 0.78; }
+
+.trial-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.trial-status {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--color-clay);
-  background: rgba(208,122,69,0.1);
-  padding: 6px 10px;
+  padding: 5px 10px;
   border-radius: 100px;
-  width: fit-content;
+  white-space: nowrap;
 }
-.study .chip .live {
-  width: 6px;
-  height: 6px;
-  background: var(--color-clay);
-  border-radius: 50%;
-  animation: breathe 1.5s ease-in-out infinite;
+.trial-status .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.trial[data-status="recruiting"] .trial-status { color: var(--color-clay); background: rgba(208,122,69,0.12); }
+.trial[data-status="recruiting"] .trial-status .dot { background: var(--color-clay); animation: breathe 1.5s ease-in-out infinite; }
+.trial[data-status="active"] .trial-status { color: var(--color-sage); background: rgba(127,160,147,0.16); }
+.trial[data-status="active"] .trial-status .dot { background: var(--color-sage); }
+.trial[data-status="completed"] .trial-status { color: var(--muted); background: rgba(10,46,56,0.06); }
+.trial[data-status="completed"] .trial-status .dot { background: var(--muted); }
+.trial[data-status="terminated"] .trial-status { color: var(--muted); background: rgba(10,46,56,0.06); }
+.trial[data-status="terminated"] .trial-status .dot { background: rgba(10,46,56,0.35); }
+.trial-nct {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  white-space: nowrap;
 }
-.study h3 {
+.trial h3 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 30px;
-  line-height: 1.1;
+  font-size: 19px;
+  line-height: 1.28;
   letter-spacing: -0.01em;
   margin: 0;
+  color: var(--color-ink);
 }
-.study h3 em { font-style: italic; }
-.study p { font-size: 14px; line-height: 1.6; color: var(--color-ink-2); margin: 0; }
-.study .viz { height: 80px; margin: 8px 0; position: relative; }
-.study .viz svg { width: 100%; height: 100%; }
-.study .meta {
+.trial-foot {
   margin-top: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
-  padding-top: 18px;
+  padding-top: 16px;
   border-top: 1px solid var(--rule);
 }
-.study .meta span {
-  font-size: 11px;
-  color: var(--muted);
+.trial-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.trial-tags span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-2);
+  background: rgba(10,46,56,0.05);
+  padding: 4px 9px;
+  border-radius: 6px;
+}
+.trial-go {
+  font-family: var(--font-mono);
+  font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-family: var(--font-mono);
+  color: var(--color-clay);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s, transform 0.3s;
 }
-.study .meta span b {
-  display: block;
-  color: var(--color-ink);
-  font-family: var(--font-display);
-  text-transform: none;
-  letter-spacing: 0;
-  font-weight: 400;
-  font-size: 16px;
-  margin-top: 4px;
-}
+.trial:hover .trial-go { opacity: 1; transform: translateX(0); }
 
 /* ===== DOCTOR ===== */
 .doctor {

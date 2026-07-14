@@ -125,7 +125,7 @@ export default function PhysiciansPage() {
             <Link className="cta-pill" href="/contact">
               <span>Talk to a coordinator →</span>
             </Link>
-            <Link className="cta-ghost" href="/studies">
+            <Link className="cta-ghost" href="/#studies">
               See current studies
             </Link>
           </div>

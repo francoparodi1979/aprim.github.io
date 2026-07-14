@@ -2,141 +2,76 @@
 
 Marketing & patient-facing site for **Veritas Clinical Research**, led by Dr. Franco Parodi. Focused on COPD, asthma, and IPF clinical trials.
 
+This is a **fully static site** — no backend, no database, no server runtime. It's exported with `next build` (`output: "export"`) and deployed to **GitHub Pages**. The contact form posts to **Formspree**.
+
 ## Stack
 
-- **Next.js 15** (App Router, RSC) + TypeScript + Tailwind v4
-- **Postgres** via [postgres-js](https://github.com/porsager/postgres) + **Drizzle ORM**
-- **Resend** for transactional email
-- **Cloudflare Turnstile** for bot protection
-- **Upstash Redis** for distributed rate limiting (in-memory fallback for dev)
-- **MDX** for study/team content
+- **Next.js 15** (App Router, RSC, static export) + TypeScript + Tailwind v4
+- **MDX** for study content (`gray-matter` + `next-mdx-remote`, frontmatter validated with Zod at build time)
+- **Formspree** for the contact form (no first-party form handling)
+- **GitHub Pages** for hosting (via GitHub Actions, `.github/workflows/deploy.yml`)
 
 ## Layout
 
 ```
 src/
 ├── app/
-│   ├── (pages)        # home, about, studies/, studies/[slug], patients, physicians, contact
-│   └── api/           # /inquiry, /prescreen, /contact, /referral, /health
+│   ├── page.tsx           # home (incl. full 13-trial portfolio grid)
+│   ├── about/ patients/ physicians/ sponsors/ contact/
+│   ├── studies/[slug]/    # study detail pages from MDX (no listing page — home grid is the catalog)
+│   ├── _styles/           # page-scoped CSS-in-TS strings
+│   ├── sitemap.ts robots.ts
+├── components/            # SiteNav, SiteFooter, ContactForm (Formspree), visuals
 ├── content/
-│   └── studies/       # MDX with structured frontmatter
-├── lib/
-│   ├── api/           # response helpers
-│   ├── content/       # MDX loaders
-│   ├── db/            # Drizzle schema, client, migrate
-│   ├── email/         # Resend client + HTML templates
-│   ├── security/      # Turnstile, IP hashing, rate limit
-│   └── validations/   # Zod schemas (shared client/server)
-└── ...
+│   └── studies/           # MDX with structured frontmatter
+└── lib/
+    └── content/           # MDX loader + Zod schema, shared PORTFOLIO + CAPABILITIES data
 ```
 
-## Local setup
+## Local development
 
-1. **Install deps**
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
 
-   ```bash
-   npm install
-   ```
+That's it — no Docker, no database, no env vars required. `NEXT_PUBLIC_SITE_URL` (optional) only affects canonical URLs in sitemap/robots/metadata; to override locally, create a `.env.local` containing `NEXT_PUBLIC_SITE_URL=http://localhost:3000`.
 
-2. **Spin up Postgres** (Docker)
+## Contact form
 
-   ```bash
-   docker compose up -d
-   ```
+`src/components/ContactForm.tsx` posts name / email / phone / optional message to Formspree (`https://formspree.io/f/mrengwkd`). Submissions arrive by email. Includes a `_gotcha` honeypot for bots. To change the destination, edit `FORMSPREE_ENDPOINT` in that file.
 
-3. **Configure env**
-
-   ```bash
-   cp .env.example .env.local
-   # Fill in RESEND_API_KEY and Turnstile keys when you have them.
-   # The defaults work against the Docker Postgres above.
-   ```
-
-4. **Generate + apply schema**
-
-   ```bash
-   npm run db:generate
-   npm run db:migrate
-   ```
-
-5. **Run dev**
-
-   ```bash
-   npm run dev
-   ```
-
-   Site is at <http://localhost:3000>. Health probe: `/api/health`.
-
-## Forms / API
-
-All endpoints take JSON, validate with Zod, rate-limit per IP, verify Turnstile (skipped in dev if `TURNSTILE_SECRET_KEY` is unset), persist to Postgres, then fire notification + confirmation emails.
-
-| Endpoint         | Purpose                                  |
-| ---------------- | ---------------------------------------- |
-| `POST /api/inquiry`   | Patient "tell me more" — minimal info |
-| `POST /api/prescreen` | Eligibility pre-screen for a study    |
-| `POST /api/contact`   | Generic contact form                  |
-| `POST /api/referral`  | Physician referral                    |
-| `GET  /api/health`    | Uptime probe                          |
-
-Responses follow `{ ok: true, data }` / `{ ok: false, error, fieldErrors? }`.
-
-### Validation
-
-`src/lib/validations/*` contains Zod schemas reusable on the client (form state) and server (request body). Each form schema includes a hidden `website` honeypot and a `turnstileToken` field.
-
-### Forms checklist for the UI
-
-When you wire up the visual forms, each `POST` body must include:
-
-- All schema fields (see `src/lib/validations/*.ts`)
-- `website: ""` (honeypot — leave empty)
-- `turnstileToken: <token>` from the Turnstile widget
+The form intentionally tells visitors **not** to include medical details — see PHI posture below.
 
 ## Studies content
 
-Add a new study by dropping an MDX file into `src/content/studies/`. The frontmatter schema is enforced at load time (`src/lib/content/studies.ts`); typos fail loud. `prescreenQuestions` defines the form rendered for that study's pre-screen.
+Add a study by dropping an MDX file into `src/content/studies/`. Frontmatter is validated at build time by the Zod schema in `src/lib/content/studies.ts` — typos fail the build, not production. The home page's 13-trial portfolio grid is a separate hardcoded list in `src/app/page.tsx` (`PORTFOLIO`) — update both when a study's status changes.
 
 ## HIPAA / PHI posture
 
-This site is **not** a HIPAA-covered application. We deliberately collect:
-
-- **Inquiries / contact / referrals**: name, email, phone, free-text message
-- **Pre-screens**: same plus year-of-birth (not full DOB) and structured Q&A defined per-study
-
-We do **not** collect: full date of birth, SSN, MRN, diagnoses beyond the broad condition the patient self-identifies, medication lists, or imaging. Detailed PHI is collected in person at the screening visit under HIPAA authorization.
-
-Defenses applied:
-
-- IP addresses are SHA-256 hashed before storage (`src/lib/security/hash-ip.ts`)
-- TLS is enforced via `Strict-Transport-Security` headers
-- Rate limiting per IP × form
-- Turnstile bot protection
-- Postgres connection requires SSL in production (the `postgres` driver enforces it for `?sslmode=require` URLs)
-
-If the scope grows to include PHI, this app needs to migrate to a HIPAA-compliant hosting environment with a BAA in place (e.g., Vercel Enterprise + a BAA-signed Postgres provider).
+This is a brochure site. The only data collected is the contact form: name, email, phone, and a free-text message (with copy explicitly asking visitors not to include medical details). No health questionnaires, no structured medical data, no database. Detailed screening happens by phone and in person under HIPAA authorization.
 
 ## Deploy
 
-The app is Vercel-ready. Required env vars in production:
+Push to `main` → GitHub Actions builds the static export and publishes it to GitHub Pages (`.github/workflows/deploy.yml`).
 
-- `DATABASE_URL` (Postgres with `?sslmode=require`)
-- `RESEND_API_KEY`
-- `EMAIL_FROM`, `EMAIL_TO_INTERNAL`
-- `TURNSTILE_SECRET_KEY`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
-- `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
-- `NEXT_PUBLIC_SITE_URL` (canonical origin)
+One-time repo setup:
 
-Run migrations once before first deploy: `npm run db:migrate`.
+1. **Settings → Pages → Source: GitHub Actions**
+2. Custom domain: add the GoDaddy domain in Settings → Pages, then in GoDaddy DNS add the `A`/`AAAA` records for GitHub Pages (or `CNAME` → `<user>.github.io` for the `www` subdomain) and enable **Enforce HTTPS**.
+3. If the canonical domain changes, update `NEXT_PUBLIC_SITE_URL` in the workflow file.
+
+Local production build:
+
+```bash
+npm run build      # static site emitted to out/
+npx serve out      # optional: preview the exported site
+```
 
 ## Scripts
 
-| Command              | What                                  |
-| -------------------- | ------------------------------------- |
-| `npm run dev`        | Next dev server                       |
-| `npm run build`      | Production build                      |
-| `npm run typecheck`  | `tsc --noEmit`                        |
-| `npm run db:generate`| Generate migration from schema diff   |
-| `npm run db:migrate` | Apply pending migrations              |
-| `npm run db:push`    | Push schema directly (dev only)       |
-| `npm run db:studio`  | Drizzle Studio (browse the DB)        |
+| Command             | What                          |
+| ------------------- | ----------------------------- |
+| `npm run dev`       | Next dev server               |
+| `npm run build`     | Static export → `out/`        |
+| `npm run typecheck` | `tsc --noEmit`                |

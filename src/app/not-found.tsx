@@ -9,8 +9,8 @@ export default function NotFound() {
       </h1>
       <p className="mt-6 text-teal-700/80">
         We couldn't find what you were looking for. Try the{" "}
-        <Link href="/studies" className="underline">
-          studies page
+        <Link href="/#studies" className="underline">
+          current studies
         </Link>{" "}
         or head{" "}
         <Link href="/" className="underline">
