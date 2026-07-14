@@ -280,6 +280,7 @@ export const subpageStyles = `
 .tt-head {
   display: grid;
   grid-template-columns: 90px 1fr 130px 90px 100px 120px 80px;
+  gap: 12px;
   padding: 18px 24px;
   border-bottom: 1px solid var(--rule);
   background: var(--color-bone);
@@ -294,11 +295,14 @@ export const subpageStyles = `
   grid-template-columns: 90px 1fr 130px 90px 100px 120px 80px;
   padding: 26px 24px;
   border-bottom: 1px solid var(--rule);
-  align-items: center;
+  align-items: start;
   gap: 12px;
   color: inherit;
   transition: background 0.3s;
+  min-height: 100%;
 }
+.tt-row > .id { padding-top: 2px; }
+.tt-row .tt-mid { align-self: center; }
 .tt-row:last-child { border-bottom: none; }
 .tt-row:hover { background: rgba(208,122,69,0.05); }
 .tt-row .id {

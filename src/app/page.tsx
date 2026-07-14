@@ -278,7 +278,7 @@ export default function HomePage() {
       <section className="home-studies">
         <div className="studies-head">
           <h2>
-            Three studies are <em>enrolling now</em>.
+            Two studies are <em>enrolling now</em>.
           </h2>
           <div className="meta">
             Every study below accepts direct volunteer referrals. Screening is
@@ -287,49 +287,34 @@ export default function HomePage() {
         </div>
         <div className="studies-grid">
           <StudyCard
-            chipText="Phase 3 · Enrolling"
-            title="AURORA-1"
-            titleEm="moderate-to-severe COPD"
-            body="Once-daily inhaled therapy testing whether a titrated dose slows FEV₁ decline in adults over 24 weeks."
+            chipText="Phase 3 · Recruiting"
+            title="Lunsekimig"
+            titleEm="eosinophilic COPD"
+            body="Efficacy, safety, and tolerability of lunsekimig vs. placebo in adults with inadequately controlled COPD characterized by an eosinophilic phenotype."
             sparkPath="M0,40 C40,35 60,20 100,22 C140,24 170,12 200,10"
             sparkArea="M0,60 L0,40 C40,35 60,20 100,22 C140,24 170,12 200,10 L200,60 Z"
             sparkX={100}
             sparkY={22}
-            duration="24 weeks"
-            visits="7 total"
-            comp="Up to $1,200"
+            duration="52 weeks"
+            visits="10 total"
+            comp="Up to $1,500"
             ages="40–80 yrs"
-            href="/studies/copd-aurora-001"
+            href="/studies/copd-lunsekimig-301"
           />
           <StudyCard
-            chipText="Phase 2 · Enrolling"
-            title="HELIX-3"
-            titleEm="IPF"
-            body="Novel anti-fibrotic, oral, once-daily. Primary endpoint: change in FVC at 26 weeks. Small cohort, close follow-up."
-            sparkPath="M0,12 Q50,22 100,18 T 200,28"
-            sparkArea="M0,60 L0,12 Q50,22 100,18 T 200,28 L200,60 Z"
-            sparkX={100}
-            sparkY={18}
-            duration="26 weeks"
-            visits="9 total"
-            comp="Up to $1,800"
-            ages="50–85 yrs"
-            href="/studies/ipf-helix-003"
-          />
-          <StudyCard
-            chipText="Phase 3 · Enrolling"
-            title="MERIDIAN-2"
-            titleEm="severe asthma"
-            body="Biologic against placebo + standard ICS for type-2 high asthma. Focus: exacerbation rate, oral-steroid dependence, quality of life."
+            chipText="Phase 2 · Active, not recruiting"
+            title="GSK5784283"
+            titleEm="uncontrolled asthma"
+            body="Dose finding study of an investigational anti-TSLP antibody in adults aged 18–75 with uncontrolled asthma despite standard inhaled therapy."
             sparkPath="M0,45 Q40,15 80,25 T 160,10 T 200,18"
             sparkArea="M0,60 L0,45 Q40,15 80,25 T 160,10 T 200,18 L200,60 Z"
             sparkX={80}
             sparkY={25}
-            duration="52 weeks"
-            visits="12 total"
-            comp="Up to $2,400"
+            duration="26 weeks"
+            visits="8 total"
+            comp="Up to $1,600"
             ages="18–75 yrs"
-            href="/studies/asthma-meridian-002"
+            href="/studies/asthma-gsk5784283-201"
           />
         </div>
       </section>

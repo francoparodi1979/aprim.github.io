@@ -113,14 +113,14 @@ export default async function StudiesPage() {
                     </h4>
                     <div className="desc">{s.shortSummary}</div>
                   </div>
-                  <div>{CONDITION_LABEL[s.condition] ?? s.condition}</div>
-                  <div>
+                  <div className="tt-mid">{CONDITION_LABEL[s.condition] ?? s.condition}</div>
+                  <div className="tt-mid">
                     <span className="ph">{s.phase ?? "Phase"}</span>
                   </div>
-                  <div className="mono" style={{ fontSize: 12 }}>
+                  <div className="mono tt-mid" style={{ fontSize: 12 }}>
                     {ages}
                   </div>
-                  <div>
+                  <div className="tt-mid">
                     <span
                       className={
                         s.status === "recruiting" ? "status open" : "status"
@@ -129,7 +129,7 @@ export default async function StudiesPage() {
                       {STATUS_LABEL[s.status] ?? s.status}
                     </span>
                   </div>
-                  <div className="arr">See →</div>
+                  <div className="arr tt-mid">See →</div>
                 </Link>
               );
             })}
