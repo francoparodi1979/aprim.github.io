@@ -56,7 +56,7 @@ export function ContactForm() {
         <p>
           Thank you — a coordinator will get back to you within one business
           day. If it&apos;s time-sensitive, call us at{" "}
-          <a href="tel:+15869801296">(586) 980-1296</a>.
+          <a href="tel:+15862100330">(586) 210-0330</a>.
         </p>
       </div>
     );

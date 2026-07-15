@@ -55,7 +55,7 @@ export default function PhysiciansPage() {
             <h2>
               Three steps, <em>nothing</em> more.
             </h2>
-            <div className="tag">Or call (586) 980-1296</div>
+            <div className="tag">Or call (586) 210-0330</div>
           </div>
           <div className="steps-grid">
             <div className="step-card">

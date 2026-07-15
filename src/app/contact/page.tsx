@@ -33,7 +33,7 @@ export default function ContactPage() {
             <div className="ks">
               <div>
                 <b>(586)</b>
-                <span>980-1296</span>
+                <span>210-0330</span>
               </div>
               <div>
                 <b>Mon–Fri</b>
@@ -65,10 +65,11 @@ export default function ContactPage() {
             <div className="step-card">
               <div className="big">i</div>
               <div className="t">By phone</div>
-              <h4>(586) 980-1296</h4>
+              <h4>(586) 210-0330</h4>
               <p>
                 A coordinator answers — same day, every day we&apos;re open.
                 If you reach voicemail, we return calls the next business day.
+                Fax: (586) 210-0380.
               </p>
             </div>
             <div className="step-card">

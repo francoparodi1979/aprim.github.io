@@ -22,7 +22,7 @@ export function SiteFooter() {
             <br />
             27483 Dequindre Rd. Suite 304, Madison Heights, MI 48071
             <br />
-            (586) 980-1296 · info@veritasclinical.org
+            (586) 210-0330 · fax (586) 210-0380 · info@veritasclinical.org
           </div>
         </div>
         <div>
@@ -63,8 +63,9 @@ export function SiteFooter() {
           <h5>Contact</h5>
           <ul>
             <li>
-              <a href="tel:+15869801296">(586) 980-1296</a>
+              <a href="tel:+15862100330">(586) 210-0330</a>
             </li>
+            <li>Fax (586) 210-0380</li>
             <li>
               <a href="mailto:info@veritasclinical.org">info@veritasclinical.org</a>
             </li>
