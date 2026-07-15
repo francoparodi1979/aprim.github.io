@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ContactForm } from "@/components/ContactForm";
@@ -92,6 +93,48 @@ export default function ContactPage() {
                 message through the form — gets you all three.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section className="sub-section bone">
+          <div className="sh">
+            <div className="num">§ 02 / Find us</div>
+            <h2>
+              Easy to <em>find.</em>
+            </h2>
+            <div className="tag">Free parking · Suite 304</div>
+          </div>
+          <div className="find-grid">
+            <figure className="find-photo">
+              <Image
+                src="/building.jpg"
+                alt="The Professional Building at 27483 Dequindre Rd, Madison Heights — home of Veritas Clinical Research, Suite 304"
+                width={1100}
+                height={734}
+              />
+              <figcaption>
+                The Professional Building · 27483 Dequindre Rd · Suite 304
+              </figcaption>
+            </figure>
+            {/* The iframe is display-only (pointer-events: none) so any click
+                on the map opens Google Maps with directions from the visitor's
+                current location. */}
+            <a
+              className="find-map"
+              href="https://www.google.com/maps/dir/?api=1&destination=27483+Dequindre+Rd+Suite+304,+Madison+Heights,+MI+48071"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Google Maps with driving directions to 27483 Dequindre Rd Suite 304, Madison Heights, MI 48071"
+            >
+              <iframe
+                src="https://www.google.com/maps?q=27483+Dequindre+Rd,+Madison+Heights,+MI+48071&output=embed"
+                title="Map of Veritas Clinical Research, 27483 Dequindre Rd, Madison Heights, MI"
+                loading="lazy"
+                tabIndex={-1}
+                aria-hidden
+              />
+              <span className="find-chip">Get directions ↗</span>
+            </a>
           </div>
         </section>
 

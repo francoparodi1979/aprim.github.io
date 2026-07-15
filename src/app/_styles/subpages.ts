@@ -606,6 +606,80 @@ export const subpageStyles = `
 .ph-form-card .cform { gap: 16px; max-width: none; }
 .ph-form-card .cform-field textarea { min-height: 92px; }
 
+/* Contact — find us (building photo + clickable map) */
+.find-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+.find-photo {
+  margin: 0;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--color-ink);
+}
+.find-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+.find-photo figcaption {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  background: rgba(10,46,56,0.62);
+  padding: 10px 14px;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+}
+.find-map {
+  position: relative;
+  display: block;
+  min-height: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  transition: transform 0.4s cubic-bezier(0.16,0.84,0.44,1), box-shadow 0.4s;
+}
+.find-map:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(10,46,56,0.14);
+}
+/* Display-only: clicks fall through to the wrapping directions link */
+.find-map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+.find-chip {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  padding: 9px 14px;
+  border-radius: 100px;
+  transition: background 0.25s;
+}
+.find-map:hover .find-chip { background: var(--color-clay); }
+
 /* Contact form (Formspree) */
 .cform {
   max-width: 720px;
