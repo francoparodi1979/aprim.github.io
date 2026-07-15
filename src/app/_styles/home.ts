@@ -525,7 +525,8 @@ export const homePageStyles = `
    information-dense cards keyed by recruitment status via [data-status]. */
 .trial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* min(300px, 100%) so a <320px viewport can never force overflow */
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   gap: 20px;
 }
 .trial {
@@ -983,5 +984,71 @@ export const homePageStyles = `
   gap: 14px;
   position: relative;
   z-index: 2;
+}
+
+/* =========================================================
+   RESPONSIVE — home page
+   ========================================================= */
+@media (max-width: 1024px) {
+  .hero { padding: 64px 32px 80px; min-height: 0; }
+  .hero-grid { gap: 40px; }
+  .kinetic { font-size: clamp(56px, 9vw, 96px); }
+  .metrics, .home-studies, .doctor, .journey, .quote-band, .bigcta { padding-left: 32px; padding-right: 32px; }
+  .waveform-inner { padding: 72px 32px 56px; gap: 48px; }
+  .wave-strip { padding: 20px 32px; flex-wrap: wrap; gap: 10px 24px; justify-content: flex-start; }
+  .studies-head h2 { font-size: clamp(40px, 7vw, 72px); }
+  .bigcta h2 { font-size: clamp(72px, 12vw, 156px); }
+}
+
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 56px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+  .kinetic { font-size: clamp(44px, 13vw, 64px); }
+  .hero .lede { font-size: 16px; margin-top: 24px; }
+  .hero-actions { margin-top: 32px; justify-content: flex-start; }
+  .hero-visual { width: 100%; max-width: 340px; margin: 0 auto; }
+  /* readout joins the flow instead of pinning to the hero corner */
+  .hero-readout { position: static; margin-top: 28px; }
+
+  .ticker-item { font-size: 18px; }
+
+  .metrics { padding: 56px 20px; }
+  .metrics-head { margin-bottom: 0; }
+  .metrics-head h2 { font-size: clamp(28px, 8vw, 40px); }
+
+  .waveform-inner { grid-template-columns: 1fr; padding: 56px 20px 40px; gap: 36px; }
+  .waveform h2 { font-size: clamp(32px, 9vw, 48px); }
+  .waveform p { font-size: 15px; }
+  .wave-stage { height: 240px; }
+  .wave-strip { padding: 16px 20px; font-size: 10px; }
+
+  .home-studies { padding: 64px 20px; }
+  .studies-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 40px; }
+  .studies-head .meta { text-align: left; max-width: none; }
+
+  .doctor { padding: 64px 20px; }
+  .doctor-grid { grid-template-columns: 1fr; gap: 40px; }
+  .doc-portrait { max-width: 340px; margin: 0 auto; width: 100%; }
+  .doc-portrait .ring, .doc-portrait .ring.b { display: none; }
+  .doctor h2 { font-size: clamp(40px, 11vw, 56px); }
+  .doctor .credentials { flex-direction: column; gap: 18px; }
+  .doctor q { font-size: 21px; }
+  .doctor .sig .name { font-size: 26px; }
+
+  .journey { padding: 64px 20px; }
+  .journey h2 { font-size: clamp(36px, 10vw, 52px); }
+  .journey-head { margin-bottom: 48px; }
+  .journey-head p { font-size: 16px; }
+  .timeline { grid-template-columns: 1fr; gap: 36px; }
+  .timeline::before, .timeline::after { display: none; }
+  .node .dot { width: 64px; height: 64px; font-size: 26px; margin-bottom: 18px; }
+
+  .quote-band { padding: 64px 20px; }
+  .quote-band q { font-size: clamp(26px, 7.5vw, 40px); }
+  .quote-band .who { margin-top: 36px; }
+
+  .bigcta { padding: 64px 20px 80px; }
+  .bigcta h2 { font-size: clamp(52px, 15vw, 88px); }
+  .bigcta p { font-size: 16px; margin: 24px auto 32px; }
 }
 `;

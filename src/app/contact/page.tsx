@@ -62,7 +62,8 @@ export default function ContactPage() {
             </h2>
             <div className="tag">Madison Heights, Michigan</div>
           </div>
-          <div className="steps-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          {/* steps-3 class (not inline style) so media queries can restack it */}
+          <div className="steps-grid steps-3">
             <div className="step-card">
               <div className="big">i</div>
               <div className="t">By phone</div>

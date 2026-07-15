@@ -542,6 +542,13 @@ export const subpageStyles = `
   margin: 0;
 }
 
+/* Study detail — long official protocol titles */
+.ph h1.study-title {
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
 /* Study detail article (MDX body) */
 .study-article { max-width: 720px; }
 .study-article h2 {
@@ -704,7 +711,8 @@ export const subpageStyles = `
 .cform-field input,
 .cform-field textarea {
   font-family: var(--font-sans);
-  font-size: 15px;
+  /* 16px minimum — below that, iOS Safari force-zooms the page on focus */
+  font-size: 16px;
   color: var(--color-ink);
   background: rgba(255,255,255,0.55);
   /* Stronger than --rule: field boundaries need >= 3:1 (WCAG 1.4.11). */
@@ -828,5 +836,95 @@ export const subpageStyles = `
   gap: 14px;
   position: relative;
   z-index: 2;
+}
+
+/* Contact page uses a 3-column variant of steps-grid */
+.steps-grid.steps-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* =========================================================
+   RESPONSIVE — subpages
+   ========================================================= */
+@media (max-width: 1024px) {
+  .ph { padding: 64px 32px 56px; gap: 40px; }
+  .ph h1 { font-size: clamp(56px, 9vw, 96px); }
+  .sub-section { padding: 72px 32px; }
+  .sub-cta { padding: 72px 32px 88px; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-timeline { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .safety-grid { grid-template-columns: 1fr; gap: 20px; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; }
+  .steps-grid.steps-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .ph {
+    grid-template-columns: 1fr;
+    padding: 40px 20px 48px;
+    gap: 32px;
+    align-items: start;
+  }
+  .ph h1, .ph-form h1 { font-size: clamp(40px, 12vw, 60px); }
+  .ph .right p, .ph-form .ph-lede { font-size: 16px; }
+  /* minmax(0,…) so long values (NCT ids) can't blow the track out past the
+     viewport; two columns give them room to fit unbroken */
+  .ph .ks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .ph .ks b { font-size: 22px; overflow-wrap: anywhere; }
+  .ph h1.study-title { font-size: 27px; line-height: 1.25; }
+
+  .sub-section { padding: 56px 20px; }
+  .sh {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 36px;
+    align-items: start;
+  }
+  .sh .tag { text-align: left; }
+  .sub-section h2 { font-size: clamp(30px, 9vw, 44px); }
+
+  .about-intro { grid-template-columns: 1fr; gap: 32px; }
+  .about-intro p { font-size: 16px; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .member { min-height: 0; padding: 20px 16px; }
+  .member h4 { font-size: 18px; }
+  .about-timeline { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .cap-row { grid-template-columns: 1fr; gap: 10px; padding: 20px 16px; }
+
+  .steps-grid, .steps-grid.steps-3 { grid-template-columns: 1fr; }
+  .step-card { min-height: 0; padding: 24px 20px; }
+
+  .faq-row { grid-template-columns: 1fr; gap: 10px; padding: 24px 0; }
+  .faq-row h4 { font-size: 21px; }
+  .faq-row p { font-size: 15px; }
+
+  .page-divider { padding: 16px 20px; flex-wrap: wrap; gap: 6px 16px; }
+
+  .sub-cta { padding: 56px 20px 72px; }
+  .sub-cta h2 { font-size: clamp(40px, 12vw, 64px); }
+  .sub-cta p { font-size: 16px; }
+
+  /* Sponsors table collapses to stacked cards */
+  .sp-head { display: none; }
+  .sp-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px 16px;
+  }
+  .sp-row h4 { font-size: 17px; }
+
+  /* Contact: find-us stacks; form card breathes */
+  .find-grid { grid-template-columns: 1fr; }
+  .find-photo img { min-height: 240px; }
+  .find-map { min-height: 320px; }
+  .ph-form-card { padding: 20px; }
+  .cform-row { grid-template-columns: 1fr; }
+
+  /* Study detail article */
+  .study-article h2 { font-size: 26px; margin-top: 36px; }
+  .study-article p, .study-article li { font-size: 16px; }
 }
 `;

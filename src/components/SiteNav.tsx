@@ -32,7 +32,24 @@ export function SiteNav({ active }: { active?: NavKey }) {
             Who We Are
           </Link>
         </li>
-        <li className="nav-dropdown">
+        {/* Touch devices get direct links (hover dropdowns don't work there);
+            desktop keeps the dropdown. CSS toggles the two via media query. */}
+        <li className="mobile-only">
+          <Link href="/patients" data-on={active === "patients" ? "true" : undefined}>
+            Patients
+          </Link>
+        </li>
+        <li className="mobile-only">
+          <Link href="/physicians" data-on={active === "physicians" ? "true" : undefined}>
+            Physicians
+          </Link>
+        </li>
+        <li className="mobile-only">
+          <Link href="/sponsors" data-on={active === "sponsors" ? "true" : undefined}>
+            Sponsors
+          </Link>
+        </li>
+        <li className="nav-dropdown desktop-only">
           <span className="nav-dropdown-trigger" data-on={dropdownActive ? "true" : undefined}>
             Get Involved
           </span>

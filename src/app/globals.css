@@ -55,7 +55,13 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Safety net: decorative absolutely-positioned elements must never create
+     sideways scroll on small screens. `clip` avoids making body scrollable. */
+  overflow-x: clip;
 }
+
+/* Mobile/desktop visibility toggles (used by the nav dropdown vs direct links) */
+.mobile-only { display: none; }
 
 a {
   color: inherit;
@@ -618,4 +624,60 @@ a {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(242, 237, 227, 0.5);
+}
+
+/* =========================================================
+   RESPONSIVE — global chrome (nav + footer)
+   ========================================================= */
+@media (max-width: 1024px) {
+  .site-nav { padding: 12px 24px; }
+  .site-nav > ul { gap: 28px; padding-right: 20px; }
+}
+
+@media (max-width: 720px) {
+  /* Nav becomes two rows: logo + CTA, then a wrapped link bar */
+  .site-nav {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    padding: 10px 16px 12px;
+  }
+  .site-nav .brand { order: 1; }
+  .site-nav .brand-logo { height: 54px; }
+  .site-nav > .cta-pill {
+    order: 2;
+    margin-left: auto;
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+  .site-nav > ul {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    padding: 6px 0 0;
+    margin: 0;
+  }
+  .site-nav ul a { font-size: 13px; }
+  .desktop-only { display: none; }
+  .mobile-only { display: block; }
+
+  /* Footer stacks */
+  .site-footer { padding: 56px 20px 32px; }
+  .site-footer .f-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 24px;
+    padding-bottom: 40px;
+  }
+  .site-footer .f-grid > div:first-child { grid-column: 1 / -1; }
+  .site-footer .f-brand { font-size: 34px; }
+  .site-footer .f-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* CTA buttons: comfortable tap targets, no overflow in rows */
+  .cta-row, .hero-actions { flex-wrap: wrap; justify-content: center; }
 }

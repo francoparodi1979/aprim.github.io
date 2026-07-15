@@ -73,11 +73,9 @@ export default async function StudyPage({
               <Link href="/#studies">Home / Studies</Link> /{" "}
               {study.condition.toUpperCase()}
             </div>
-            {/* Official protocol titles run long — render well below the
-                usual 116px display size. */}
-            <h1 style={{ fontSize: 38, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
-              {study.title}
-            </h1>
+            {/* Official protocol titles run long — .study-title renders well
+                below the usual 116px display size (and shrinks on mobile). */}
+            <h1 className="study-title">{study.title}</h1>
           </div>
           <div className="right">
             <p>{study.shortSummary}</p>
