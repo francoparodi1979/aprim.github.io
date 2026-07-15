@@ -140,9 +140,8 @@ export function ContactForm() {
 
       {status === "error" && (
         <p className="cform-error" role="alert">
-          Something went wrong sending your message. Please try again, or email
-          us directly at{" "}
-          <a href="mailto:info@veritasclinical.org">info@veritasclinical.org</a>.
+          Something went wrong sending your message. Please try again, or call
+          us at <a href="tel:+15862100330">(586) 210-0330</a>.
         </p>
       )}
 

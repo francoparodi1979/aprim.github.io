@@ -41,7 +41,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <b>&lt; 24h</b>
-                <span>Email reply</span>
+                <span>Message reply</span>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
             </h2>
             <div className="tag">Madison Heights, Michigan</div>
           </div>
-          <div className="steps-grid">
+          <div className="steps-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
             <div className="step-card">
               <div className="big">i</div>
               <div className="t">By phone</div>
@@ -74,15 +74,6 @@ export default function ContactPage() {
             </div>
             <div className="step-card">
               <div className="big">ii</div>
-              <div className="t">By email</div>
-              <h4>info@veritasclinical.org</h4>
-              <p>
-                Reach the whole coordinator team at once. Best for non-urgent
-                questions, study inquiries, or sponsor introductions.
-              </p>
-            </div>
-            <div className="step-card">
-              <div className="big">iii</div>
               <div className="t">In person</div>
               <h4>27483 Dequindre Rd. Suite 304</h4>
               <p>
@@ -92,12 +83,13 @@ export default function ContactPage() {
               </p>
             </div>
             <div className="step-card">
-              <div className="big">iv</div>
+              <div className="big">iii</div>
               <div className="t">For sponsors</div>
               <h4>Site qualification</h4>
               <p>
-                Our regulatory packet, capability statement, and metrics dashboard
-                are available on request. One email gets you all three.
+                Our regulatory packet, capability statement, and metrics
+                dashboard are available on request. One phone call — or one
+                message through the form — gets you all three.
               </p>
             </div>
           </div>

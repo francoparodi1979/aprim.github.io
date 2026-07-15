@@ -63,9 +63,9 @@ export default function PhysiciansPage() {
               <div className="t">You</div>
               <h4>Send a name &amp; number.</h4>
               <p>
-                Email the patient&apos;s name, phone, and the indication.
-                That&apos;s the entire referral. We&apos;ll close the loop on
-                the rest.
+                Call us — or drop the patient&apos;s name, phone, and
+                indication in our contact form. That&apos;s the entire
+                referral. We&apos;ll close the loop on the rest.
               </p>
             </div>
             <div className="step-card">
@@ -74,8 +74,8 @@ export default function PhysiciansPage() {
               <h4>Reach out within 24 hours.</h4>
               <p>
                 A coordinator calls your patient, walks through what fits,
-                schedules screening if it&apos;s the right move. You get an
-                acknowledgement email same day.
+                schedules screening if it&apos;s the right move. You hear
+                back from us the same day.
               </p>
             </div>
             <div className="step-card">
@@ -110,16 +110,14 @@ export default function PhysiciansPage() {
             ◈ Send a referral
           </div>
           <h2>
-            One <em>email</em> is enough.
+            One <em>call</em> is enough.
           </h2>
           <p>
-            <a
-              href="mailto:referrals@veritasclinical.org"
-              style={{ color: "var(--color-clay)" }}
-            >
-              referrals@veritasclinical.org
+            <a href="tel:+15862100330" style={{ color: "var(--color-clay)" }}>
+              (586) 210-0330
             </a>{" "}
-            — name, phone, indication. We take it from there.
+            — name, phone, indication. We take it from there. Prefer writing?
+            Use the contact form.
           </p>
           <div className="cta-row">
             <Link className="cta-pill" href="/contact">

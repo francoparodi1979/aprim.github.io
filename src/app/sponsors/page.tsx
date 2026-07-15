@@ -176,12 +176,12 @@ export default function SponsorsPage() {
             ◈ Site qualification
           </div>
           <h2>
-            One email gets you <em>everything.</em>
+            One request gets you <em>everything.</em>
           </h2>
           <p>
             Regulatory packet, capability statement, and metrics dashboard —
-            request all three through the contact form or write to us directly
-            at info@veritasclinical.org.
+            request all three through the contact form, or call us at
+            (586) 210-0330.
           </p>
           <div className="cta-row">
             <Link className="cta-pill" href="/contact">
