@@ -40,8 +40,29 @@ export default async function StudyPage({
 
   const recruiting = study.status === "recruiting";
 
+  // Structured data so search engines understand this page describes a
+  // clinical study at our Madison Heights site.
+  const studyJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MedicalStudy",
+    name: study.title,
+    description: study.shortSummary,
+    status: recruiting ? "Recruiting" : "ActiveNotRecruiting",
+    ...(study.nctId ? { identifier: study.nctId } : {}),
+    ...(study.sponsor ? { sponsor: { "@type": "Organization", name: study.sponsor } } : {}),
+    healthCondition: { "@type": "MedicalCondition", name: study.condition.toUpperCase() },
+    studyLocation: {
+      "@type": "AdministrativeArea",
+      name: "Madison Heights, Michigan, US",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(studyJsonLd) }}
+      />
       <style dangerouslySetInnerHTML={{ __html: subpageStyles }} />
       <div className="sub-shell">
         <SiteNav active="studies" />
