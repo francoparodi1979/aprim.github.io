@@ -112,7 +112,7 @@ export default function SponsorsPage() {
             <h2>
               Built for <em>pulmonary</em> protocols.
             </h2>
-            <div className="tag">4,200 sq ft · 8 FTE · Madison Heights, MI</div>
+            <div className="tag">4,200 sq ft · Madison Heights, MI</div>
           </div>
           <div className="cap-table">
             {CAPABILITIES.map((c) => (
@@ -188,7 +188,7 @@ export default function SponsorsPage() {
               <span>Request the packet →</span>
             </Link>
             <Link className="cta-ghost" href="/about">
-              Meet the team
+              Meet the founder
             </Link>
           </div>
         </section>

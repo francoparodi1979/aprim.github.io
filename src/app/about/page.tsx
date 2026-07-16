@@ -20,55 +20,6 @@ const TEAM = [
     blurb:
       "Triple board-certified in Pulmonary, Critical Care, and Internal Medicine. PI across asthma, COPD, IPF, and bronchiectasis programs.",
   },
-  {
-    cap: "DR. HART",
-    role: "Sub-Investigator",
-    name: "Meera Hart, DO",
-    blurb:
-      "Pulmonology. Sub-investigator on severe asthma and IPF programs. Fluent in Spanish.",
-  },
-  {
-    cap: "R. WILKES",
-    role: "Research Director",
-    name: "Rebecca Wilkes, RN, CCRC",
-    blurb:
-      "Oversees protocol execution, regulatory submissions, and participant safety.",
-  },
-  {
-    cap: "T. LIN",
-    role: "Lead Coordinator",
-    name: "Tomás Lin, CCRC",
-    blurb:
-      "Your first and most frequent point of contact. Runs study visits day-to-day.",
-  },
-  {
-    cap: "J. OBI",
-    role: "PFT Specialist",
-    name: "Joelle Obi, RPFT",
-    blurb:
-      "Certified pulmonary function technologist. 12 years in respiratory research.",
-  },
-  {
-    cap: "A. REY",
-    role: "Patient Advocate",
-    name: "Andrea Rey",
-    blurb:
-      "Helps participants navigate transportation, scheduling, and anything else we can fix.",
-  },
-  {
-    cap: "M. SOTO",
-    role: "Regulatory",
-    name: "Mateo Soto",
-    blurb:
-      "IRB submissions, sponsor reporting, and everything the FDA needs in a tidy binder.",
-  },
-  {
-    cap: "S. BRAND",
-    role: "Operations",
-    name: "Simone Brand",
-    blurb:
-      "Keeps the clinic running, scheduling sharp, and our coffee machine in working order.",
-  },
 ] as const;
 
 const HISTORY = [
@@ -183,9 +134,9 @@ export default function AboutPage() {
           <div className="sh">
             <div className="num">§ 01 / Team</div>
             <h2>
-              The <em>people</em> who answer the phone.
+              The <em>physician</em> who answers the phone.
             </h2>
-            <div className="tag">8 FTE · Madison Heights, MI</div>
+            <div className="tag">Physician-led · Madison Heights, MI</div>
           </div>
           <div className="team-grid">
             {TEAM.map((m) => (
