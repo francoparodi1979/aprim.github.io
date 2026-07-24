@@ -27,7 +27,7 @@ const TEAM: Member[] = [
     role: "Founder · PI",
     name: "Franco Parodi, MD, FCCP, ACRP",
     blurb:
-      "Triple board-certified in Pulmonary, Critical Care, and Internal Medicine. PI across asthma, COPD, IPF, and bronchiectasis programs.",
+      "Board certified in Internal Medicine, Pulmonary Diseases and Critical Care Medicine. Fellow of the American College of Chest Physicians and Member of the Association of Clinical Research Professionals.",
     img: "/dr-parodi.jpg",
   },
   {
