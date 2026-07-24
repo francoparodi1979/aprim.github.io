@@ -335,7 +335,7 @@ export default function HomePage() {
             </q>
             <div className="sig">
               <div>
-                <div className="name">Franco Parodi MD</div>
+                <div className="name">Franco Parodi, MD, FCCP, ACRP</div>
                 <div className="role">Founder and PI</div>
               </div>
             </div>

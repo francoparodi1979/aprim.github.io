@@ -25,7 +25,7 @@ const TEAM: Member[] = [
   {
     cap: "DR. PARODI",
     role: "Founder · PI",
-    name: "Franco Parodi, MD",
+    name: "Franco Parodi, MD, FCCP, ACRP",
     blurb:
       "Triple board-certified in Pulmonary, Critical Care, and Internal Medicine. PI across asthma, COPD, IPF, and bronchiectasis programs.",
     img: "/dr-parodi.jpg",
@@ -35,7 +35,7 @@ const TEAM: Member[] = [
     role: "Lead Clinical Research Coordinator",
     name: "Aishwarya Vasudevan, PharmD, MS",
     blurb:
-      "Doctor of Pharmacy with an MS in Pharmaceutical Sciences, majoring in pharmacology and toxicology.",
+      "Doctor of Pharmacy with an MS in Pharmaceutical Sciences, Major in pharmacology and toxicology.",
     img: "/aishwarya-vasudevan.jpg",
   },
 ];
