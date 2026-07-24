@@ -167,6 +167,13 @@ export const subpageStyles = `
   position: relative;
   overflow: hidden;
 }
+.member .portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
 .member .portrait::after {
   content: attr(data-cap);
   position: absolute;

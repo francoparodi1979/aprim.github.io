@@ -12,15 +12,33 @@ export const metadata: Metadata = {
     "About Veritas Clinical Research, a small, physician-led pulmonary research site led by Dr. Franco Parodi.",
 };
 
-const TEAM = [
+type Member = {
+  cap: string;
+  role: string;
+  name: string;
+  blurb: string;
+  /** Optional headshot in /public. Falls back to the hatched placeholder. */
+  img?: string;
+};
+
+const TEAM: Member[] = [
   {
     cap: "DR. PARODI",
     role: "Founder · PI",
     name: "Franco Parodi, MD",
     blurb:
       "Triple board-certified in Pulmonary, Critical Care, and Internal Medicine. PI across asthma, COPD, IPF, and bronchiectasis programs.",
+    img: "/dr-parodi.jpg",
   },
-] as const;
+  {
+    cap: "A. VASUDEVAN",
+    role: "Lead Clinical Research Coordinator",
+    name: "Aishwarya Vasudevan, PharmD, MS",
+    blurb:
+      "Doctor of Pharmacy with an MS in Pharmaceutical Sciences, majoring in pharmacology and toxicology.",
+    img: "/aishwarya-vasudevan.jpg",
+  },
+];
 
 const HISTORY = [
   {
@@ -141,7 +159,9 @@ export default function AboutPage() {
           <div className="team-grid">
             {TEAM.map((m) => (
               <div className="member" key={m.name}>
-                <div className="portrait" data-cap={m.cap} />
+                <div className="portrait" data-cap={m.cap}>
+                  {m.img ? <img src={m.img} alt={m.name} /> : null}
+                </div>
                 <div className="role">{m.role}</div>
                 <h4>{m.name}</h4>
                 <p>{m.blurb}</p>
