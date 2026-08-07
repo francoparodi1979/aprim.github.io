@@ -20,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/privacy",
     "/terms",
+    "/accessibility",
   ].map((path) => ({
     // Trailing slash matches what GitHub Pages actually serves (trailingSlash:
     // true) — without it every sitemap URL would 301.
