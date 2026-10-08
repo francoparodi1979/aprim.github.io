@@ -1,11 +1,19 @@
 /**
- * Veritas Clinical Research trial portfolio (14 studies as PI site) — the
- * single source of truth for the home-page grid and the sponsors page.
- * Ordered by how actionable each trial is for a visitor: recruiting first,
- * then upcoming, active, completed, terminated. Trials not yet registered on
- * ClinicalTrials.gov carry a sponsor `protocol` number and no `nct`; add the
- * NCT once it is assigned and the card becomes a registry link automatically. Only the two trials with on-site detail
- * pages carry an internal `href`; the rest deep-link to ClinicalTrials.gov.
+ * Veritas Clinical Research trial portfolio — the single source of truth for
+ * the home-page grid, the sponsors table, and every trial count on the site.
+ * `PORTFOLIO` is sorted at load time by how actionable each trial is for a
+ * visitor (recruiting, upcoming, active, completed, terminated), so entries in
+ * `TRIALS` can sit in any order and a status change re-sorts automatically.
+ *
+ * Statuses are kept in sync with ClinicalTrials.gov by
+ * scripts/sync-trial-status.mjs (daily GitHub Action). It only moves a trial
+ * forward (recruiting → active → completed/terminated); setting a trial to
+ * "recruiting" is always a manual decision, because it means Veritas itself
+ * is enrolling. Keep each `status:` on its own line so the script can edit it.
+ *
+ * Trials not yet registered carry a sponsor `protocol` number and no `nct`;
+ * add the NCT once assigned and the card becomes a registry link. Only trials
+ * with on-site detail pages carry an internal `href`.
  */
 export type TrialStatus = "recruiting" | "upcoming" | "active" | "completed" | "terminated";
 
@@ -35,7 +43,7 @@ export function trialId(t: Trial): string {
   return t.nct ?? t.protocol ?? t.title;
 }
 
-export const PORTFOLIO: Trial[] = [
+const TRIALS: Trial[] = [
   {
     nct: "NCT07190209",
     title: "Lunsekimig vs. placebo in inadequately controlled eosinophilic COPD",
@@ -71,7 +79,7 @@ export const PORTFOLIO: Trial[] = [
     title: "Long-term safety and tolerability of itepekimab in COPD",
     phase: "Phase III",
     condition: "COPD",
-    status: "active",
+    status: "completed",
   },
   {
     nct: "NCT03953300",
@@ -137,3 +145,30 @@ export const PORTFOLIO: Trial[] = [
     status: "terminated",
   },
 ];
+
+const STATUS_ORDER: Record<TrialStatus, number> = {
+  recruiting: 0,
+  upcoming: 1,
+  active: 2,
+  completed: 3,
+  terminated: 4,
+};
+
+/** All trials, most actionable first (stable within a status). */
+export const PORTFOLIO: Trial[] = [...TRIALS].sort(
+  (a, b) => STATUS_ORDER[a.status] - STATUS_ORDER[b.status],
+);
+
+export const TRIAL_COUNT = PORTFOLIO.length;
+export const RECRUITING_COUNT = PORTFOLIO.filter((t) => t.status === "recruiting").length;
+
+const WORDS = [
+  "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+  "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen",
+  "Eighteen", "Nineteen", "Twenty",
+];
+
+/** "Fourteen" for 14; falls back to digits past twenty. */
+export function countWord(n: number): string {
+  return WORDS[n] ?? String(n);
+}

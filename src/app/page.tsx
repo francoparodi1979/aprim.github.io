@@ -7,7 +7,15 @@ import { LungAnatomy } from "@/components/LungAnatomy";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { homePageStyles } from "./_styles/home";
-import { PORTFOLIO, STATUS_LABEL, trialId, type Trial } from "@/lib/content/portfolio";
+import {
+  PORTFOLIO,
+  RECRUITING_COUNT,
+  STATUS_LABEL,
+  TRIAL_COUNT,
+  countWord,
+  trialId,
+  type Trial,
+} from "@/lib/content/portfolio";
 
 export default function HomePage() {
   return (
@@ -281,7 +289,12 @@ export default function HomePage() {
       <section className="home-studies" id="studies">
         <div className="studies-head">
           <h2>
-            Fourteen trials. <em>Two enrolling now.</em>
+            {countWord(TRIAL_COUNT)} trials.{" "}
+            <em>
+              {RECRUITING_COUNT === 0
+                ? "New studies coming soon."
+                : `${countWord(RECRUITING_COUNT)} enrolling now.`}
+            </em>
           </h2>
           <div className="meta">
             Our full portfolio as a Principal Investigator site — asthma, COPD,

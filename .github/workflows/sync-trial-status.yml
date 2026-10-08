@@ -1,0 +1,52 @@
+name: Sync trial statuses
+
+# Daily: compare each trial's status on the site with ClinicalTrials.gov and,
+# when a trial has moved forward (e.g. Active → Completed), update the site,
+# redeploy it, and open an issue listing what changed (GitHub emails the repo
+# owner). See scripts/sync-trial-status.mjs for the rules.
+on:
+  schedule:
+    - cron: "17 11 * * *" # 7:17 AM Detroit (EDT) / 6:17 AM (EST)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+  issues: write
+
+concurrency:
+  group: trial-status-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check ClinicalTrials.gov
+        id: sync
+        run: node scripts/sync-trial-status.mjs
+        env:
+          SYNC_SUMMARY: ${{ runner.temp }}/trial-sync-summary.md
+
+      - name: Commit and deploy
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/lib/content/portfolio.ts src/content/studies
+          git commit -m "Sync trial statuses with ClinicalTrials.gov" -m "$(cat "$RUNNER_TEMP/trial-sync-summary.md")"
+          git push origin HEAD:main
+          # Pushes made with the workflow token don't trigger other workflows,
+          # so start the Pages deploy explicitly.
+          gh workflow run deploy.yml --ref main
+          gh issue create \
+            --title "Trial statuses updated on veritasclinical.org ($(date -u +%Y-%m-%d))" \
+            --body-file "$RUNNER_TEMP/trial-sync-summary.md"

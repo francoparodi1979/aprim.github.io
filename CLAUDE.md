@@ -24,7 +24,7 @@ All pages live under `src/app/` and are React Server Components rendered at buil
 
 - Static marketing pages: `/`, `about`, `patients`, `physicians`, `sponsors`, `contact`
 - `studies/[slug]/page.tsx` — renders one study (uses `generateStaticParams` + `dynamicParams = false`; both required for static export). There is intentionally **no** `/studies` listing page — the home page's `#studies` portfolio grid is the catalog, and all "see studies" links point to `/#studies`. `public/studies/index.html` is a meta-refresh stub that redirects bare `/studies/` hits there (static hosts can't do server redirects).
-- The 14-trial `PORTFOLIO` array lives in `src/lib/content/portfolio.ts` (shared by the home grid and the sponsors table; `CAPABILITIES` in `src/lib/content/capabilities.ts` is shared by about + sponsors). It is intentionally separate from the MDX catalog — MDX studies get detail pages; portfolio-only entries deep-link to ClinicalTrials.gov. A trial not yet registered carries `protocol` instead of `nct` and renders as a non-link card marked "NCT pending" until the NCT is added.
+- The `PORTFOLIO` array lives in `src/lib/content/portfolio.ts` (shared by the home grid and the sponsors table; `CAPABILITIES` in `src/lib/content/capabilities.ts` is shared by about + sponsors). It is intentionally separate from the MDX catalog — MDX studies get detail pages; portfolio-only entries deep-link to ClinicalTrials.gov. A trial not yet registered carries `protocol` instead of `nct` and renders as a non-link card marked "NCT pending" until the NCT is added.
 
 Page-scoped CSS lives as template strings in `src/app/_styles/{home,subpages}.ts`, inlined via `<style>`; global tokens and animations in `src/app/globals.css`.
 
@@ -37,6 +37,8 @@ Page-scoped CSS lives as template strings in `src/app/_styles/{home,subpages}.ts
 Studies are MDX files in `src/content/studies/`. Frontmatter is validated by the Zod schema in `src/lib/content/studies.ts` at load time (build fails loudly on schema errors). Loader compiles frontmatter + body via `next-mdx-remote/rsc`.
 
 When a study's status changes, update **both** the MDX frontmatter and the `PORTFOLIO` array in `src/lib/content/portfolio.ts`.
+
+Trial statuses are synced daily from ClinicalTrials.gov by `.github/workflows/sync-trial-status.yml` → `scripts/sync-trial-status.mjs`. It only moves trials forward (recruiting → active → completed/terminated), updates matching MDX frontmatter, pushes to `main`, triggers `deploy.yml`, and opens an issue listing the changes. Setting a trial to "recruiting" stays manual. Keep each trial's `status:` on its own line in `portfolio.ts` (the script edits it by regex). All trial counts on the site (home heading, about, sponsors) are computed from `PORTFOLIO` — never hardcode them.
 
 ### Path alias
 

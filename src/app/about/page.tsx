@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { CAPABILITIES } from "@/lib/content/capabilities";
+import { RECRUITING_COUNT, TRIAL_COUNT, countWord } from "@/lib/content/portfolio";
 import { subpageStyles } from "../_styles/subpages";
 
 export const metadata: Metadata = {
@@ -64,7 +65,9 @@ const HISTORY = [
   {
     year: "20",
     em: "26",
-    note: "Fourteen trials conducted as a PI site. The lunsekimig Phase 3 COPD study and the OCEAN-2 IPF cough study are enrolling now.",
+    note: `${countWord(TRIAL_COUNT)} trials conducted as a PI site${
+      RECRUITING_COUNT > 0 ? `, ${countWord(RECRUITING_COUNT).toLowerCase()} enrolling now` : ""
+    }.`,
   },
 ] as const;
 
@@ -102,7 +105,7 @@ export default function AboutPage() {
                 <span>Founded</span>
               </div>
               <div>
-                <b>14</b>
+                <b>{TRIAL_COUNT}</b>
                 <span>Trials as PI site</span>
               </div>
               <div>

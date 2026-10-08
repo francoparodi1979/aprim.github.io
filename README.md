@@ -16,7 +16,7 @@ This is a **fully static site** — no backend, no database, no server runtime. 
 ```
 src/
 ├── app/
-│   ├── page.tsx           # home (incl. full 14-trial portfolio grid)
+│   ├── page.tsx           # home (incl. full trial portfolio grid)
 │   ├── about/ patients/ physicians/ sponsors/ contact/
 │   ├── studies/[slug]/    # study detail pages from MDX (no listing page — home grid is the catalog)
 │   ├── _styles/           # page-scoped CSS-in-TS strings
@@ -45,7 +45,7 @@ The form intentionally tells visitors **not** to include medical details — see
 
 ## Studies content
 
-Add a study by dropping an MDX file into `src/content/studies/`. Frontmatter is validated at build time by the Zod schema in `src/lib/content/studies.ts` — typos fail the build, not production. The home page's 14-trial portfolio grid is a separate hardcoded list in `src/lib/content/portfolio.ts` (`PORTFOLIO`) — update both when a study's status changes.
+Add a study by dropping an MDX file into `src/content/studies/`. Frontmatter is validated at build time by the Zod schema in `src/lib/content/studies.ts` — typos fail the build, not production. The home page's trial portfolio grid is a separate hardcoded list in `src/lib/content/portfolio.ts` (`PORTFOLIO`) — update both when a study's status changes.
 
 ## HIPAA / PHI posture
 

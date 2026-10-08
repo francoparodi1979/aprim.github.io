@@ -4,13 +4,13 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { CAPABILITIES } from "@/lib/content/capabilities";
-import { PORTFOLIO, STATUS_LABEL, trialId } from "@/lib/content/portfolio";
+import { PORTFOLIO, STATUS_LABEL, TRIAL_COUNT, trialId } from "@/lib/content/portfolio";
 import { subpageStyles } from "../_styles/subpages";
 
 export const metadata: Metadata = {
   title: "For sponsors",
   description:
-    "Site qualification for sponsors and CROs — 14 trials as a PI site across asthma, COPD, IPF, and bronchiectasis. Phase II–IV. Madison Heights, Michigan.",
+    `Site qualification for sponsors and CROs — ${TRIAL_COUNT} trials as a PI site across asthma, COPD, IPF, and bronchiectasis. Phase II–IV. Madison Heights, Michigan.`,
 };
 
 export default function SponsorsPage() {
@@ -40,7 +40,7 @@ export default function SponsorsPage() {
             </p>
             <div className="ks">
               <div>
-                <b>14</b>
+                <b>{TRIAL_COUNT}</b>
                 <span>Trials as PI site</span>
               </div>
               <div>
