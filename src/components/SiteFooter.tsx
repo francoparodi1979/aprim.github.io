@@ -64,10 +64,10 @@ export function SiteFooter() {
           <ul>
             <li>
               <a href="tel:+15862100330" className="f-plain">
-                Phone: 586 210-0330
+                Phone: (586) 210-0330
               </a>
             </li>
-            <li>Fax (586) 210-0380</li>
+            <li>Fax: (586) 210-0380</li>
             <li>
               <Link href="/contact">Leave us a message</Link>
             </li>
