@@ -64,7 +64,7 @@ const HISTORY = [
   {
     year: "20",
     em: "26",
-    note: "Thirteen trials conducted as a PI site. The lunsekimig Phase 3 COPD study is enrolling now.",
+    note: "Fourteen trials conducted as a PI site. The lunsekimig Phase 3 COPD study and the OCEAN-2 IPF cough study are enrolling now.",
   },
 ] as const;
 
@@ -102,7 +102,7 @@ export default function AboutPage() {
                 <span>Founded</span>
               </div>
               <div>
-                <b>13</b>
+                <b>14</b>
                 <span>Trials as PI site</span>
               </div>
               <div>

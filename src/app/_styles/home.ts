@@ -521,7 +521,7 @@ export const homePageStyles = `
   max-width: 300px;
   line-height: 1.6;
 }
-/* Portfolio grid — all 13 trials Veritas has run as a PI site. Compact,
+/* Portfolio grid — all 14 trials Veritas has run as a PI site. Compact,
    information-dense cards keyed by recruitment status via [data-status]. */
 .trial-grid {
   display: grid;
@@ -560,7 +560,7 @@ export const homePageStyles = `
   transition: transform 0.6s cubic-bezier(0.77,0,0.18,1);
 }
 .trial:hover::before { transform: scaleX(1); }
-/* The one recruiting trial keeps its accent bar lit at rest to draw the eye. */
+/* Recruiting trials keep their accent bar lit at rest to draw the eye. */
 .trial[data-status="recruiting"]::before { transform: scaleX(1); }
 .trial[data-status="terminated"] { opacity: 0.78; }
 
@@ -586,6 +586,8 @@ export const homePageStyles = `
 .trial-status .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .trial[data-status="recruiting"] .trial-status { color: var(--color-clay); background: rgba(208,122,69,0.12); }
 .trial[data-status="recruiting"] .trial-status .dot { background: var(--color-clay); animation: breathe 1.5s ease-in-out infinite; }
+.trial[data-status="upcoming"] .trial-status { color: var(--color-clay); background: rgba(208,122,69,0.08); }
+.trial[data-status="upcoming"] .trial-status .dot { background: transparent; border: 1.5px solid var(--color-clay); }
 .trial[data-status="active"] .trial-status { color: var(--color-sage); background: rgba(127,160,147,0.16); }
 .trial[data-status="active"] .trial-status .dot { background: var(--color-sage); }
 .trial[data-status="completed"] .trial-status { color: var(--muted); background: rgba(10,46,56,0.06); }

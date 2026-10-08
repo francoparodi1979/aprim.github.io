@@ -1,14 +1,19 @@
 /**
- * Veritas Clinical Research trial portfolio (13 studies as PI site) — the
+ * Veritas Clinical Research trial portfolio (14 studies as PI site) — the
  * single source of truth for the home-page grid and the sponsors page.
  * Ordered by how actionable each trial is for a visitor: recruiting first,
- * then active, completed, terminated. Only the two trials with on-site detail
+ * then upcoming, active, completed, terminated. Trials not yet registered on
+ * ClinicalTrials.gov carry a sponsor `protocol` number and no `nct`; add the
+ * NCT once it is assigned and the card becomes a registry link automatically. Only the two trials with on-site detail
  * pages carry an internal `href`; the rest deep-link to ClinicalTrials.gov.
  */
-export type TrialStatus = "recruiting" | "active" | "completed" | "terminated";
+export type TrialStatus = "recruiting" | "upcoming" | "active" | "completed" | "terminated";
 
 export interface Trial {
-  nct: string;
+  /** ClinicalTrials.gov ID. Omit until the sponsor registers the study. */
+  nct?: string;
+  /** Sponsor protocol number, shown in place of the NCT while it is pending. */
+  protocol?: string;
   title: string;
   phase: string;
   condition: string;
@@ -19,10 +24,16 @@ export interface Trial {
 
 export const STATUS_LABEL: Record<TrialStatus, string> = {
   recruiting: "Recruiting",
+  upcoming: "Not yet recruiting",
   active: "Active · not recruiting",
   completed: "Completed",
   terminated: "Terminated",
 };
+
+/** Card/row identifier: the NCT when registered, otherwise the protocol number. */
+export function trialId(t: Trial): string {
+  return t.nct ?? t.protocol ?? t.title;
+}
 
 export const PORTFOLIO: Trial[] = [
   {
@@ -32,6 +43,13 @@ export const PORTFOLIO: Trial[] = [
     condition: "COPD",
     status: "recruiting",
     href: "/studies/copd-lunsekimig-301",
+  },
+  {
+    protocol: "NAL03-302",
+    title: "Nalbuphine ER for chronic cough in idiopathic pulmonary fibrosis (OCEAN-2)",
+    phase: "Phase III",
+    condition: "IPF",
+    status: "recruiting",
   },
   {
     nct: "NCT06748053",

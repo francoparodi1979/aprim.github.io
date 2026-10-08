@@ -4,13 +4,13 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { CAPABILITIES } from "@/lib/content/capabilities";
-import { PORTFOLIO, STATUS_LABEL } from "@/lib/content/portfolio";
+import { PORTFOLIO, STATUS_LABEL, trialId } from "@/lib/content/portfolio";
 import { subpageStyles } from "../_styles/subpages";
 
 export const metadata: Metadata = {
   title: "For sponsors",
   description:
-    "Site qualification for sponsors and CROs — 13 trials as a PI site across asthma, COPD, IPF, and bronchiectasis. Phase II–IV. Madison Heights, Michigan.",
+    "Site qualification for sponsors and CROs — 14 trials as a PI site across asthma, COPD, IPF, and bronchiectasis. Phase II–IV. Madison Heights, Michigan.",
 };
 
 export default function SponsorsPage() {
@@ -40,7 +40,7 @@ export default function SponsorsPage() {
             </p>
             <div className="ks">
               <div>
-                <b>13</b>
+                <b>14</b>
                 <span>Trials as PI site</span>
               </div>
               <div>
@@ -76,7 +76,7 @@ export default function SponsorsPage() {
             {PORTFOLIO.map((t) => {
               const inner = (
                 <>
-                  <div className="id">{t.nct}</div>
+                  <div className="id">{trialId(t)}</div>
                   <h4>{t.title}</h4>
                   <div className="mid">
                     {t.phase} · {t.condition}
@@ -87,13 +87,20 @@ export default function SponsorsPage() {
                   </div>
                 </>
               );
+              if (!t.href && !t.nct) {
+                return (
+                  <div key={trialId(t)} className="sp-row">
+                    {inner}
+                  </div>
+                );
+              }
               return t.href ? (
-                <Link key={t.nct} href={t.href as Route} className="sp-row">
+                <Link key={trialId(t)} href={t.href as Route} className="sp-row">
                   {inner}
                 </Link>
               ) : (
                 <a
-                  key={t.nct}
+                  key={trialId(t)}
                   href={`https://clinicaltrials.gov/study/${t.nct}`}
                   className="sp-row"
                   target="_blank"

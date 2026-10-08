@@ -431,6 +431,8 @@ export const subpageStyles = `
 .sp-row .st .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(10,46,56,0.3); flex-shrink: 0; }
 .sp-row .st[data-status="recruiting"] { color: var(--color-clay); }
 .sp-row .st[data-status="recruiting"] .dot { background: var(--color-clay); animation: breathe 1.5s ease-in-out infinite; }
+.sp-row .st[data-status="upcoming"] { color: var(--color-clay); }
+.sp-row .st[data-status="upcoming"] .dot { background: transparent; border: 1.5px solid var(--color-clay); }
 .sp-row .st[data-status="active"] { color: var(--color-sage); }
 .sp-row .st[data-status="active"] .dot { background: var(--color-sage); }
 .sp-row .st[data-status="terminated"] { opacity: 0.7; }

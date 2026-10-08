@@ -7,7 +7,7 @@ import { LungAnatomy } from "@/components/LungAnatomy";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { homePageStyles } from "./_styles/home";
-import { PORTFOLIO, STATUS_LABEL, type Trial } from "@/lib/content/portfolio";
+import { PORTFOLIO, STATUS_LABEL, trialId, type Trial } from "@/lib/content/portfolio";
 
 export default function HomePage() {
   return (
@@ -281,18 +281,18 @@ export default function HomePage() {
       <section className="home-studies" id="studies">
         <div className="studies-head">
           <h2>
-            Thirteen trials. <em>One enrolling now.</em>
+            Fourteen trials. <em>Two enrolling now.</em>
           </h2>
           <div className="meta">
             Our full portfolio as a Principal Investigator site — asthma, COPD,
-            IPF, and bronchiectasis, from Phase II to Phase IV. The recruiting
-            study accepts direct volunteer referrals; screening is free and
+            IPF, and bronchiectasis, from Phase II to Phase IV. Recruiting
+            studies accept direct volunteer referrals; screening is free and
             travel is reimbursed.
           </div>
         </div>
         <div className="trial-grid">
           {PORTFOLIO.map((t) => (
-            <TrialCard key={t.nct} {...t} />
+            <TrialCard key={trialId(t)} {...t} />
           ))}
         </div>
       </section>
@@ -443,7 +443,8 @@ export default function HomePage() {
   );
 }
 
-function TrialCard({ nct, title, phase, condition, status, href }: Trial) {
+function TrialCard(t: Trial) {
+  const { nct, title, phase, condition, status, href } = t;
   const inner = (
     <>
       <div className="trial-top">
@@ -451,7 +452,7 @@ function TrialCard({ nct, title, phase, condition, status, href }: Trial) {
           <span className="dot" />
           {STATUS_LABEL[status]}
         </span>
-        <span className="trial-nct">{nct}</span>
+        <span className="trial-nct">{trialId(t)}</span>
       </div>
       <h3>{title}</h3>
       <div className="trial-foot">
@@ -459,18 +460,29 @@ function TrialCard({ nct, title, phase, condition, status, href }: Trial) {
           <span>{phase}</span>
           <span>{condition}</span>
         </div>
-        <span className="trial-go">{href ? "Details →" : "NCT ↗"}</span>
+        <span className="trial-go">{href ? "Details →" : nct ? "NCT ↗" : "NCT pending"}</span>
       </div>
     </>
   );
 
   // Internal detail pages use Next's typed Link; portfolio-only trials deep-link
-  // to their public ClinicalTrials.gov record in a new tab.
-  return href ? (
-    <Link href={href as Route} className="trial" data-status={status}>
-      {inner}
-    </Link>
-  ) : (
+  // to their public ClinicalTrials.gov record in a new tab. Trials awaiting
+  // registration render as a plain (non-link) card.
+  if (href) {
+    return (
+      <Link href={href as Route} className="trial" data-status={status}>
+        {inner}
+      </Link>
+    );
+  }
+  if (!nct) {
+    return (
+      <div className="trial" data-status={status}>
+        {inner}
+      </div>
+    );
+  }
+  return (
     <a
       href={`https://clinicaltrials.gov/study/${nct}`}
       className="trial"

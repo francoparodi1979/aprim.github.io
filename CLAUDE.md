@@ -24,7 +24,7 @@ All pages live under `src/app/` and are React Server Components rendered at buil
 
 - Static marketing pages: `/`, `about`, `patients`, `physicians`, `sponsors`, `contact`
 - `studies/[slug]/page.tsx` — renders one study (uses `generateStaticParams` + `dynamicParams = false`; both required for static export). There is intentionally **no** `/studies` listing page — the home page's `#studies` portfolio grid is the catalog, and all "see studies" links point to `/#studies`. `public/studies/index.html` is a meta-refresh stub that redirects bare `/studies/` hits there (static hosts can't do server redirects).
-- The 13-trial `PORTFOLIO` array lives in `src/lib/content/portfolio.ts` (shared by the home grid and the sponsors table; `CAPABILITIES` in `src/lib/content/capabilities.ts` is shared by about + sponsors). It is intentionally separate from the MDX catalog — MDX studies get detail pages; portfolio-only entries deep-link to ClinicalTrials.gov.
+- The 14-trial `PORTFOLIO` array lives in `src/lib/content/portfolio.ts` (shared by the home grid and the sponsors table; `CAPABILITIES` in `src/lib/content/capabilities.ts` is shared by about + sponsors). It is intentionally separate from the MDX catalog — MDX studies get detail pages; portfolio-only entries deep-link to ClinicalTrials.gov. A trial not yet registered carries `protocol` instead of `nct` and renders as a non-link card marked "NCT pending" until the NCT is added.
 
 Page-scoped CSS lives as template strings in `src/app/_styles/{home,subpages}.ts`, inlined via `<style>`; global tokens and animations in `src/app/globals.css`.
 
