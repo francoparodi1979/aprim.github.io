@@ -81,7 +81,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="f-bottom">
-        <div>© 2026 Veritas Clinical Research PLLC · GCP · FDA-inspected</div>
+        <div>© 2026 Veritas Clinical Research PLLC · GCP</div>
         <div>
           <Link href="/privacy">Privacy</Link> · <Link href="/terms">Terms</Link>{" "}
           · <Link href="/accessibility">Accessibility</Link>

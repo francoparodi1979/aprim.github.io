@@ -141,7 +141,7 @@ export default function SponsorsPage() {
             <h2>
               What sponsors <em>get.</em>
             </h2>
-            <div className="tag">PI-led · GCP · FDA-inspected</div>
+            <div className="tag">PI-led · GCP</div>
           </div>
           <div className="safety-grid">
             <div className="safety-card">
