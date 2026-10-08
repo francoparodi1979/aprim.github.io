@@ -62,12 +62,12 @@ export function SiteFooter() {
         <div>
           <h5>Contact</h5>
           <ul>
-            <li>
-              <a href="tel:+15862100330" className="f-plain">
-                Phone: (586) 210-0330
-              </a>
+            <li className="f-num">
+              <a href="tel:+15862100330">Phone: (586) 210-0330</a>
             </li>
-            <li>Fax: (586) 210-0380</li>
+            <li className="f-num">
+              <span>Fax: (586) 210-0380</span>
+            </li>
             <li>
               <Link href="/contact">Leave us a message</Link>
             </li>
