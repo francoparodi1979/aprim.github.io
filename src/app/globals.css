@@ -601,6 +601,11 @@ a {
   color: rgba(242, 237, 227, 0.75);
   transition: color 0.2s;
 }
+/* Phone line: still tap-to-call, but styled like the plain fax line. */
+.site-footer .f-grid a.f-plain {
+  font-size: inherit;
+  color: inherit;
+}
 .site-footer .f-grid a:hover {
   color: var(--color-clay-soft);
 }
