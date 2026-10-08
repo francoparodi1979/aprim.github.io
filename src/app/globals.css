@@ -272,7 +272,7 @@ a {
 /* Veritas full lockup logo in the nav (official asset, trimmed to content;
    ~1.23:1). Width is auto so the aspect ratio holds at the set height. */
 .site-nav .brand-logo {
-  height: 80px;
+  height: 120px;
   width: auto;
   display: block;
   user-select: none;
@@ -656,7 +656,7 @@ a {
     padding: 10px 16px 12px;
   }
   .site-nav .brand { order: 1; }
-  .site-nav .brand-logo { height: 54px; }
+  .site-nav .brand-logo { height: 81px; }
   .site-nav > .cta-pill {
     order: 2;
     margin-left: auto;
