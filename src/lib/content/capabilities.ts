@@ -12,25 +12,25 @@ export const CAPABILITIES = [
   {
     label: "Imaging",
     title: "HRCT + chest radiography",
-    desc: "Via partner imaging center · 1.2 mi from site",
+    desc: "Via partner imaging center · across the street from site",
     have: "Same-day scheduling, secure sponsor transfer",
   },
   {
     label: "Specimen",
-    title: "IATA-certified specimen handling",
+    title: "Specimen processing & shipping",
     desc: "Central lab processing · on-site -80°C freezer · courier chain",
     have: "Sponsor-qualified for oncology-grade chain of custody",
   },
   {
     label: "Systems",
     title: "EDC · CTMS · eSource-ready",
-    desc: "Veeva · Medidata Rave · Oracle Siebel — compatible",
+    desc: "CTMS: Advarra Clinical Conductor · EDC: Veeva · Medidata Rave · Oracle Siebel",
     have: "Part 11 compliant, typical activation 28 days",
   },
   {
     label: "Regulatory",
     title: "Full IRB submission infrastructure",
-    desc: "Central + local IRB workflows · 1572/FDF on file",
-    have: "Zero critical findings last 3 audits",
+    desc: "Central IRB workflows · 1572/FDF on file",
+    have: "GCP-trained staff · sponsor-monitored",
   },
 ] as const;
