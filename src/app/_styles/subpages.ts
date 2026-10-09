@@ -71,6 +71,13 @@ export const subpageStyles = `
   display: block;
   line-height: 1;
 }
+.ph .ks .ks-phone-cell { container-type: inline-size; }
+.ph .ks b.ks-phone {
+  white-space: nowrap;
+  font-size: min(40px, 15cqi);
+  overflow-wrap: normal;
+}
+.ph .ks b.ks-phone a { color: inherit; text-decoration: none; }
 .ph .ks span {
   font-family: var(--font-mono);
   font-size: 10px;
