@@ -53,6 +53,7 @@ const TRIALS: Trial[] = [
     href: "/studies/copd-lunsekimig-301",
   },
   {
+    nct: "NCT07868419",
     protocol: "NAL03-302",
     title: "Nalbuphine ER for chronic cough in idiopathic pulmonary fibrosis (OCEAN-2)",
     phase: "Phase III",
