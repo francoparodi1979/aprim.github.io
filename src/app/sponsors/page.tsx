@@ -164,7 +164,7 @@ export default function SponsorsPage() {
             </div>
             <div className="safety-card">
               <div className="n">◈ Transparency</div>
-              <h4>Metrics you can audit</h4>
+              <h4>Metrics you can verify</h4>
               <p>
                 Screening, enrollment, and retention numbers reported as they
                 are — the same radical transparency we promise participants
