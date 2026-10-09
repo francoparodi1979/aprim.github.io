@@ -32,9 +32,11 @@ export default function ContactPage() {
               person answers, no triage, no call tree.
             </p>
             <div className="ks">
-              <div>
-                <b>(586)</b>
-                <span>210-0330</span>
+              <div className="ks-phone-cell">
+                <b className="ks-phone">
+                  <a href="tel:+15862100330">(586) 210-0330</a>
+                </b>
+                <span>Call a coordinator</span>
               </div>
               <div>
                 <b>Mon–Fri</b>
