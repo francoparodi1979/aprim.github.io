@@ -77,6 +77,11 @@ export function SiteFooter() {
             <li>
               <Link href="/contact">Careers</Link>
             </li>
+            <li>
+              <a href="https://g.page/r/CXp1KrT1sxXjEAI/review" target="_blank" rel="noopener noreferrer">
+                Review us on Google
+              </a>
+            </li>
           </ul>
         </div>
       </div>
