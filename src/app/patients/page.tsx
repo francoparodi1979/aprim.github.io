@@ -156,7 +156,7 @@ export default function PatientsPage() {
               Three <em>promises</em> on visit one.
             </h2>
             <div className="tag" style={{ color: "rgba(242,237,227,0.55)" }}>
-              IRB-monitored · 2024 audit clean
+              IRB-monitored · GCP-trained staff
             </div>
           </div>
           <div className="safety-grid">
