@@ -337,7 +337,7 @@ export default function HomePage() {
                 <b>Education</b>Universidad de San Martin de Porres, Lima, Peru · Henry Ford Hospital, Detroit — Internal Medicine Residency &amp; Fellowship in Pulmonary Diseases and Critical Care Medicine
               </div>
               <div>
-                <b>Memberships</b>Fellow of the American Academy of Chest Physicians · Member of the Association of Clinical Research Professionals
+                <b>Memberships</b>Fellow of the American College of Chest Physicians · Member of the Association of Clinical Research Professionals
               </div>
               <div>
                 <b>Appointments</b>Associate Professor of Medicine, Michigan State University College of Osteopathic Medicine · Associate Program Director, Fellowship in Pulmonary &amp; Critical Care Medicine, Henry Ford Warren Hospital, MI

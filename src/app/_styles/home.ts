@@ -521,7 +521,7 @@ export const homePageStyles = `
   max-width: 300px;
   line-height: 1.6;
 }
-/* Portfolio grid — all 14 trials Veritas has run as a PI site. Compact,
+/* Portfolio grid — every trial Veritas has run as a PI site. Compact,
    information-dense cards keyed by recruitment status via [data-status]. */
 .trial-grid {
   display: grid;

@@ -177,7 +177,7 @@ export default function AboutPage() {
           <div className="sh">
             <div className="num">§ 02 / History</div>
             <h2>
-              Seven years, <em>five moments.</em>
+              Five years, <em>five moments.</em>
             </h2>
             <div className="tag">Updated · 2026</div>
           </div>

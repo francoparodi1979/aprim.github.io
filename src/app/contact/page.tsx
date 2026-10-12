@@ -40,7 +40,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <b>Mon–Fri</b>
-                <span>9 a.m. – 5 p.m. EST</span>
+                <span>9 a.m. – 5 p.m. ET</span>
               </div>
               <div>
                 <b>&lt; 24h</b>
