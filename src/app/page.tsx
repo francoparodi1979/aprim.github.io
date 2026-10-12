@@ -118,31 +118,19 @@ export default function HomePage() {
           {[...Array(2)].map((_, n) => (
             <span key={n} style={{ display: "contents" }}>
               <span className="ticker-item">
-                <span className="mono">◈</span>Internal Medicine
+                <span className="mono">◈</span>Pulmonary Medicine
               </span>
               <span className="ticker-item">
-                <span className="mono">◈</span>Pulmonary Diseases
+                <span className="mono">◈</span>Asthma
               </span>
               <span className="ticker-item">
-                <span className="mono">◈</span>Sleep Medicine
+                <span className="mono">◈</span>COPD
               </span>
               <span className="ticker-item">
-                <span className="mono">◈</span>Cardiology
+                <span className="mono">◈</span>Idiopathic Pulmonary Fibrosis
               </span>
               <span className="ticker-item">
-                <span className="mono">◈</span>Neurology
-              </span>
-              <span className="ticker-item">
-                <span className="mono">◈</span>Oncology
-              </span>
-              <span className="ticker-item">
-                <span className="mono">◈</span>ENT
-              </span>
-              <span className="ticker-item">
-                <span className="mono">◈</span>Endocrinology
-              </span>
-              <span className="ticker-item">
-                <span className="mono">◈</span>Nephrology
+                <span className="mono">◈</span>Bronchiectasis
               </span>
             </span>
           ))}
@@ -167,16 +155,15 @@ export default function HomePage() {
               ◈ Our method
             </div>
             <h2>
-              A rhythm of <em>rigor</em> — measured across five years of follow-up.
+              A rhythm of <em>rigor</em> — on every visit.
             </h2>
             <p>
-              Every protocol we run anchors on the same three disciplines: deep
-              phenotyping at baseline, standardized spirometry on every visit,
-              and longitudinal follow-up that lasts years after the last dose.
-              The chart shows mean FEV₁ across a Veritas Clinical Research cohort vs. standard-of-care comparators.
+              Every protocol we run anchors on the same three disciplines: careful
+              phenotyping at baseline, standardized spirometry at every visit,
+              and close follow-up for as long as the protocol requires.
             </p>
             <Link className="link" href="/about">
-              See our published methodology →
+              Learn more about our team →
             </Link>
           </div>
           <div className="wave-stage">
@@ -237,50 +224,7 @@ export default function HomePage() {
                 </circle>
               </g>
             </svg>
-            <div className="wave-labels" aria-hidden>
-              <span className="wave-label" style={{ top: 8, left: 12 }}>
-                FEV₁ predicted %
-              </span>
-              <span className="wave-label" style={{ top: 88, right: 12 }}>
-                80
-              </span>
-              <span className="wave-label" style={{ top: 173, right: 12 }}>
-                65
-              </span>
-              <span className="wave-label" style={{ top: 258, right: 12 }}>
-                50
-              </span>
-              <span className="wave-label" style={{ bottom: 8, left: 12 }}>
-                T₀
-              </span>
-              <span className="wave-label" style={{ bottom: 8, left: "25%" }}>
-                Year 1
-              </span>
-              <span className="wave-label" style={{ bottom: 8, left: "50%" }}>
-                Year 3
-              </span>
-              <span className="wave-label" style={{ bottom: 8, right: 80 }}>
-                Year 5
-              </span>
-            </div>
           </div>
-        </div>
-        <div className="wave-strip">
-          <span>
-            N · <b>412 volunteers</b>
-          </span>
-          <span>
-            Mean Δ FEV₁ · <b>+0.14 L</b>
-          </span>
-          <span>
-            Exacerbations · <b>−42%</b>
-          </span>
-          <span>
-            Published · <b>AJRCCM · 2024</b>
-          </span>
-          <span>
-            P-value · <b>&lt; 0.001</b>
-          </span>
         </div>
       </section>
 
@@ -408,21 +352,6 @@ export default function HomePage() {
               your health — keeps moving forward together.
             </p>
             <div className="dur">Years 1–5</div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== QUOTE BAND ========== */}
-      <section className="quote-band">
-        <q>
-          I came in thinking I was <em>donating my lungs to science</em>. I left
-          with a team who called me on Christmas Eve to check how I was breathing.
-        </q>
-        <div className="who">
-          <div className="avatar" />
-          <div className="name">
-            <strong>Marta R., 68</strong>
-            <span>Volunteer · IPF cohort, 2022–2024</span>
           </div>
         </div>
       </section>

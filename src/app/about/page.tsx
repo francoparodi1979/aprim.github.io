@@ -91,8 +91,8 @@ export default function AboutPage() {
               of medicine is built on a foundation of truth. Our name — veritas,
               the Latin word for truth — reflects our unwavering commitment to
               honest, rigorous, and ethically grounded clinical research. We
-              conduct Phase I–IV clinical trials across a broad spectrum of
-              therapeutic areas, partnering with sponsors, physicians, and
+              conduct Phase II–IV clinical trials in pulmonary medicine —
+              asthma, COPD, IPF and bronchiectasis — partnering with sponsors, physicians, and
               patients to advance treatments that genuinely improve human health.
               Every study we undertake is guided by scientific integrity,
               transparency, and the highest standards of patient safety. At
