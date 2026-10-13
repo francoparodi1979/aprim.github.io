@@ -32,13 +32,13 @@ export function SiteFooter() {
               <Link href="/#studies">Active studies</Link>
             </li>
             <li>
-              <Link href="/about">Methodology</Link>
+              <Link href="/sponsors">Site capabilities</Link>
             </li>
             <li>
-              <Link href="/about">Publications</Link>
+              <Link href="/about">Our team</Link>
             </li>
             <li>
-              <Link href="/about">Data governance</Link>
+              <Link href="/privacy">Privacy</Link>
             </li>
           </ul>
         </div>

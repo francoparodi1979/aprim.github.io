@@ -16,7 +16,7 @@ const STEPS = [
     big: "i",
     t: "Day 1 · Call",
     title: "A short, no-pressure conversation.",
-    body: "10–15 minutes with a coordinator. You describe your breathing, current meds, and history. We flag anything that might fit — and we say so plainly if nothing does.",
+    body: "About 20 minutes with a coordinator. You describe your breathing, current meds, and history. We flag anything that might fit — and we say so plainly if nothing does.",
   },
   {
     big: "ii",
@@ -200,7 +200,7 @@ export default function PatientsPage() {
             Start with a <em>conversation.</em>
           </h2>
           <p>
-            Twenty minutes on the phone. No commitment, no consent forms, no
+            About 20 minutes on the phone. No commitment, no consent forms, no
             paperwork. You leave knowing whether anything fits — and we leave
             knowing how to help.
           </p>

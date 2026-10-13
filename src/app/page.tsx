@@ -376,7 +376,7 @@ export default function HomePage() {
             <div className="dot">i</div>
             <h4>Conversation, not commitment</h4>
             <p>
-              A 20-minute call with a Veritas Clinical Research coordinator. We describe the trial,
+              A call of about 20 minutes with a Veritas Clinical Research coordinator. We describe the trial,
               you describe your story, and we check whether there&apos;s a
               mutual fit.
             </p>

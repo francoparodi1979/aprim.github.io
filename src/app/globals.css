@@ -8,6 +8,8 @@
   --color-cream: #f7f2e8;
   --color-clay: #d07a45;
   --color-clay-soft: #e89a6d;
+  /* Darker clay for small text on cream/bone — meets WCAG AA (≥4.5:1). Large headings keep --color-clay. */
+  --color-clay-text: #93542f;
   --color-sage: #7fa093;
   --color-mint: #a8c7b9;
 
@@ -80,7 +82,7 @@ a {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-clay);
+  color: var(--color-clay-text);
   font-weight: 500;
   font-family: var(--font-mono);
 }

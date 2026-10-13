@@ -584,9 +584,9 @@ export const homePageStyles = `
   white-space: nowrap;
 }
 .trial-status .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-.trial[data-status="recruiting"] .trial-status { color: var(--color-clay); background: rgba(208,122,69,0.12); }
+.trial[data-status="recruiting"] .trial-status { color: var(--color-clay-text); background: rgba(208,122,69,0.12); }
 .trial[data-status="recruiting"] .trial-status .dot { background: var(--color-clay); animation: breathe 1.5s ease-in-out infinite; }
-.trial[data-status="upcoming"] .trial-status { color: var(--color-clay); background: rgba(208,122,69,0.08); }
+.trial[data-status="upcoming"] .trial-status { color: var(--color-clay-text); background: rgba(208,122,69,0.08); }
 .trial[data-status="upcoming"] .trial-status .dot { background: transparent; border: 1.5px solid var(--color-clay); }
 .trial[data-status="active"] .trial-status { color: var(--color-sage); background: rgba(127,160,147,0.16); }
 .trial[data-status="active"] .trial-status .dot { background: var(--color-sage); }
@@ -635,7 +635,7 @@ export const homePageStyles = `
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-clay);
+  color: var(--color-clay-text);
   white-space: nowrap;
   opacity: 0;
   transform: translateX(-4px);
@@ -733,7 +733,7 @@ export const homePageStyles = `
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-clay);
+  color: var(--color-clay-text);
   margin-bottom: 6px;
   font-weight: 500;
 }
@@ -859,7 +859,7 @@ export const homePageStyles = `
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-clay);
+  color: var(--color-clay-text);
 }
 
 /* ===== QUOTE BAND ===== */
