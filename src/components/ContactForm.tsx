@@ -9,6 +9,16 @@ const FORM_EMAIL = "franco.parodi@veritasclinical.org";
 const FORM_ENDPOINT = `https://formsubmit.co/${FORM_EMAIL}`;
 const FORM_AJAX_ENDPOINT = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
 
+// Plain-text confirmation FormSubmit emails to the person who submitted.
+const AUTORESPONSE =
+  "Thank you for contacting Veritas Clinical Research. We received your " +
+  "message, and a study coordinator will contact you within one business day. " +
+  "If your question is time-sensitive, please call us at (586) 210-0330, " +
+  "weekdays 9 a.m. to 5 p.m. ET. Please do not send medical details such as " +
+  "diagnoses, medications, or test results by email; we will go over those " +
+  "with you by phone. Veritas Clinical Research, Madison Heights and Warren, " +
+  "Michigan. veritasclinical.org";
+
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 /**
@@ -82,6 +92,8 @@ export function ContactForm() {
       />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_template" value="table" />
+      {/* Automatic confirmation emailed to the visitor's address (the "email" field). */}
+      <input type="hidden" name="_autoresponse" value={AUTORESPONSE} />
       {/* Honeypot: hidden from humans; bots that fill it are dropped. */}
       <input
         type="text"

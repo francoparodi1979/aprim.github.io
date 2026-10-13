@@ -30,7 +30,7 @@ Page-scoped CSS lives as template strings in `src/app/_styles/{home,subpages}.ts
 
 ### Contact form (the only interactive feature)
 
-`src/components/ContactForm.tsx` (`"use client"`) posts name/email/phone/message to FormSubmit (`https://formsubmit.co/ajax/franco.parodi@veritasclinical.org`, delivering to the Veritas Microsoft 365 inbox) via fetch with an inline success state; the native `action` attribute is kept as a no-JS fallback. Includes a `_honey` honeypot. There is deliberately **no** health questionnaire — the form copy asks visitors not to send medical details (keeps the site out of PHI/HIPAA scope).
+`src/components/ContactForm.tsx` (`"use client"`) posts name/email/phone/message to FormSubmit (`https://formsubmit.co/ajax/franco.parodi@veritasclinical.org`, delivering to the Veritas Microsoft 365 inbox) via fetch with an inline success state; the native `action` attribute is kept as a no-JS fallback. Includes a `_honey` honeypot, and `_autoresponse` emails the submitter a confirmation (text in the `AUTORESPONSE` constant). There is deliberately **no** health questionnaire — the form copy asks visitors not to send medical details (keeps the site out of PHI/HIPAA scope).
 
 ### Content system
 
