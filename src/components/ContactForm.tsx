@@ -2,14 +2,19 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mrengwkd";
+// FormSubmit delivers each submission by email to this address (the
+// Veritas Microsoft 365 mailbox). The first submission sends a one-time
+// activation email there; submissions are delivered once it is confirmed.
+const FORM_EMAIL = "franco.parodi@veritasclinical.org";
+const FORM_ENDPOINT = `https://formsubmit.co/${FORM_EMAIL}`;
+const FORM_AJAX_ENDPOINT = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 /**
- * Contact form backed by Formspree — no first-party backend. Submits via
+ * Contact form backed by FormSubmit — no first-party backend. Submits via
  * fetch for an inline confirmation; the plain `action`/`method` attributes
- * remain so the form still works if JavaScript is unavailable (Formspree
+ * remain so the form still works if JavaScript is unavailable (FormSubmit
  * then shows its own hosted thank-you page).
  */
 export function ContactForm() {
@@ -28,7 +33,7 @@ export function ContactForm() {
     const form = e.currentTarget;
     setStatus("submitting");
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch(FORM_AJAX_ENDPOINT, {
         method: "POST",
         body: new FormData(form),
         headers: { Accept: "application/json" },
@@ -65,20 +70,22 @@ export function ContactForm() {
   return (
     <form
       className="cform"
-      action={FORMSPREE_ENDPOINT}
+      action={FORM_ENDPOINT}
       method="POST"
       onSubmit={handleSubmit}
     >
-      {/* Formspree metadata */}
+      {/* FormSubmit metadata */}
       <input
         type="hidden"
         name="_subject"
         value="New inquiry — veritasclinical.org"
       />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
       {/* Honeypot: hidden from humans; bots that fill it are dropped. */}
       <input
         type="text"
-        name="_gotcha"
+        name="_honey"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"

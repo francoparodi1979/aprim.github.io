@@ -121,7 +121,7 @@ export default function AccessibilityPage() {
             <p>
               Some content comes from services we do not control and may not
               meet the same accessibility standards: our contact form is
-              processed by Formspree, the contact-page map is provided by
+              processed by FormSubmit, the contact-page map is provided by
               Google Maps, and study listings link to ClinicalTrials.gov, an
               external government website.
             </p>

@@ -3,7 +3,7 @@ import path from "node:path";
 
 /**
  * Static export — the site is a fully pre-rendered brochure site deployed to
- * GitHub Pages. Form submissions go to Formspree, so there is no server
+ * GitHub Pages. Form submissions go to FormSubmit, so there is no server
  * runtime: no API routes, no ISR, no image optimizer, no response headers
  * (GitHub Pages cannot set them).
  */
