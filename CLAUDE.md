@@ -14,7 +14,7 @@ No database, no Docker, no required env vars. `NEXT_PUBLIC_SITE_URL` (optional) 
 
 ## Architecture
 
-**Stack**: Next.js 15 App Router with `output: "export"` (fully static site), React 19, TypeScript (strict), Tailwind CSS v4, MDX study content, Formspree for the contact form.
+**Stack**: Next.js 15 App Router with `output: "export"` (fully static site), React 19, TypeScript (strict), Tailwind CSS v4, MDX study content, FormSubmit for the contact form.
 
 **There is no backend.** The site is exported to plain HTML/CSS/JS in `out/` and served by GitHub Pages. Anything requiring a server (API routes, ISR/`revalidate`, response headers, image optimization) will break the build or silently not work — don't add them.
 
@@ -30,7 +30,7 @@ Page-scoped CSS lives as template strings in `src/app/_styles/{home,subpages}.ts
 
 ### Contact form (the only interactive feature)
 
-`src/components/ContactForm.tsx` (`"use client"`) posts name/email/phone/message to Formspree (`https://formspree.io/f/mrengwkd`) via fetch with an inline success state; the native `action` attribute is kept as a no-JS fallback. Includes a `_gotcha` honeypot. There is deliberately **no** health questionnaire — the form copy asks visitors not to send medical details (keeps the site out of PHI/HIPAA scope).
+`src/components/ContactForm.tsx` (`"use client"`) posts name/email/phone/message to FormSubmit (`https://formsubmit.co/ajax/franco.parodi@veritasclinical.org`, delivering to the Veritas Microsoft 365 inbox) via fetch with an inline success state; the native `action` attribute is kept as a no-JS fallback. Includes a `_honey` honeypot. There is deliberately **no** health questionnaire — the form copy asks visitors not to send medical details (keeps the site out of PHI/HIPAA scope).
 
 ### Content system
 
@@ -51,5 +51,5 @@ Push to `main` → `.github/workflows/deploy.yml` builds and deploys to GitHub P
 ## Key design decisions
 
 - **Static-first**: every page is pre-rendered at build time. `trailingSlash: true` and `images.unoptimized: true` are required for GitHub Pages.
-- **No backend by design**: form handling is delegated to Formspree. The former Drizzle/Postgres/Resend/Turnstile backend was removed in July 2026 — see git history if it ever needs to be resurrected.
+- **No backend by design**: form handling is delegated to FormSubmit. The former Drizzle/Postgres/Resend/Turnstile backend was removed in July 2026 — see git history if it ever needs to be resurrected.
 - **No PHI by design**: only name, email, phone, and a free-text message are collected, with explicit copy discouraging medical details.

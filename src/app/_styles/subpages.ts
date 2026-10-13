@@ -704,7 +704,7 @@ export const subpageStyles = `
 }
 .find-map:hover .find-chip { background: var(--color-clay); }
 
-/* Contact form (Formspree) */
+/* Contact form (FormSubmit) */
 .cform {
   max-width: 720px;
   display: flex;

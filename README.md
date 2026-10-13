@@ -2,13 +2,13 @@
 
 Marketing & patient-facing site for **Veritas Clinical Research**, led by Dr. Franco Parodi. Focused on COPD, asthma, and IPF clinical trials.
 
-This is a **fully static site** — no backend, no database, no server runtime. It's exported with `next build` (`output: "export"`) and deployed to **GitHub Pages**. The contact form posts to **Formspree**.
+This is a **fully static site** — no backend, no database, no server runtime. It's exported with `next build` (`output: "export"`) and deployed to **GitHub Pages**. The contact form posts to **FormSubmit**.
 
 ## Stack
 
 - **Next.js 15** (App Router, RSC, static export) + TypeScript + Tailwind v4
 - **MDX** for study content (`gray-matter` + `next-mdx-remote`, frontmatter validated with Zod at build time)
-- **Formspree** for the contact form (no first-party form handling)
+- **FormSubmit** for the contact form (no first-party form handling)
 - **GitHub Pages** for hosting (via GitHub Actions, `.github/workflows/deploy.yml`)
 
 ## Layout
@@ -21,7 +21,7 @@ src/
 │   ├── studies/[slug]/    # study detail pages from MDX (no listing page — home grid is the catalog)
 │   ├── _styles/           # page-scoped CSS-in-TS strings
 │   ├── sitemap.ts robots.ts
-├── components/            # SiteNav, SiteFooter, ContactForm (Formspree), visuals
+├── components/            # SiteNav, SiteFooter, ContactForm (FormSubmit), visuals
 ├── content/
 │   └── studies/           # MDX with structured frontmatter
 └── lib/
@@ -39,7 +39,7 @@ That's it — no Docker, no database, no env vars required. `NEXT_PUBLIC_SITE_UR
 
 ## Contact form
 
-`src/components/ContactForm.tsx` posts name / email / phone / optional message to Formspree (`https://formspree.io/f/mrengwkd`). Submissions arrive by email. Includes a `_gotcha` honeypot for bots. To change the destination, edit `FORMSPREE_ENDPOINT` in that file.
+`src/components/ContactForm.tsx` posts name / email / phone / optional message to FormSubmit, which emails each submission to franco.parodi@veritasclinical.org (Microsoft 365). Includes a `_honey` honeypot for bots. To change the destination, edit `FORM_EMAIL` in that file; a new address must confirm FormSubmit's one-time activation email.
 
 The form intentionally tells visitors **not** to include medical details — see PHI posture below.
 
