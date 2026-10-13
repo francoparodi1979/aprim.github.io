@@ -94,6 +94,7 @@ export const subpageStyles = `
 .sub-section.ink { background: var(--color-ink); color: var(--color-cream); }
 .sub-section.ink h2 { color: var(--color-cream); }
 .sub-section.ink h2 em { color: var(--color-clay-soft); }
+.sub-section.ink .sh .num, .sub-section.ink .eyebrow { color: var(--color-clay-soft); }
 
 .sh {
   display: grid;
@@ -105,7 +106,7 @@ export const subpageStyles = `
 .sh .num {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--color-clay);
+  color: var(--color-clay-text);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -198,7 +199,7 @@ export const subpageStyles = `
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
-  color: var(--color-clay);
+  color: var(--color-clay-text);
   text-transform: uppercase;
 }
 .member h4 {
@@ -436,7 +437,7 @@ export const subpageStyles = `
   color: var(--muted);
 }
 .sp-row .st .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(10,46,56,0.3); flex-shrink: 0; }
-.sp-row .st[data-status="recruiting"] { color: var(--color-clay); }
+.sp-row .st[data-status="recruiting"] { color: var(--color-clay-text); }
 .sp-row .st[data-status="recruiting"] .dot { background: var(--color-clay); animation: breathe 1.5s ease-in-out infinite; }
 .sp-row .st[data-status="upcoming"] { color: var(--color-clay); }
 .sp-row .st[data-status="upcoming"] .dot { background: transparent; border: 1.5px solid var(--color-clay); }
