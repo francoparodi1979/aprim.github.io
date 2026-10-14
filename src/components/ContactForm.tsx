@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 // FormSubmit delivers each submission by email to this address (the
-// Veritas Microsoft 365 mailbox). The first submission sends a one-time
-// activation email there; submissions are delivered once it is confirmed.
-const FORM_EMAIL = "franco.parodi@veritasclinical.org";
+// Veritas "contact@" shared mailbox in Microsoft 365). The first submission
+// sends a one-time activation email there; submissions are delivered once
+// it is confirmed.
+const FORM_EMAIL = "contact@veritasclinical.org";
 const FORM_ENDPOINT = `https://formsubmit.co/${FORM_EMAIL}`;
 const FORM_AJAX_ENDPOINT = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
 

@@ -152,8 +152,8 @@ export default function PrivacyPage() {
               You can reach us by texting the word HELP for support to{" "}
               <a href="tel:+15862100330">(586) 210-0330</a>. You may also
               contact us directly at{" "}
-              <a href="mailto:franco.parodi@veritasclinical.org">
-                franco.parodi@veritasclinical.org
+              <a href="mailto:contact@veritasclinical.org">
+                contact@veritasclinical.org
               </a>
               .
             </p>
