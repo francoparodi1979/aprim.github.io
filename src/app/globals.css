@@ -620,6 +620,32 @@ a {
 .site-footer .f-grid a:hover {
   color: var(--color-clay-soft);
 }
+/* Google review + Facebook icon buttons in the Contact column */
+.site-footer .f-grid .f-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+.site-footer .f-grid .f-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 237, 227, 0.25);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.site-footer .f-grid .f-social a:first-child {
+  background: #ffffff;
+}
+.site-footer .f-grid .f-social a:last-child {
+  background: #1877f2;
+}
+.site-footer .f-grid .f-social a:hover {
+  border-color: var(--color-clay-soft);
+  transform: translateY(-2px);
+}
 .site-footer .f-brand {
   font-family: var(--font-display);
   font-weight: 300;
