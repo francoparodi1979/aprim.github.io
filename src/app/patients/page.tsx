@@ -116,10 +116,6 @@ export default function PatientsPage() {
                 <span>To screen</span>
               </div>
               <div>
-                <b>$40–$150</b>
-                <span>Per visit, typical</span>
-              </div>
-              <div>
                 <b>24h</b>
                 <span>Coordinator reply</span>
               </div>
