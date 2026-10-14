@@ -65,7 +65,7 @@ const FAQ = [
   {
     q: "What's the",
     qEm: "cost?",
-    a: "Zero. All study-related visits, medications, labs, and imaging are covered by the sponsor. Most studies also compensate participants for time and travel — typically $40–$150 per visit.",
+    a: "Zero. All study-related visits, medications, labs, and imaging are covered by the sponsor. Every study offers compensation for your participation. Most studies offer reimbursement for time and travel expenses.",
   },
   {
     q: "Do I keep my",
