@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const GOOGLE_REVIEWS_URL = "https://g.page/r/CXp1KrT1sxXjEAI/review";
 const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61595187548086";
+const LINKEDIN_URL = "https://www.linkedin.com/company/veritas-clinical-research/";
 
 export function SiteFooter() {
   return (
@@ -82,6 +83,7 @@ export function SiteFooter() {
             </li>
             <li className="f-social">
               <a
+                className="f-google"
                 href={GOOGLE_REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -96,6 +98,7 @@ export function SiteFooter() {
                 </svg>
               </a>
               <a
+                className="f-facebook"
                 href={FACEBOOK_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -104,6 +107,18 @@ export function SiteFooter() {
               >
                 <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                   <path fill="#ffffff" d="M15.12 5.32H17V2.14A26.11 26.11 0 0 0 14.26 2c-2.72 0-4.58 1.66-4.58 4.7v2.62H6.61v3.56h3.07V22h3.68v-9.12h3.06l.46-3.56h-3.52V7.05c0-1.03.28-1.73 1.76-1.73z" />
+                </svg>
+              </a>
+              <a
+                className="f-linkedin"
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Veritas Clinical Research on LinkedIn"
+                title="Follow us on LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path fill="#ffffff" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.8 2.66 4.8 6.13V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.91 1.3-1.91 2.63V21h-4V9.75z" />
                 </svg>
               </a>
             </li>

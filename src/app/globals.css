@@ -636,11 +636,14 @@ a {
   border: 1px solid rgba(242, 237, 227, 0.25);
   transition: border-color 0.2s, transform 0.2s;
 }
-.site-footer .f-grid .f-social a:first-child {
+.site-footer .f-grid .f-social a.f-google {
   background: #ffffff;
 }
-.site-footer .f-grid .f-social a:last-child {
+.site-footer .f-grid .f-social a.f-facebook {
   background: #1877f2;
+}
+.site-footer .f-grid .f-social a.f-linkedin {
+  background: #0a66c2;
 }
 .site-footer .f-grid .f-social a:hover {
   border-color: var(--color-clay-soft);
