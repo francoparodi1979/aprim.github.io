@@ -1,8 +1,7 @@
 import Link from "next/link";
 
 const GOOGLE_REVIEWS_URL = "https://g.page/r/CXp1KrT1sxXjEAI/review";
-// TODO: replace with the Veritas Clinical Research Facebook Page address.
-const FACEBOOK_URL = "https://www.facebook.com/";
+const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61595187548086";
 
 export function SiteFooter() {
   return (
