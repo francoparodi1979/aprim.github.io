@@ -119,7 +119,7 @@ export default function SponsorsPage() {
             <h2>
               Built for <em>pulmonary</em> protocols.
             </h2>
-            <div className="tag">4,200 sq ft · Madison Heights, MI</div>
+            <div className="tag">Madison Heights, MI</div>
           </div>
           <div className="cap-table">
             {CAPABILITIES.map((c) => (

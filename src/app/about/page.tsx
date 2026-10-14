@@ -200,7 +200,7 @@ export default function AboutPage() {
             <h2>
               What we have <em>on-site.</em>
             </h2>
-            <div className="tag">4,200 sq ft · Madison Heights</div>
+            <div className="tag">Madison Heights, MI</div>
           </div>
           <div className="cap-table">
             {CAPABILITIES.map((c) => (
