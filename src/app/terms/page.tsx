@@ -95,12 +95,9 @@ export default function TermsPage() {
 
             <h2>Help / customer support</h2>
             <p>
-              Text the word HELP for support. You may also contact us directly
-              at{" "}
-              <a href="mailto:contact@veritasclinical.org">
-                contact@veritasclinical.org
-              </a>{" "}
-              or <a href="tel:+15862100330">(586) 210-0330</a>.
+              Text the word HELP for support. You may also call us at{" "}
+              <a href="tel:+15862100330">(586) 210-0330</a> or send us a
+              message through our <Link href="/contact">contact form</Link>.
             </p>
 
             <h2>Liability</h2>

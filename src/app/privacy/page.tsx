@@ -151,11 +151,8 @@ export default function PrivacyPage() {
             <p>
               You can reach us by texting the word HELP for support to{" "}
               <a href="tel:+15862100330">(586) 210-0330</a>. You may also
-              contact us directly at{" "}
-              <a href="mailto:contact@veritasclinical.org">
-                contact@veritasclinical.org
-              </a>
-              .
+              send us a message through our{" "}
+              <Link href="/contact">contact form</Link>.
             </p>
           </article>
         </section>
