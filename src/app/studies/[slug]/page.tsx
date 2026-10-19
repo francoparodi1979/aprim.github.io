@@ -10,6 +10,15 @@ import { subpageStyles } from "../../_styles/subpages";
 
 export const dynamicParams = false;
 
+/** Same wording as the home-page portfolio cards (STATUS_LABEL in portfolio.ts). */
+const STUDY_STATUS_LABEL: Record<string, string> = {
+  recruiting: "Recruiting",
+  enrolling_by_invitation: "Enrolling by invitation",
+  active: "Active · not recruiting",
+  completed: "Completed",
+  paused: "Paused",
+};
+
 export async function generateStaticParams() {
   const studies = await getAllStudies();
   return studies.map((s) => ({ slug: s.slug }));
@@ -85,7 +94,7 @@ export default async function StudyPage({
                 <span>Phase</span>
               </div>
               <div>
-                <b>{study.status.replace(/_/g, " ")}</b>
+                <b>{STUDY_STATUS_LABEL[study.status] ?? study.status.replace(/_/g, " ")}</b>
                 <span>Status</span>
               </div>
               <div>
