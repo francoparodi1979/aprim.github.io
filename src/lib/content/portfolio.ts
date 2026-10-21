@@ -78,7 +78,7 @@ const TRIALS: Trial[] = [
     title: "Long-term extension of lunsekimig, including inhaled corticosteroid withdrawal, in COPD",
     phase: "Phase III",
     condition: "COPD",
-    status: "upcoming",
+    status: "active",
     href: "/studies/copd-lunsekimig-lts18211",
   },
   {
