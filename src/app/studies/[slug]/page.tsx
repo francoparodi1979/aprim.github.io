@@ -5,7 +5,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
-import { getAllStudies, getStudyBySlug } from "@/lib/content/studies";
+import { STUDY_STATUS_LABEL, getAllStudies, getStudyBySlug } from "@/lib/content/studies";
 import { subpageStyles } from "../../_styles/subpages";
 
 export const dynamicParams = false;
@@ -39,6 +39,21 @@ export default async function StudyPage({
   if (!study) notFound();
 
   const recruiting = study.status === "recruiting";
+  const upcoming = study.status === "upcoming";
+  const closed = study.status === "completed" || study.status === "terminated";
+
+  // schema.org MedicalStudyStatus values.
+  const jsonLdStatus = recruiting
+    ? "Recruiting"
+    : upcoming
+      ? "NotYetRecruiting"
+      : study.status === "completed"
+        ? "Completed"
+        : study.status === "terminated"
+          ? "Terminated"
+          : study.status === "paused"
+            ? "Suspended"
+            : "ActiveNotRecruiting";
 
   // Structured data so search engines understand this page describes a
   // clinical study at our Madison Heights site.
@@ -47,7 +62,7 @@ export default async function StudyPage({
     "@type": "MedicalStudy",
     name: study.title,
     description: study.shortSummary,
-    status: recruiting ? "Recruiting" : "ActiveNotRecruiting",
+    status: jsonLdStatus,
     ...(study.nctId ? { identifier: study.nctId } : {}),
     ...(study.sponsor ? { sponsor: { "@type": "Organization", name: study.sponsor } } : {}),
     healthCondition: { "@type": "MedicalCondition", name: study.condition.toUpperCase() },
@@ -85,11 +100,23 @@ export default async function StudyPage({
                 <span>Phase</span>
               </div>
               <div>
-                <b>{study.status.replace(/_/g, " ")}</b>
+                <b>{STUDY_STATUS_LABEL[study.status]}</b>
                 <span>Status</span>
               </div>
               <div>
-                <b>{study.nctId ?? "—"}</b>
+                <b>
+                  {study.nctId ? (
+                    <a
+                      href={`https://clinicaltrials.gov/study/${study.nctId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {study.nctId} ↗
+                    </a>
+                  ) : (
+                    "—"
+                  )}
+                </b>
                 <span>ClinicalTrials.gov</span>
               </div>
             </div>
@@ -108,12 +135,20 @@ export default async function StudyPage({
             className="eyebrow"
             style={{ position: "relative", zIndex: 2, marginBottom: 28 }}
           >
-            {recruiting ? "◈ This study is enrolling now" : "◈ Interested in future studies?"}
+            {recruiting
+              ? "◈ This study is enrolling now"
+              : upcoming
+                ? "◈ Enrollment opening soon"
+                : "◈ Interested in future studies?"}
           </div>
           <h2>
             {recruiting ? (
               <>
                 Think you might <em>qualify?</em>
+              </>
+            ) : upcoming ? (
+              <>
+                Want to hear <em>first?</em>
               </>
             ) : (
               <>
@@ -124,7 +159,11 @@ export default async function StudyPage({
           <p>
             {recruiting
               ? "A coordinator can tell you in one short phone call — or send us your details and we'll call you."
-              : "This study isn't enrolling, but new trials open month to month. Leave your details and we'll reach out when something matches."}
+              : upcoming
+                ? "This study hasn't started enrolling at our site yet. Leave your details and a coordinator will reach out once it opens."
+                : closed
+                  ? "This study has ended at our site, but new trials open month to month. Leave your details and we'll reach out when something matches."
+                  : "This study isn't enrolling, but new trials open month to month. Leave your details and we'll reach out when something matches."}
           </p>
           <div className="cta-row">
             <Link className="cta-pill" href="/contact">

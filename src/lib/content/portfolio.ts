@@ -12,8 +12,10 @@
  * is enrolling. Keep each `status:` on its own line so the script can edit it.
  *
  * Trials not yet registered carry a sponsor `protocol` number and no `nct`;
- * add the NCT once assigned and the card becomes a registry link. Only trials
- * with on-site detail pages carry an internal `href`.
+ * add the NCT once assigned. Every trial now has an on-site detail page
+ * (src/content/studies/*.mdx) linked via `href`; the page links out to the
+ * ClinicalTrials.gov record. New trials need both a PORTFOLIO entry and an MDX
+ * page so every card shows "Details →".
  */
 export type TrialStatus = "recruiting" | "upcoming" | "active" | "completed" | "terminated";
 
@@ -59,6 +61,7 @@ const TRIALS: Trial[] = [
     phase: "Phase III",
     condition: "IPF",
     status: "recruiting",
+    href: "/studies/ipf-nalbuphine-ocean-2",
   },
   {
     nct: "NCT07780643",
@@ -67,6 +70,7 @@ const TRIALS: Trial[] = [
     phase: "Phase III",
     condition: "Asthma",
     status: "upcoming",
+    href: "/studies/asthma-felcorekibart-persist-asthma-1",
   },
   {
     nct: "NCT07793409",
@@ -75,6 +79,7 @@ const TRIALS: Trial[] = [
     phase: "Phase III",
     condition: "COPD",
     status: "upcoming",
+    href: "/studies/copd-lunsekimig-lts18211",
   },
   {
     nct: "NCT07547436",
@@ -83,6 +88,7 @@ const TRIALS: Trial[] = [
     phase: "Phase II",
     condition: "Bronchiectasis",
     status: "active",
+    href: "/studies/bronchiectasis-sar445399-pdy19372",
   },
   {
     nct: "NCT06748053",
@@ -98,6 +104,7 @@ const TRIALS: Trial[] = [
     phase: "Phase III",
     condition: "Asthma",
     status: "active",
+    href: "/studies/asthma-dexpramipexole-exhale-4",
   },
   {
     nct: "NCT06208306",
@@ -105,6 +112,7 @@ const TRIALS: Trial[] = [
     phase: "Phase III",
     condition: "COPD",
     status: "completed",
+    href: "/studies/copd-itepekimab-aerify-4",
   },
   {
     nct: "NCT03953300",
@@ -112,6 +120,7 @@ const TRIALS: Trial[] = [
     phase: "Phase IV",
     condition: "Asthma",
     status: "active",
+    href: "/studies/asthma-benralizumab-chinook",
   },
   {
     nct: "NCT06372496",
@@ -119,6 +128,7 @@ const TRIALS: Trial[] = [
     phase: "Phase IV",
     condition: "Asthma",
     status: "active",
+    href: "/studies/asthma-ff-umec-vi-perform",
   },
   {
     nct: "NCT04718389",
@@ -126,6 +136,7 @@ const TRIALS: Trial[] = [
     phase: "Phase III",
     condition: "Asthma",
     status: "completed",
+    href: "/studies/asthma-depemokimab-nimble",
   },
   {
     nct: "NCT04701983",
@@ -133,6 +144,7 @@ const TRIALS: Trial[] = [
     phase: "Phase III",
     condition: "COPD",
     status: "completed",
+    href: "/studies/copd-itepekimab-aerify-1",
   },
   {
     nct: "NCT05326412",
@@ -140,6 +152,7 @@ const TRIALS: Trial[] = [
     phase: "Phase II",
     condition: "COPD",
     status: "completed",
+    href: "/studies/copd-itepekimab-aerify-3",
   },
   {
     nct: "NCT06335303",
@@ -147,6 +160,7 @@ const TRIALS: Trial[] = [
     phase: "Phase II",
     condition: "IPF",
     status: "completed",
+    href: "/studies/ipf-bi-1819479",
   },
   {
     nct: "NCT06280391",
@@ -154,6 +168,7 @@ const TRIALS: Trial[] = [
     phase: "Phase II",
     condition: "Bronchiectasis",
     status: "completed",
+    href: "/studies/bronchiectasis-itepekimab-act18018",
   },
   {
     nct: "NCT05813288",
@@ -161,6 +176,7 @@ const TRIALS: Trial[] = [
     phase: "Phase III",
     condition: "Asthma",
     status: "terminated",
+    href: "/studies/asthma-dexpramipexole-exhale-3",
   },
   {
     nct: "NCT06360094",
@@ -168,6 +184,7 @@ const TRIALS: Trial[] = [
     phase: "Phase II",
     condition: "IPF / PPF",
     status: "terminated",
+    href: "/studies/ipf-bi-1839100-cough",
   },
 ];
 

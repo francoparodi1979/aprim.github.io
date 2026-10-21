@@ -47,7 +47,7 @@ const LABEL = {
   terminated: "Terminated",
 };
 // MDX study pages use a narrower status vocabulary.
-const MDX_STATUS = { active: "active", completed: "completed", terminated: "completed" };
+const MDX_STATUS = { active: "active", completed: "completed", terminated: "terminated" };
 
 const mock = process.env.SYNC_MOCK ? JSON.parse(readFileSync(process.env.SYNC_MOCK, "utf8")) : null;
 

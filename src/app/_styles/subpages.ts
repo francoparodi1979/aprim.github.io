@@ -78,6 +78,8 @@ export const subpageStyles = `
   overflow-wrap: normal;
 }
 .ph .ks b.ks-phone a { color: inherit; text-decoration: none; }
+.ph .ks b a { color: inherit; text-decoration: none; }
+.ph .ks b a:hover { color: var(--color-clay-text); }
 .ph .ks span {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -596,6 +598,11 @@ export const subpageStyles = `
   color: var(--color-ink-2);
 }
 .study-article li::marker { color: var(--color-clay); }
+.study-article a {
+  color: var(--color-clay-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 /* Contact page header variant — form lives above the fold in the right column */
 .ph.ph-form {
