@@ -2,7 +2,7 @@
  * Veritas Clinical Research trial portfolio — the single source of truth for
  * the home-page grid, the sponsors table, and every trial count on the site.
  * `PORTFOLIO` is sorted at load time by how actionable each trial is for a
- * visitor (recruiting, upcoming, active, completed, terminated), so entries in
+ * visitor (recruiting, upcoming, active, paused, completed, terminated), so entries in
  * `TRIALS` can sit in any order and a status change re-sorts automatically.
  *
  * Statuses are kept in sync with ClinicalTrials.gov by
@@ -17,7 +17,7 @@
  * ClinicalTrials.gov record. New trials need both a PORTFOLIO entry and an MDX
  * page so every card shows "Details →".
  */
-export type TrialStatus = "recruiting" | "upcoming" | "active" | "completed" | "terminated";
+export type TrialStatus = "recruiting" | "upcoming" | "active" | "paused" | "completed" | "terminated";
 
 export interface Trial {
   /** ClinicalTrials.gov ID. Omit until the sponsor registers the study. */
@@ -36,6 +36,7 @@ export const STATUS_LABEL: Record<TrialStatus, string> = {
   recruiting: "Recruiting",
   upcoming: "Not yet recruiting",
   active: "Active · not recruiting",
+  paused: "Paused by sponsor",
   completed: "Completed",
   terminated: "Terminated",
 };
@@ -87,7 +88,7 @@ const TRIALS: Trial[] = [
     title: "SAR445399 in adults with non-cystic-fibrosis bronchiectasis",
     phase: "Phase II",
     condition: "Bronchiectasis",
-    status: "active",
+    status: "paused",
     href: "/studies/bronchiectasis-sar445399-pdy19372",
   },
   {
@@ -192,8 +193,9 @@ const STATUS_ORDER: Record<TrialStatus, number> = {
   recruiting: 0,
   upcoming: 1,
   active: 2,
-  completed: 3,
-  terminated: 4,
+  paused: 3,
+  completed: 4,
+  terminated: 5,
 };
 
 /** All trials, most actionable first (stable within a status). */

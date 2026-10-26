@@ -44,7 +44,7 @@ export const STUDY_STATUS_LABEL: Record<StudyFrontmatter["status"], string> = {
   upcoming: "Not yet recruiting",
   enrolling_by_invitation: "By invitation",
   active: "Active · not recruiting",
-  paused: "Paused",
+  paused: "Paused by sponsor",
   completed: "Completed",
   terminated: "Terminated",
 };

@@ -445,6 +445,8 @@ export const subpageStyles = `
 .sp-row .st[data-status="upcoming"] .dot { background: transparent; border: 1.5px solid var(--color-clay); }
 .sp-row .st[data-status="active"] { color: var(--color-sage); }
 .sp-row .st[data-status="active"] .dot { background: var(--color-sage); }
+.sp-row .st[data-status="paused"] { color: var(--color-clay-text); }
+.sp-row .st[data-status="paused"] .dot { background: var(--color-clay); }
 .sp-row .st[data-status="terminated"] { opacity: 0.7; }
 
 /* Patient steps */

@@ -38,7 +38,7 @@ Studies are MDX files in `src/content/studies/`. Frontmatter is validated by the
 
 When a study's status changes, update **both** the MDX frontmatter and the `PORTFOLIO` array in `src/lib/content/portfolio.ts`.
 
-Trial statuses are synced daily from ClinicalTrials.gov by `.github/workflows/sync-trial-status.yml` → `scripts/sync-trial-status.mjs`. It only moves trials forward (recruiting → active → completed/terminated), updates matching MDX frontmatter, pushes to `main`, triggers `deploy.yml`, and opens an issue listing the changes. Setting a trial to "recruiting" stays manual. Keep each trial's `status:` on its own line in `portfolio.ts` (the script edits it by regex). All trial counts on the site (home heading, about, sponsors) are computed from `PORTFOLIO` — never hardcode them.
+Trial statuses are synced daily from ClinicalTrials.gov by `.github/workflows/sync-trial-status.yml` → `scripts/sync-trial-status.mjs`. It only moves trials forward (recruiting → active ⇄ paused → completed/terminated; registry "Suspended" maps to "paused"), updates matching MDX frontmatter, pushes to `main`, triggers `deploy.yml`, and opens an issue listing the changes. Setting a trial to "recruiting" stays manual. Keep each trial's `status:` on its own line in `portfolio.ts` (the script edits it by regex). All trial counts on the site (home heading, about, sponsors) are computed from `PORTFOLIO` — never hardcode them.
 
 ### Path alias
 

@@ -6,7 +6,7 @@
  * overall status in the ClinicalTrials.gov v2 API, and updates the site's
  * `status:` when the registry shows the trial has moved FORWARD:
  *
- *   recruiting/upcoming → active → completed | terminated
+ *   recruiting/upcoming → active ⇄ paused (sponsor hold) → completed | terminated
  *
  * It never sets a trial to "recruiting" (or back to an earlier stage): whether
  * Veritas is enrolling is a site decision, and the global registry often still
@@ -30,24 +30,27 @@ const STUDIES_DIR = "src/content/studies";
 const SUMMARY = process.env.SYNC_SUMMARY || "trial-sync-summary.md";
 
 // Registry status → site status. Statuses not listed (NOT_YET_RECRUITING,
-// SUSPENDED, UNKNOWN, WITHDRAWN…) are reported but never applied.
+// UNKNOWN, WITHDRAWN…) are reported but never applied.
 const FROM_REGISTRY = {
   RECRUITING: "recruiting",
   ENROLLING_BY_INVITATION: "active",
   ACTIVE_NOT_RECRUITING: "active",
+  SUSPENDED: "paused",
   COMPLETED: "completed",
   TERMINATED: "terminated",
 };
-const RANK = { recruiting: 0, upcoming: 1, active: 2, completed: 3, terminated: 3 };
+// "paused" shares a rank with "active": a sponsor hold and its lifting both sync.
+const RANK = { recruiting: 0, upcoming: 1, active: 2, paused: 2, completed: 3, terminated: 3 };
 const LABEL = {
   recruiting: "Recruiting",
   upcoming: "Not yet recruiting",
   active: "Active, not recruiting",
+  paused: "Paused by sponsor (suspended)",
   completed: "Completed",
   terminated: "Terminated",
 };
 // MDX study pages use a narrower status vocabulary.
-const MDX_STATUS = { active: "active", completed: "completed", terminated: "terminated" };
+const MDX_STATUS = { active: "active", paused: "paused", completed: "completed", terminated: "terminated" };
 
 const mock = process.env.SYNC_MOCK ? JSON.parse(readFileSync(process.env.SYNC_MOCK, "utf8")) : null;
 
@@ -97,7 +100,7 @@ for (const e of entries) {
     continue;
   }
   if (next === e.status) continue;
-  const forward = RANK[next] > RANK[e.status] || (RANK[next] === 3 && RANK[e.status] === 3);
+  const forward = RANK[next] > RANK[e.status] || (RANK[next] === RANK[e.status] && RANK[next] >= 2);
   if (!forward) {
     notes.push(
       `- ${e.nct} (${e.title}): registry says ${LABEL[next]}, site says ${LABEL[e.status]} — left unchanged (only moves forward automatically).`,
