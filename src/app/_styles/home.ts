@@ -637,11 +637,17 @@ export const homePageStyles = `
   text-transform: uppercase;
   color: var(--color-clay-text);
   white-space: nowrap;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.3s, transform 0.3s;
+  padding: 5px 11px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
 }
-.trial:hover .trial-go { opacity: 1; transform: translateX(0); }
+/* Always visible (touch screens have no hover); hover just emphasizes it. */
+.trial:hover .trial-go {
+  background: var(--color-clay-text);
+  color: var(--color-bone);
+  transform: translateX(2px);
+}
 
 /* ===== DOCTOR ===== */
 .doctor {

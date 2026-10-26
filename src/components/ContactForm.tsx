@@ -2,13 +2,28 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// FormSubmit delivers each submission by email to this address (the
-// Veritas "contact@" shared mailbox in Microsoft 365). The first submission
-// sends a one-time activation email there; submissions are delivered once
-// it is confirmed.
-const FORM_EMAIL = "contact@veritasclinical.org";
-const FORM_ENDPOINT = `https://formsubmit.co/${FORM_EMAIL}`;
-const FORM_AJAX_ENDPOINT = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
+// FormSubmit delivers each submission by email to the Veritas "contact@"
+// shared mailbox in Microsoft 365. The address is assembled at runtime and
+// the form has no static `action`, so it never appears in the page HTML —
+// most form-spam bots parse the HTML and post straight to the action URL.
+// (Stored reversed so the minifier can't fold it back into a plain string.)
+const FORM_AJAX_ENDPOINT = () =>
+  "https://formsubmit.co/ajax/" +
+  "gro.lacinilcsatirev@tcatnoc".split("").reverse().join("");
+
+// Spam filtering (no backend, so it is layered):
+//  1. Two honeypots: FormSubmit's `_honey` plus a plausible-looking
+//     `website` field that bots tend to fill.
+//  2. Submissions sent faster than MIN_FILL_MS after the form appears are
+//     treated as bots (humans need a few seconds to type).
+//  3. Phone numbers in the 555-01xx range (reserved for fiction) are dropped.
+//  4. FormSubmit's server-side `_blacklist` rejects known spam phrases even
+//     if a bot posts to the endpoint directly.
+// Blocked submissions show the normal success message so bots learn nothing.
+const MIN_FILL_MS = 4000;
+const FAKE_PHONE = /555[\s.\-]*01\d\d/;
+const BLACKLIST =
+  "I would like more information. Please contact me by email, 555-01";
 
 // Plain-text confirmation FormSubmit emails to the person who submitted.
 const AUTORESPONSE =
@@ -31,6 +46,11 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const doneHeadingRef = useRef<HTMLHeadingElement>(null);
+  const shownAtRef = useRef<number>(0);
+
+  useEffect(() => {
+    shownAtRef.current = Date.now();
+  }, []);
 
   // The form unmounts on success, which silently drops keyboard focus and
   // leaves screen readers unaware anything happened. Moving focus to the
@@ -42,11 +62,25 @@ export function ContactForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const looksLikeBot =
+      String(data.get("website") ?? "").trim() !== "" ||
+      String(data.get("_honey") ?? "").trim() !== "" ||
+      Date.now() - shownAtRef.current < MIN_FILL_MS ||
+      FAKE_PHONE.test(String(data.get("phone") ?? ""));
+    if (looksLikeBot) {
+      form.reset();
+      setStatus("success");
+      return;
+    }
+    data.delete("website");
+
     setStatus("submitting");
     try {
-      const res = await fetch(FORM_AJAX_ENDPOINT, {
+      const res = await fetch(FORM_AJAX_ENDPOINT(), {
         method: "POST",
-        body: new FormData(form),
+        body: data,
         headers: { Accept: "application/json" },
       });
       if (res.ok) {
@@ -79,12 +113,12 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      className="cform"
-      action={FORM_ENDPOINT}
-      method="POST"
-      onSubmit={handleSubmit}
-    >
+    <form className="cform" onSubmit={handleSubmit}>
+      <noscript>
+        <p className="cform-error">
+          This form needs JavaScript. Please call us at (586) 210-0330 instead.
+        </p>
+      </noscript>
       {/* FormSubmit metadata */}
       <input
         type="hidden"
@@ -95,6 +129,8 @@ export function ContactForm() {
       <input type="hidden" name="_template" value="table" />
       {/* Automatic confirmation emailed to the visitor's address (the "email" field). */}
       <input type="hidden" name="_autoresponse" value={AUTORESPONSE} />
+      {/* Server-side spam phrases — FormSubmit discards matching submissions. */}
+      <input type="hidden" name="_blacklist" value={BLACKLIST} />
       {/* Honeypot: hidden from humans; bots that fill it are dropped. */}
       <input
         type="text"
@@ -104,6 +140,14 @@ export function ContactForm() {
         aria-hidden="true"
         style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }}
       />
+      {/* Second honeypot with an ordinary-looking name; never sent on. */}
+      <label
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}
+      >
+        Website
+        <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+      </label>
 
       <div className="cform-row">
         <label className="cform-field">

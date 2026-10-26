@@ -402,7 +402,7 @@ function TrialCard(t: Trial) {
           <span>{phase}</span>
           <span>{condition}</span>
         </div>
-        <span className="trial-go">{href ? "Details →" : nct ? "NCT ↗" : "NCT pending"}</span>
+        <span className="trial-go">{href ? "View details →" : nct ? "NCT ↗" : "NCT pending"}</span>
       </div>
     </>
   );

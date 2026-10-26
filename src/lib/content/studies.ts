@@ -13,8 +13,16 @@ const STUDIES_DIR = path.join(process.cwd(), "src/content/studies");
 const studyFrontmatterSchema = z.object({
   slug: z.string().min(1),
   title: z.string().min(1),
-  condition: z.enum(["copd", "asthma", "ipf", "other"]),
-  status: z.enum(["recruiting", "enrolling_by_invitation", "active", "completed", "paused"]),
+  condition: z.enum(["copd", "asthma", "ipf", "bronchiectasis", "other"]),
+  status: z.enum([
+    "recruiting",
+    "upcoming",
+    "enrolling_by_invitation",
+    "active",
+    "paused",
+    "completed",
+    "terminated",
+  ]),
   phase: z.string().optional(),
   nctId: z.string().optional(),
   sponsor: z.string().optional(),
@@ -29,6 +37,17 @@ const studyFrontmatterSchema = z.object({
 });
 
 export type StudyFrontmatter = z.infer<typeof studyFrontmatterSchema>;
+
+/** Visitor-facing label for each study-page status. */
+export const STUDY_STATUS_LABEL: Record<StudyFrontmatter["status"], string> = {
+  recruiting: "Recruiting",
+  upcoming: "Not yet recruiting",
+  enrolling_by_invitation: "By invitation",
+  active: "Active · not recruiting",
+  paused: "Paused",
+  completed: "Completed",
+  terminated: "Terminated",
+};
 
 export interface Study extends StudyFrontmatter {
   body: string;
@@ -64,7 +83,15 @@ export async function getAllStudies(): Promise<Study[]> {
 
   // Sort: recruiting first, then alpha by title.
   studies.sort((a, b) => {
-    const order = { recruiting: 0, enrolling_by_invitation: 1, active: 2, paused: 3, completed: 4 };
+    const order = {
+      recruiting: 0,
+      upcoming: 1,
+      enrolling_by_invitation: 2,
+      active: 3,
+      paused: 4,
+      completed: 5,
+      terminated: 6,
+    };
     return order[a.status] - order[b.status] || a.title.localeCompare(b.title);
   });
 
