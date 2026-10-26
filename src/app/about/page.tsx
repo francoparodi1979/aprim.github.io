@@ -36,7 +36,7 @@ const TEAM: Member[] = [
     role: "Lead Clinical Research Coordinator",
     name: "Aishwarya Vasudevan, PharmD, MS",
     blurb:
-      "Doctor of Pharmacy with an MS in Pharmaceutical Sciences, Major in pharmacology and toxicology.",
+      "Doctor of Pharmacy with an MS in Pharmaceutical Sciences, with a major in pharmacology and toxicology.",
     img: "/aishwarya-vasudevan.jpg",
   },
 ];
