@@ -284,7 +284,7 @@ export default function HomePage() {
                 <b>Memberships</b>Fellow of the American College of Chest Physicians · Member of the Association of Clinical Research Professionals
               </div>
               <div>
-                <b>Appointments</b>Associate Professor of Medicine, Michigan State University College of Osteopathic Medicine · Associate Program Director, Fellowship in Pulmonary &amp; Critical Care Medicine, Henry Ford Warren Hospital, MI
+                <b>Appointments</b>Associate Professor of Medicine, Michigan State University College of Osteopathic Medicine
               </div>
             </div>
             <q>
